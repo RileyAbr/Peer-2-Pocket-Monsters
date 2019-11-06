@@ -1,0 +1,68 @@
+@import "_variables";
+
+/*
+ 
+  ######   #######  ########  ########    ##          ###    ##    ##  #######  ##     ## ######## 
+ ##    ## ##     ## ##     ## ##          ##         ## ##    ##  ##  ##     ## ##     ##    ##    
+ ##       ##     ## ##     ## ##          ##        ##   ##    ####   ##     ## ##     ##    ##    
+ ##       ##     ## ########  ######      ##       ##     ##    ##    ##     ## ##     ##    ##    
+ ##       ##     ## ##   ##   ##          ##       #########    ##    ##     ## ##     ##    ##    
+ ##    ## ##     ## ##    ##  ##          ##       ##     ##    ##    ##     ## ##     ##    ##    
+  ######   #######  ##     ## ########    ######## ##     ##    ##     #######   #######     ##    
+ 
+*/
+
+#poke-container {
+  background-color: grey;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+
+  @media screen and (min-width: $desktop-min-width) {
+    flex-flow: row wrap;
+  }
+}
+
+
+
+.columns {
+  display: flex;
+  width: 100%;
+
+  @media screen and (min-width: $desktop-min-width) {
+    flex: 0 0 $column-width;
+    max-width: $column-width;
+  }
+}
+
+#chat-column {
+  background-color: red;
+}
+
+#battle-column {
+  background-color: cyan;
+  height: 88vh;
+
+  @media screen and (min-width: $desktop-min-width) {
+    flex: 0 0 $battle-column-width;
+    max-width: $battle-column-width;
+    height: auto;
+  }
+}
+
+#stats-column {
+  background-color: yellow;
+}
+
+/*
+ 
+ ########     ###    ######## ######## ##       ########     ######   #######  ##    ## ######## ########   #######  ##       ##       ######## ########  
+ ##     ##   ## ##      ##       ##    ##       ##          ##    ## ##     ## ###   ##    ##    ##     ## ##     ## ##       ##       ##       ##     ## 
+ ##     ##  ##   ##     ##       ##    ##       ##          ##       ##     ## ####  ##    ##    ##     ## ##     ## ##       ##       ##       ##     ## 
+ ########  ##     ##    ##       ##    ##       ######      ##       ##     ## ## ## ##    ##    ########  ##     ## ##       ##       ######   ########  
+ ##     ## #########    ##       ##    ##       ##          ##       ##     ## ##  ####    ##    ##   ##   ##     ## ##       ##       ##       ##   ##   
+ ##     ## ##     ##    ##       ##    ##       ##          ##    ## ##     ## ##   ###    ##    ##    ##  ##     ## ##       ##       ##       ##    ##  
+ ########  ##     ##    ##       ##    ######## ########     ######   #######  ##    ##    ##    ##     ##  #######  ######## ######## ######## ##     ## 
+ 
+*/
