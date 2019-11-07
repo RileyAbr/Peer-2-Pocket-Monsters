@@ -2,22 +2,21 @@
 
 /*
  
-  ######   #######  ########  ########    ##          ###    ##    ##  #######  ##     ## ######## 
- ##    ## ##     ## ##     ## ##          ##         ## ##    ##  ##  ##     ## ##     ##    ##    
- ##       ##     ## ##     ## ##          ##        ##   ##    ####   ##     ## ##     ##    ##    
- ##       ##     ## ########  ######      ##       ##     ##    ##    ##     ## ##     ##    ##    
- ##       ##     ## ##   ##   ##          ##       #########    ##    ##     ## ##     ##    ##    
- ##    ## ##     ## ##    ##  ##          ##       ##     ##    ##    ##     ## ##     ##    ##    
-  ######   #######  ##     ## ########    ######## ##     ##    ##     #######   #######     ##    
+ ##          ###    ##    ##  #######  ##     ## ######## 
+ ##         ## ##    ##  ##  ##     ## ##     ##    ##    
+ ##        ##   ##    ####   ##     ## ##     ##    ##    
+ ##       ##     ##    ##    ##     ## ##     ##    ##    
+ ##       #########    ##    ##     ## ##     ##    ##    
+ ##       ##     ##    ##    ##     ## ##     ##    ##    
+ ######## ##     ##    ##     #######   #######     ##    
  
 */
-
 #poke-container {
   background-color: grey;
   height: 100vh;
   width: 100%;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
 
   @media screen and (min-width: $desktop-min-width) {
     flex-flow: row wrap;
@@ -39,30 +38,6 @@
   flex-flow: column wrap;
 }
 
-.chat-row-item {
-  margin: 10px;
-}
-
-#chat-messages {
-  margin-bottom: 0px;
-  flex: 1;
-  border: 1px black solid;
-}
-
-#chat-send-message {
-  margin-top: 0px;
-  display: flex;
-  flex-flow: row wrap;
-}
-
-#chat-send-message-text {
-  flex: 2;
-}
-
-#chat-send-message-button {
-  flex: 1;
-}
-
 #battle-column {
   background-color: cyan;
   height: 80vh;
@@ -80,12 +55,102 @@
 
 /*
  
- ########     ###    ######## ######## ##       ########     ######   #######  ##    ## ######## ########   #######  ##       ##       ######## ########  
- ##     ##   ## ##      ##       ##    ##       ##          ##    ## ##     ## ###   ##    ##    ##     ## ##     ## ##       ##       ##       ##     ## 
- ##     ##  ##   ##     ##       ##    ##       ##          ##       ##     ## ####  ##    ##    ##     ## ##     ## ##       ##       ##       ##     ## 
- ########  ##     ##    ##       ##    ##       ######      ##       ##     ## ## ## ##    ##    ########  ##     ## ##       ##       ######   ########  
- ##     ## #########    ##       ##    ##       ##          ##       ##     ## ##  ####    ##    ##   ##   ##     ## ##       ##       ##       ##   ##   
- ##     ## ##     ##    ##       ##    ##       ##          ##    ## ##     ## ##   ###    ##    ##    ##  ##     ## ##       ##       ##       ##    ##  
- ########  ##     ##    ##       ##    ######## ########     ######   #######  ##    ##    ##    ##     ##  #######  ######## ######## ######## ##     ## 
+  ######  ##     ##    ###    ########    
+ ##    ## ##     ##   ## ##      ##       
+ ##       ##     ##  ##   ##     ##       
+ ##       ######### ##     ##    ##       
+ ##       ##     ## #########    ##       
+ ##    ## ##     ## ##     ##    ##       
+  ######  ##     ## ##     ##    ##       
  
 */
+.chat-row-item {
+  margin: 10px;
+}
+
+#chat-messages {
+  margin-bottom: 0px;
+  flex: none;
+  height: 4rem;
+  border: 1px black solid;
+  @media screen and (min-width: $desktop-min-width) {
+    flex: 1;
+  }
+}
+
+#chat-send-message {
+  margin-top: 0px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#chat-send-message-text {
+  flex: 2;
+}
+
+#chat-send-message-button {
+  flex: 1;
+}
+
+/*
+ 
+ ########     ###    ######## ######## ##       ######## 
+ ##     ##   ## ##      ##       ##    ##       ##       
+ ##     ##  ##   ##     ##       ##    ##       ##       
+ ########  ##     ##    ##       ##    ##       ######   
+ ##     ## #########    ##       ##    ##       ##       
+ ##     ## ##     ##    ##       ##    ##       ##       
+ ########  ##     ##    ##       ##    ######## ######## 
+ 
+*/
+#battle-controller {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 75% 25%;
+}
+
+#battle-scence {
+}
+
+#battle-controller-button-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.battle-controller-button {
+  width: 50%;
+}
+
+/*
+ 
+  ######  ########    ###    ########  ######  
+ ##    ##    ##      ## ##      ##    ##    ## 
+ ##          ##     ##   ##     ##    ##       
+  ######     ##    ##     ##    ##     ######  
+       ##    ##    #########    ##          ## 
+ ##    ##    ##    ##     ##    ##    ##    ## 
+  ######     ##    ##     ##    ##     ######  
+ 
+*/
+#stats-column {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 50% 50%;
+}
+
+/*
+ 
+ #### ##    ## ########  ##     ## ######## 
+  ##  ###   ## ##     ## ##     ##    ##    
+  ##  ####  ## ##     ## ##     ##    ##    
+  ##  ## ## ## ########  ##     ##    ##    
+  ##  ##  #### ##        ##     ##    ##    
+  ##  ##   ### ##        ##     ##    ##    
+ #### ##    ## ##         #######     ##    
+ 
+*/
+
+button {
+  border: black 1px solid;
+}
