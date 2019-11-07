@@ -60,11 +60,50 @@
 
 #chat-column {
   background-color: red;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
+.chat-row-item {
+  margin: 10px;
+}
+
+#chat-messages {
+  margin-bottom: 0px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px black solid;
+}
+
+#chat-send-message {
+  margin-top: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+#chat-send-message-text {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+#chat-send-message-button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 #battle-column {
   background-color: cyan;
-  height: 88vh;
+  height: 80vh;
 }
 
 @media screen and (min-width: 992px) {

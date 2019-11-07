@@ -24,8 +24,6 @@
   }
 }
 
-
-
 .columns {
   display: flex;
   width: 100%;
@@ -38,11 +36,36 @@
 
 #chat-column {
   background-color: red;
+  flex-flow: column wrap;
+}
+
+.chat-row-item {
+  margin: 10px;
+}
+
+#chat-messages {
+  margin-bottom: 0px;
+  flex: 1;
+  border: 1px black solid;
+}
+
+#chat-send-message {
+  margin-top: 0px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#chat-send-message-text {
+  flex: 2;
+}
+
+#chat-send-message-button {
+  flex: 1;
 }
 
 #battle-column {
   background-color: cyan;
-  height: 88vh;
+  height: 80vh;
 
   @media screen and (min-width: $desktop-min-width) {
     flex: 0 0 $battle-column-width;
