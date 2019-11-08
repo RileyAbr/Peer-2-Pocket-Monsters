@@ -9,6 +9,10 @@
  ######## ##     ##    ##     #######   #######     ##    
  
 */
+table {
+  border: 1px black solid;
+}
+
 /*
  
  ##          ###    ##    ##  #######  ##     ## ######## 
@@ -22,7 +26,7 @@
 */
 #poke-container {
   background-color: grey;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -58,33 +62,6 @@
   }
 }
 
-#chat-column {
-  background-color: red;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
-}
-
-#battle-column {
-  background-color: cyan;
-  height: 80vh;
-}
-
-@media screen and (min-width: 992px) {
-  #battle-column {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 60%;
-            flex: 0 0 60%;
-    max-width: 60%;
-    height: auto;
-  }
-}
-
-#stats-column {
-  background-color: yellow;
-}
-
 /*
  
   ######  ##     ##    ###    ########    
@@ -96,6 +73,14 @@
   ######  ##     ## ##     ##    ##       
  
 */
+#chat-column {
+  background-color: red;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
 .chat-row-item {
   margin: 10px;
 }
@@ -151,6 +136,21 @@
  ########  ##     ##    ##       ##    ######## ######## 
  
 */
+#battle-column {
+  background-color: cyan;
+  height: 80vh;
+}
+
+@media screen and (min-width: 992px) {
+  #battle-column {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 60%;
+            flex: 0 0 60%;
+    max-width: 60%;
+    height: auto;
+  }
+}
+
 #battle-controller {
   width: 100%;
   display: -ms-grid;
@@ -193,6 +193,32 @@
       grid-template-columns: auto;
   -ms-grid-rows: 50% 50%;
       grid-template-rows: 50% 50%;
+  background-color: yellow;
+}
+
+.stats-table {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.stats-row {
+  margin: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 120px;
 }
 
 /*
