@@ -111,6 +111,120 @@ table {
 }
 
 #battle-scence {
+  background-image: url("/assets/img/grass-bg.png");
+  background-size: cover;
+}
+
+#battle-scence-wrapper {
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.battle-scence-column {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.battle-scence-column-players {
+  flex: 5;
+  display: flex;
+}
+
+.battle-health-bar {
+  flex: 3 1 auto;
+}
+
+.battle-monster {
+  flex: 2;
+}
+
+.battle-monster-wrapper {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.battle-monster-sprite {
+  width: 100px;
+
+  @media screen and (min-width: $tablet-min-width) {
+    width: 200px;
+  }
+}
+
+.pokeball {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid $black;
+  transform-origin: center bottom;
+}
+
+  .base {
+    background: $black;
+    height: 80%;
+    width: 80%;
+    padding: 10%;
+  }
+
+  .upper-half {
+    position: absolute;
+    background: $red;
+    height: 42%;
+    width: 100%;
+  }
+
+  .lower-half {
+    bottom: 0;
+    position: absolute;
+    background: $white;
+    height: 42%;
+    width: 100%;
+  }
+
+  .inner-circle {
+    border-radius: 50%;
+    height: 20%;
+    width: 20%;
+    background: $white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 2px solid $black;
+    transform: translate(-50%, -50%);
+  }
+
+.indicator-inner {
+  border-radius: 50%;
+  height: 20%;
+  width: 20%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $white;
+}
+
+.indicator {
+  border-radius: 50%;
+  height: 80%;
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f64c4c;
+  background: -webkit-radial-gradient(center, #f64c4c, #ff514f00);
+  background: -moz-radial-gradient(center, #f64c4c, #ff514f00);
+  background: radial-gradient(ellipse at center, #f64c4c, #ff514f00);
+
+  opacity: 0;
 }
 
 #battle-controller-button-wrapper {
@@ -141,7 +255,7 @@ table {
 }
 
 .stats-table {
-  height: 100%;
+  height: 70%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

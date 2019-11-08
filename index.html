@@ -35,46 +35,79 @@
         <div id="battle-column" class="columns">
             <div id="battle-controller">
                 <div id="battle-scence">
-                    Battle Scene
+                    <div id="battle-scence-wrapper">
+                        <div class="battle-scence-column battle-scence-column-players">
+                            <div class="battle-health-bar">
+                                Health Bar
+                            </div>
+                            <div class="battle-monster">
+                                <div class="battle-monster-wrapper">
+                                    <img class="battle-monster-sprite"
+                                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+                                        alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="battle-scence-column">
+                            Pokeball
+                        </div>
+                        <div class="battle-scence-column battle-scence-column-players">
+                            <div class="battle-monster">
+                                <div class="battle-monster-wrapper">
+                                    <img class="battle-monster-sprite"
+                                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/3.png"
+                                        alt="">
+                                </div>
+                            </div>
+                            <div class="battle-health-bar">
+                                Health Bar
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="battle-controller-button-wrapper">
-                    <button class="battle-controller-button">
-                        Move 1
-                    </button>
-                    <button class="battle-controller-button">
-                        Move 2
-                    </button>
-                    <button class="battle-controller-button">
-                        Move 3
-                    </button>
-                    <button class="battle-controller-button">
-                        Move 4
-                    </button>
-                </div>
+                        <button class="battle-controller-button">
+                            Move 1
+                        </button>
+                        <button class="battle-controller-button">
+                            Move 2
+                        </button>
+                        <button class="battle-controller-button">
+                            Move 3
+                        </button>
+                        <button class="battle-controller-button">
+                            Move 4
+                        </button>
+                    </div>
             </div>
         </div>
-
         <div id="stats-column" class="columns">
             <div>
                 <h1>Opponents Stats</h1>
                 <div class="stats-table">
                     <div class="stats-row">
-                        <h4>HP</h4> <h4>###</h4>
+                        <h4>HP</h4>
+                        <h4>###</h4>
                     </div>
                     <div class="stats-row">
-                        <h4>AT</h4> <h4>###</h4>
+                        <h4>AT</h4>
+                        <h4>###</h4>
                     </div>
                     <div class="stats-row">
-                        <h4>DF</h4> <h4>###</h4>
+                        <h4>DF</h4>
+                        <h4>###</h4>
                     </div>
                     <div class="stats-row">
-                        <h4>AC</h4> <h4>###</h4>
+                        <h4>AC</h4>
+                        <h4>###</h4>
                     </div>
                     <div class="stats-row">
-                        <h4>EV</h4> <h4>###</h4>
+                        <h4>EV</h4>
+                        <h4>###</h4>
                     </div>
                     <div class="stats-row">
-                        <h4>SP</h4> <h4>###</h4>
+                        <h4>SP</h4>
+                        <h4>###</h4>
                     </div>
                 </div>
             </div>
@@ -82,32 +115,36 @@
                 <h1>Your Stats</h1>
                 <div class="stats-table">
                     <div class="stats-row">
-                        <h4>HP</h4> <h4>###</h4>
+                        <h4>HP</h4>
+                        <h4>###</h4>
                     </div>
                     <div class="stats-row">
-                        <h4>AT</h4> <h4>###</h4>
+                        <h4>AT</h4>
+                        <h4>###</h4>
                     </div>
                     <div class="stats-row">
-                        <h4>DF</h4> <h4>###</h4>
+                        <h4>DF</h4>
+                        <h4>###</h4>
                     </div>
                     <div class="stats-row">
-                        <h4>AC</h4> <h4>###</h4>
+                        <h4>AC</h4>
+                        <h4>###</h4>
                     </div>
                     <div class="stats-row">
-                        <h4>EV</h4> <h4>###</h4>
+                        <h4>EV</h4>
+                        <h4>###</h4>
                     </div>
                     <div class="stats-row">
-                        <h4>SP</h4> <h4>###</h4>
+                        <h4>SP</h4>
+                        <h4>###</h4>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
-
-    <!-- Load JS files after DOM elements -->
-    <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js"></script>
-    <script src="connect.js"></script>
+        <!-- Load JS files after DOM elements -->
+        <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js"></script>
+        <script src="connect.js"></script>
 </body>
 
 </html>
