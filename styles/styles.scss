@@ -107,7 +107,7 @@ table {
   width: 100%;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 75% 25%;
+  grid-template-rows: 70% 30%;
 }
 
 #battle-scence {
@@ -162,7 +162,20 @@ table {
 }
 
 .battle-controller-button {
-  width: 50%;
+  width: 49%;
+  margin: 0.5%;
+  background: rgb(226,226,226);
+  background: linear-gradient(0deg, #e2e2e2 0%, #e2e2e2 43%, #eee 43%, #eee 57%, #fff 57%);
+  clip-path: polygon(
+    $button-corner-angle 0, 
+    calc(100% - #{$button-corner-angle}) 0, 
+    100% $button-corner-angle,
+    100% calc(100% - #{$button-corner-angle}),
+    calc(100% - #{$button-corner-angle}) 100%,
+    $button-corner-angle 100%,
+    0 calc(100% - #{$button-corner-angle}),
+    0 $button-corner-angle
+    );
 }
 
 /*
