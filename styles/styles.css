@@ -38,7 +38,7 @@
  
 */
 @font-face {
-  font-family: 'pkmn_rbygsc';
+  font-family: "pkmn_rbygsc";
   src: url("/assets/fonts/PKMN RBYGSC/pkmn_rbygsc-webfont.woff2") format("woff2"), url("/assets/fonts/PKMN RBYGSC/pkmn_rbygsc-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -46,17 +46,17 @@
 
 /*
  
- ########     ###    ######## ######## ##       ######## 
- ##     ##   ## ##      ##       ##    ##       ##       
- ##     ##  ##   ##     ##       ##    ##       ##       
- ########  ##     ##    ##       ##    ##       ######   
- ##     ## #########    ##       ##    ##       ##       
- ##     ## ##     ##    ##       ##    ##       ##       
- ########  ##     ##    ##       ##    ######## ######## 
+ #### ##    ## ########  ##     ## ########  ######  
+  ##  ###   ## ##     ## ##     ##    ##    ##    ## 
+  ##  ####  ## ##     ## ##     ##    ##    ##       
+  ##  ## ## ## ########  ##     ##    ##     ######  
+  ##  ##  #### ##        ##     ##    ##          ## 
+  ##  ##   ### ##        ##     ##    ##    ##    ## 
+ #### ##    ## ##         #######     ##     ######  
  
 */
 body {
-  font-family: 'pkmn_rbygsc';
+  font-family: "pkmn_rbygsc";
 }
 
 /*
@@ -136,6 +136,7 @@ body {
 
 #chat-messages {
   margin-bottom: 0px;
+  padding: 5px;
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
@@ -163,16 +164,33 @@ body {
           flex-flow: row wrap;
 }
 
-#chat-send-message-text {
+#chat-send-message-input {
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
+  border: 0px;
+  -webkit-border-start: black 1px solid;
+          border-inline-start: black 1px solid;
+  -webkit-border-end: black 1px solid;
+          border-inline-end: black 1px solid;
+  -webkit-padding-start: 5px;
+          padding-inline-start: 5px;
+  -webkit-padding-end: 1px;
+          padding-inline-end: 1px;
+  line-height: 1.5;
 }
 
 #chat-send-message-button {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  color: black;
+  background: #e2e2e2;
+  background: -webkit-gradient(linear, left bottom, left top, from(#e2e2e2), color-stop(43%, #e2e2e2), color-stop(43%, #eee), color-stop(57%, #eee), color-stop(57%, #fff));
+  background: linear-gradient(0deg, #e2e2e2 0%, #e2e2e2 43%, #eee 43%, #eee 57%, #fff 57%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  line-height: 1.5;
 }
 
 /*
@@ -352,20 +370,5 @@ body {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   width: 120px;
-}
-
-/*
- 
- #### ##    ## ########  ##     ## ######## 
-  ##  ###   ## ##     ## ##     ##    ##    
-  ##  ####  ## ##     ## ##     ##    ##    
-  ##  ## ## ## ########  ##     ##    ##    
-  ##  ##  #### ##        ##     ##    ##    
-  ##  ##   ### ##        ##     ##    ##    
- #### ##    ## ##         #######     ##    
- 
-*/
-button {
-  border: black 1px solid;
 }
 /*# sourceMappingURL=styles.css.map */

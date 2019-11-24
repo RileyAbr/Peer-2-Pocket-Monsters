@@ -1,7 +1,7 @@
 @import "_variables";
 
 body {
-  font-family: 'pkmn_rbygsc';
+    font-family: "pkmn_rbygsc";
 }
 
 /*
@@ -16,28 +16,28 @@ body {
  
 */
 #poke-container {
-  background-color: #333232;
-  background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
-  background-size: 25px;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-flow: column nowrap;
+    background-color: #333232;
+    background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
+    background-size: 25px;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
 
-  @media screen and (min-width: $desktop-min-width) {
-    flex-flow: row wrap;
-  }
+    @media screen and (min-width: $desktop-min-width) {
+        flex-flow: row wrap;
+    }
 }
 
 .columns {
-  display: flex;
-  width: 100%;
-  border: black 1px solid;
+    display: flex;
+    width: 100%;
+    border: black 1px solid;
 
-  @media screen and (min-width: $desktop-min-width) {
-    flex: 0 0 $column-width;
-    max-width: $column-width;
-  }
+    @media screen and (min-width: $desktop-min-width) {
+        flex: 0 0 $column-width;
+        max-width: $column-width;
+    }
 }
 
 /*
@@ -52,38 +52,55 @@ body {
  
 */
 #chat-column {
-  // background-color: red;
-  flex-flow: column wrap;
-  color: white;
+    // background-color: red;
+    flex-flow: column wrap;
+    color: white;
 }
 
 .chat-row-item {
-  margin: 10px;
+    margin: 10px;
 }
 
 #chat-messages {
-  margin-bottom: 0px;
-  flex: none;
-  height: 4rem;
-  border: 1px black solid;
-  background-color: #001321;
-  @media screen and (min-width: $desktop-min-width) {
-    flex: 1;
-  }
+    margin-bottom: 0px;
+    padding: 5px;
+    flex: none;
+    height: 4rem;
+    border: 1px black solid;
+    background-color: #001321;
+    @media screen and (min-width: $desktop-min-width) {
+        flex: 1;
+    }
 }
 
 #chat-send-message {
-  margin-top: 0px;
-  display: flex;
-  flex-flow: row wrap;
+    margin-top: 0px;
+    display: flex;
+    flex-flow: row wrap;
 }
 
-#chat-send-message-text {
-  flex: 2;
+#chat-send-message-input {
+    flex: 2;
+    border: 0px;
+    border-inline-start: black 1px solid;
+    border-inline-end: black 1px solid;
+    padding-inline-start: 5px;
+    padding-inline-end: 1px;
+    line-height: $chat-input-line-height;
 }
 
 #chat-send-message-button {
-  flex: 1;
+    flex: 1;
+    color: black;
+    @include grey-gradient-button;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - #{$button-corner-angle}),
+        calc(100% - #{$button-corner-angle}) 100%,
+        0 100%
+    );
+    line-height: $chat-input-line-height;
 }
 
 /*
@@ -98,89 +115,88 @@ body {
  
 */
 #battle-column {
-  background-color: cyan;
-  height: 80vh;
+    background-color: cyan;
+    height: 80vh;
 
-  @media screen and (min-width: $desktop-min-width) {
-    flex: 0 0 $battle-column-width;
-    max-width: $battle-column-width;
-    height: auto;
-  }
+    @media screen and (min-width: $desktop-min-width) {
+        flex: 0 0 $battle-column-width;
+        max-width: $battle-column-width;
+        height: auto;
+    }
 }
 
 #battle-controller {
-  width: 100%;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: 70% 30%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 70% 30%;
 }
 
 #battle-scence {
-  background-image: url("/assets/img/grass-bg.png");
-  background-size: cover;
+    background-image: url("/assets/img/grass-bg.png");
+    background-size: cover;
 }
 
 #battle-scence-wrapper {
-  height: 100%;
-  display: flex;
-  flex-flow: column wrap;
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
 }
 
 .battle-scence-column {
-  width: 100%;
-  flex: 1 1 auto;
+    width: 100%;
+    flex: 1 1 auto;
 }
 
 .battle-scence-column-players {
-  flex: 5;
-  display: flex;
+    flex: 5;
+    display: flex;
 }
 
 .battle-health-bar {
-  flex: 3 1 auto;
+    flex: 3 1 auto;
 }
 
 .battle-monster {
-  flex: 2;
+    flex: 2;
 }
 
 .battle-monster-wrapper {
-  height: 100%;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .battle-monster-sprite {
-  width: 100px;
+    width: 100px;
 
-  @media screen and (min-width: $tablet-min-width) {
-    width: 200px;
-  }
+    @media screen and (min-width: $tablet-min-width) {
+        width: 200px;
+    }
 }
 
 #battle-controller-button-wrapper {
-  display: flex;
-  flex-flow: row wrap;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .battle-controller-button {
-  width: 49%;
-  margin: 0.5%;
-  border: none;
-  background: rgb(226,226,226);
-  background: linear-gradient(0deg, #e2e2e2 0%, #e2e2e2 43%, #eee 43%, #eee 57%, #fff 57%);
-  clip-path: polygon(
-    $button-corner-angle 0, 
-    calc(100% - #{$button-corner-angle}) 0, 
-    100% $button-corner-angle,
-    100% calc(100% - #{$button-corner-angle}),
-    calc(100% - #{$button-corner-angle}) 100%,
-    $button-corner-angle 100%,
-    0 calc(100% - #{$button-corner-angle}),
-    0 $button-corner-angle
+    width: 49%;
+    margin: 0.5%;
+    border: none;
+    @include grey-gradient-button;
+    clip-path: polygon(
+        $button-corner-angle 0,
+        calc(100% - #{$button-corner-angle}) 0,
+        100% $button-corner-angle,
+        100% calc(100% - #{$button-corner-angle}),
+        calc(100% - #{$button-corner-angle}) 100%,
+        $button-corner-angle 100%,
+        0 calc(100% - #{$button-corner-angle}),
+        0 $button-corner-angle
     );
 }
 
@@ -196,42 +212,26 @@ body {
  
 */
 #stats-column {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: 50% 50%;
-  background-color: yellow;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 50% 50%;
+    background-color: yellow;
 }
 
 .stats-block {
-  padding: 4px;
+    padding: 4px;
 }
 
 .stats-table {
-  height: 70%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+    height: 70%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 .stats-row {
-  margin: 15px;
-  display: flex;
-  justify-content: space-evenly;
-  width: 120px;
-}
-
-/*
- 
- #### ##    ## ########  ##     ## ######## 
-  ##  ###   ## ##     ## ##     ##    ##    
-  ##  ####  ## ##     ## ##     ##    ##    
-  ##  ## ## ## ########  ##     ##    ##    
-  ##  ##  #### ##        ##     ##    ##    
-  ##  ##   ### ##        ##     ##    ##    
- #### ##    ## ##         #######     ##    
- 
-*/
-
-button {
-  border: black 1px solid;
+    margin: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 120px;
 }

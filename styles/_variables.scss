@@ -23,12 +23,12 @@ $column-width: (100% - $battle-column-width) / 2;
 
 @keyframes slide {
     from {
-      background-position: 0 0;
+        background-position: 0 0;
     }
     to {
-      background-position: -400px -400px;
+        background-position: -400px -400px;
     }
-  }
+}
 /*
  
  ######## ##    ## ########   #######   ######   ########     ###    ########  ##     ## ##    ## 
@@ -41,24 +41,30 @@ $column-width: (100% - $battle-column-width) / 2;
  
 */
 @font-face {
-    font-family: 'pkmn_rbygsc';
-    src: url('/assets/fonts/PKMN\ RBYGSC/pkmn_rbygsc-webfont.woff2') format('woff2'),
-    url('/assets/fonts/PKMN\ RBYGSC/pkmn_rbygsc-webfont.woff') format('woff');
+    font-family: "pkmn_rbygsc";
+    src: url("/assets/fonts/PKMN\ RBYGSC/pkmn_rbygsc-webfont.woff2") format("woff2"),
+        url("/assets/fonts/PKMN\ RBYGSC/pkmn_rbygsc-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }
 
-
 /*
  
- ########     ###    ######## ######## ##       ######## 
- ##     ##   ## ##      ##       ##    ##       ##       
- ##     ##  ##   ##     ##       ##    ##       ##       
- ########  ##     ##    ##       ##    ##       ######   
- ##     ## #########    ##       ##    ##       ##       
- ##     ## ##     ##    ##       ##    ##       ##       
- ########  ##     ##    ##       ##    ######## ######## 
+ #### ##    ## ########  ##     ## ########  ######  
+  ##  ###   ## ##     ## ##     ##    ##    ##    ## 
+  ##  ####  ## ##     ## ##     ##    ##    ##       
+  ##  ## ## ## ########  ##     ##    ##     ######  
+  ##  ##  #### ##        ##     ##    ##          ## 
+  ##  ##   ### ##        ##     ##    ##    ##    ## 
+ #### ##    ## ##         #######     ##     ######  
  
 */
 
+@mixin grey-gradient-button {
+    background: rgb(226, 226, 226);
+    background: linear-gradient(0deg, #e2e2e2 0%, #e2e2e2 43%, #eee 43%, #eee 57%, #fff 57%);
+}
+
 $button-corner-angle: 10px;
+
+$chat-input-line-height: 1.5;
