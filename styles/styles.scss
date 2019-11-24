@@ -159,11 +159,15 @@ table {
 #battle-controller-button-wrapper {
   display: flex;
   flex-flow: row wrap;
+  background-color: #333232;
+  background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
+  background-size: 24px;
 }
 
 .battle-controller-button {
   width: 49%;
   margin: 0.5%;
+  border: none;
   background: rgb(226,226,226);
   background: linear-gradient(0deg, #e2e2e2 0%, #e2e2e2 43%, #eee 43%, #eee 57%, #fff 57%);
   clip-path: polygon(
