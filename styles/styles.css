@@ -9,23 +9,6 @@
  ######## ##     ##    ##     #######   #######     ##    
  
 */
-@-webkit-keyframes slide {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -400px -400px;
-  }
-}
-@keyframes slide {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -400px -400px;
-  }
-}
-
 /*
  
  ######## ##    ## ########   #######   ######   ########     ###    ########  ##     ## ##    ## 
@@ -55,6 +38,34 @@
  #### ##    ## ##         #######     ##     ######  
  
 */
+/*
+ 
+    ###    ##    ## #### ##     ##    ###    ######## ####  #######  ##    ## 
+   ## ##   ###   ##  ##  ###   ###   ## ##      ##     ##  ##     ## ###   ## 
+  ##   ##  ####  ##  ##  #### ####  ##   ##     ##     ##  ##     ## ####  ## 
+ ##     ## ## ## ##  ##  ## ### ## ##     ##    ##     ##  ##     ## ## ## ## 
+ ######### ##  ####  ##  ##     ## #########    ##     ##  ##     ## ##  #### 
+ ##     ## ##   ###  ##  ##     ## ##     ##    ##     ##  ##     ## ##   ### 
+ ##     ## ##    ## #### ##     ## ##     ##    ##    ####  #######  ##    ## 
+ 
+*/
+@-webkit-keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -400px -400px;
+  }
+}
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -400px -400px;
+  }
+}
+
 body {
   font-family: "pkmn_rbygsc";
 }
@@ -267,17 +278,17 @@ body {
 
 .battle-health-bounding-box {
   background-color: #ccc;
-  height: 20px;
-  width: 500px;
-  margin: 0 auto;
-  border: solid 1px black;
+  height: 12px;
+  width: 275px;
+  border: solid 2px black;
+  border-radius: 15px;
 }
 
 .battle-health-bar {
   background-color: #00fd4f;
-  width: calc(inherit - 1px);
-  height: 18px;
-  bottom: 56px;
+  width: 100%;
+  height: calc(12px - 4px);
+  border-radius: 15px;
 }
 
 .battle-monster {

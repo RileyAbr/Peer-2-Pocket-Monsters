@@ -166,18 +166,17 @@ body {
 
 .battle-health-bounding-box {
     background-color: #ccc;
-    height: 20px;
-    width: 500px;
-    margin: 0 auto;
-    border: solid 1px black;
+    height: $battle-health-bar-height;
+    width: 275px;
+    border: solid 2px black;
+    border-radius: $battle-health-bar-roundness;
 }
 
 .battle-health-bar {
     background-color: #00fd4f;
-    width: calc(inherit - 1px);
-    height: 18px;
-    // position: relative;
-    bottom: 56px;
+    width: 100%;
+    height: calc(#{$battle-health-bar-height} - 4px);
+    border-radius: $battle-health-bar-roundness;
 }
 
 // Monster Sprite

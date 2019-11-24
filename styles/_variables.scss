@@ -18,19 +18,10 @@ $column-width: (100% - $battle-column-width) / 2;
 
 $battle-controller-scene-height: 68%;
 
-// Infinite slide hack
-@mixin infinite-slide {
-    animation: slide 30s linear infinite;
-}
+// Health bar
+$battle-health-bar-height: 12px;
+$battle-health-bar-roundness: 15px;
 
-@keyframes slide {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -400px -400px;
-    }
-}
 /*
  
  ######## ##    ## ########   #######   ######   ########     ###    ########  ##     ## ##    ## 
@@ -76,3 +67,29 @@ $battle-controller-button-width-percent: 48%;
 }
 
 $chat-input-line-height: 1.5;
+
+/*
+ 
+    ###    ##    ## #### ##     ##    ###    ######## ####  #######  ##    ## 
+   ## ##   ###   ##  ##  ###   ###   ## ##      ##     ##  ##     ## ###   ## 
+  ##   ##  ####  ##  ##  #### ####  ##   ##     ##     ##  ##     ## ####  ## 
+ ##     ## ## ## ##  ##  ## ### ## ##     ##    ##     ##  ##     ## ## ## ## 
+ ######### ##  ####  ##  ##     ## #########    ##     ##  ##     ## ##  #### 
+ ##     ## ##   ###  ##  ##     ## ##     ##    ##     ##  ##     ## ##   ### 
+ ##     ## ##    ## #### ##     ## ##     ##    ##    ####  #######  ##    ## 
+ 
+*/
+
+// Infinite slide hack
+@mixin infinite-slide {
+    animation: slide 30s linear infinite;
+}
+
+@keyframes slide {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -400px -400px;
+    }
+}
