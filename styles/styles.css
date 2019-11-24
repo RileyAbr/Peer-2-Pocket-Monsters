@@ -9,6 +9,23 @@
  ######## ##     ##    ##     #######   #######     ##    
  
 */
+@-webkit-keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -400px -400px;
+  }
+}
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -400px -400px;
+  }
+}
+
 /*
  
  ######## ##    ## ########   #######   ######   ########     ###    ########  ##     ## ##    ## 
@@ -22,7 +39,7 @@
 */
 @font-face {
   font-family: 'pkmn_rbygsc';
-  src: url("pkmn_rbygsc-webfont.woff2") format("woff2"), url("pkmn_rbygsc-webfont.woff") format("woff");
+  src: url("/assets/fonts/PKMN RBYGSC/pkmn_rbygsc-webfont.woff2") format("woff2"), url("/assets/fonts/PKMN RBYGSC/pkmn_rbygsc-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -38,15 +55,8 @@
  ########  ##     ##    ##       ##    ######## ######## 
  
 */
-@font-face {
+body {
   font-family: 'pkmn_rbygsc';
-  src: url("../assets/fonts/webfontkit-20191124-001127/pkmn_rbygsc-webfont.woff2") format("woff2"), url("pkmn_rbygsc-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-table {
-  border: 1px black solid;
 }
 
 /*
@@ -61,7 +71,9 @@ table {
  
 */
 #poke-container {
-  background-color: grey;
+  background-color: #333232;
+  background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
+  background-size: 25px;
   min-height: 100vh;
   width: 100%;
   display: -webkit-box;
@@ -87,6 +99,7 @@ table {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  border: black 1px solid;
 }
 
 @media screen and (min-width: 992px) {
@@ -110,11 +123,11 @@ table {
  
 */
 #chat-column {
-  background-color: red;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
+  color: white;
 }
 
 .chat-row-item {
@@ -127,8 +140,8 @@ table {
       -ms-flex: none;
           flex: none;
   height: 4rem;
-  font-family: 'pkmn_rbygsc';
   border: 1px black solid;
+  background-color: #001321;
 }
 
 @media screen and (min-width: 992px) {
@@ -278,9 +291,6 @@ table {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  background-color: #333232;
-  background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
-  background-size: 24px;
 }
 
 .battle-controller-button {
@@ -313,6 +323,10 @@ table {
   -ms-grid-rows: 50% 50%;
       grid-template-rows: 50% 50%;
   background-color: yellow;
+}
+
+.stats-block {
+  padding: 4px;
 }
 
 .stats-table {

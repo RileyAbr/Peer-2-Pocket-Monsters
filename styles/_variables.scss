@@ -16,6 +16,19 @@ $tablet-min-width: 700px;
 $battle-column-width: 60%;
 $column-width: (100% - $battle-column-width) / 2;
 
+// Infinite slide hack
+@mixin infinite-slide {
+    animation: slide 30s linear infinite;
+}
+
+@keyframes slide {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -400px -400px;
+    }
+  }
 /*
  
  ######## ##    ## ########   #######   ######   ########     ###    ########  ##     ## ##    ## 

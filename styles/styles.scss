@@ -1,5 +1,9 @@
 @import "_variables";
 
+body {
+  font-family: 'pkmn_rbygsc';
+}
+
 /*
  
  ##          ###    ##    ##  #######  ##     ## ######## 
@@ -12,7 +16,9 @@
  
 */
 #poke-container {
-  background-color: grey;
+  background-color: #333232;
+  background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
+  background-size: 25px;
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -26,6 +32,7 @@
 .columns {
   display: flex;
   width: 100%;
+  border: black 1px solid;
 
   @media screen and (min-width: $desktop-min-width) {
     flex: 0 0 $column-width;
@@ -45,8 +52,9 @@
  
 */
 #chat-column {
-  background-color: red;
+  // background-color: red;
   flex-flow: column wrap;
+  color: white;
 }
 
 .chat-row-item {
@@ -57,8 +65,8 @@
   margin-bottom: 0px;
   flex: none;
   height: 4rem;
-  font-family: 'pkmn_rbygsc';  
   border: 1px black solid;
+  background-color: #001321;
   @media screen and (min-width: $desktop-min-width) {
     flex: 1;
   }
@@ -156,9 +164,6 @@
 #battle-controller-button-wrapper {
   display: flex;
   flex-flow: row wrap;
-  background-color: #333232;
-  background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
-  background-size: 24px;
 }
 
 .battle-controller-button {
@@ -195,6 +200,10 @@
   grid-template-columns: auto;
   grid-template-rows: 50% 50%;
   background-color: yellow;
+}
+
+.stats-block {
+  padding: 4px;
 }
 
 .stats-table {
