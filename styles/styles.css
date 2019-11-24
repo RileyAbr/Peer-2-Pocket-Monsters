@@ -71,9 +71,9 @@ body {
  
 */
 #poke-container {
-  background-color: #333232;
-  background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
-  background-size: 25px;
+  background-color: #030512;
+  background-image: url("https://www.transparenttextures.com/patterns/graphy.png");
+  background-size: 48px;
   min-height: 100vh;
   width: 100%;
   display: -webkit-box;
@@ -99,7 +99,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  border: black 1px solid;
+  border: black 2px solid;
 }
 
 @media screen and (min-width: 992px) {
@@ -205,7 +205,6 @@ body {
  
 */
 #battle-column {
-  background-color: cyan;
   height: 80vh;
 }
 
@@ -225,8 +224,8 @@ body {
   display: grid;
   -ms-grid-columns: auto;
       grid-template-columns: auto;
-  -ms-grid-rows: 70% 30%;
-      grid-template-rows: 70% 30%;
+  -ms-grid-rows: 68% calc(100% - 68%);
+      grid-template-rows: 68% calc(100% - 68%);
 }
 
 #battle-scence {
@@ -301,6 +300,13 @@ body {
   }
 }
 
+#pokeball-turn-indicator {
+  width: 75px;
+  height: 75px;
+  margin: auto;
+  opacity: 0.9;
+}
+
 #battle-controller-button-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -309,11 +315,13 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  background-color: #4a4a4a;
+  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
 }
 
 .battle-controller-button {
-  width: 49%;
-  margin: 0.5%;
+  width: 48%;
+  margin: calc((50% - 48%) / 2);
   border: none;
   background: #e2e2e2;
   background: -webkit-gradient(linear, left bottom, left top, from(#e2e2e2), color-stop(43%, #e2e2e2), color-stop(43%, #eee), color-stop(57%, #eee), color-stop(57%, #fff));
@@ -340,7 +348,7 @@ body {
       grid-template-columns: auto;
   -ms-grid-rows: 50% 50%;
       grid-template-rows: 50% 50%;
-  background-color: yellow;
+  color: white;
 }
 
 .stats-block {
@@ -359,6 +367,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-color: #001321;
 }
 
 .stats-row {

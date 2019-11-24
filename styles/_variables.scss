@@ -16,6 +16,8 @@ $tablet-min-width: 700px;
 $battle-column-width: 60%;
 $column-width: (100% - $battle-column-width) / 2;
 
+$battle-controller-scene-height: 68%;
+
 // Infinite slide hack
 @mixin infinite-slide {
     animation: slide 30s linear infinite;
@@ -66,5 +68,11 @@ $column-width: (100% - $battle-column-width) / 2;
 }
 
 $button-corner-angle: 10px;
+
+$battle-controller-button-width-percent: 48%;
+@mixin battle-controller-button-width {
+    width: $battle-controller-button-width-percent;
+    margin: calc((50% - #{$battle-controller-button-width-percent}) / 2);
+}
 
 $chat-input-line-height: 1.5;

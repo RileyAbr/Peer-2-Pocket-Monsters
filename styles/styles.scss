@@ -16,9 +16,14 @@ body {
  
 */
 #poke-container {
-    background-color: #333232;
-    background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
-    background-size: 25px;
+    // Background 1
+    // background-color: #333232;
+    // background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
+    // background-size: 25px;
+    // Background 2
+    background-color: #030512;
+    background-image: url("https://www.transparenttextures.com/patterns/graphy.png");
+    background-size: 48px;
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -32,7 +37,7 @@ body {
 .columns {
     display: flex;
     width: 100%;
-    border: black 1px solid;
+    border: black 2px solid;
 
     @media screen and (min-width: $desktop-min-width) {
         flex: 0 0 $column-width;
@@ -115,7 +120,6 @@ body {
  
 */
 #battle-column {
-    background-color: cyan;
     height: 80vh;
 
     @media screen and (min-width: $desktop-min-width) {
@@ -129,7 +133,7 @@ body {
     width: 100%;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 70% 30%;
+    grid-template-rows: $battle-controller-scene-height calc(100% - #{$battle-controller-scene-height});
 }
 
 #battle-scence {
@@ -178,14 +182,22 @@ body {
     }
 }
 
+#pokeball-turn-indicator {
+    width: 75px;
+    height: 75px;
+    margin: auto;
+    opacity: 0.9;
+}
+
 #battle-controller-button-wrapper {
     display: flex;
     flex-flow: row wrap;
+    background-color: #4a4a4a;
+    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
 }
 
 .battle-controller-button {
-    width: 49%;
-    margin: 0.5%;
+    @include battle-controller-button-width;
     border: none;
     @include grey-gradient-button;
     clip-path: polygon(
@@ -215,7 +227,7 @@ body {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 50% 50%;
-    background-color: yellow;
+    color: white;
 }
 
 .stats-block {
@@ -227,6 +239,7 @@ body {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    background-color: #001321;
 }
 
 .stats-row {
