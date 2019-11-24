@@ -229,8 +229,7 @@ body {
 }
 
 #battle-scence {
-  background-image: url("/assets/img/DP_grass.png");
-  background-size: cover;
+  background: repeating-linear-gradient(#c0e8e0, #c0e8e0 5px, #d8eee0 5px, #d8eee0 8px);
 }
 
 #battle-scence-wrapper {
@@ -353,6 +352,10 @@ body {
 
 .stats-block {
   padding: 4px;
+}
+
+.stats-heading {
+  border: #1fa792 3px solid;
 }
 
 .stats-table {
