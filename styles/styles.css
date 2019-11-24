@@ -11,6 +11,24 @@
 */
 /*
  
+ ######## ##    ## ########   #######   ######   ########     ###    ########  ##     ## ##    ## 
+    ##     ##  ##  ##     ## ##     ## ##    ##  ##     ##   ## ##   ##     ## ##     ##  ##  ##  
+    ##      ####   ##     ## ##     ## ##        ##     ##  ##   ##  ##     ## ##     ##   ####   
+    ##       ##    ########  ##     ## ##   #### ########  ##     ## ########  #########    ##    
+    ##       ##    ##        ##     ## ##    ##  ##   ##   ######### ##        ##     ##    ##    
+    ##       ##    ##        ##     ## ##    ##  ##    ##  ##     ## ##        ##     ##    ##    
+    ##       ##    ##         #######   ######   ##     ## ##     ## ##        ##     ##    ##    
+ 
+*/
+@font-face {
+  font-family: 'pkmn_rbygsc';
+  src: url("pkmn_rbygsc-webfont.woff2") format("woff2"), url("pkmn_rbygsc-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*
+ 
  ########     ###    ######## ######## ##       ######## 
  ##     ##   ## ##      ##       ##    ##       ##       
  ##     ##  ##   ##     ##       ##    ##       ##       
@@ -20,6 +38,13 @@
  ########  ##     ##    ##       ##    ######## ######## 
  
 */
+@font-face {
+  font-family: 'pkmn_rbygsc';
+  src: url("../assets/fonts/webfontkit-20191124-001127/pkmn_rbygsc-webfont.woff2") format("woff2"), url("pkmn_rbygsc-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 table {
   border: 1px black solid;
 }
@@ -102,6 +127,7 @@ table {
       -ms-flex: none;
           flex: none;
   height: 4rem;
+  font-family: 'pkmn_rbygsc';
   border: 1px black solid;
 }
 

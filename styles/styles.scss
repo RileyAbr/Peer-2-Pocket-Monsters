@@ -1,9 +1,5 @@
 @import "_variables";
 
-table {
-  border: 1px black solid;
-}
-
 /*
  
  ##          ###    ##    ##  #######  ##     ## ######## 
@@ -61,6 +57,7 @@ table {
   margin-bottom: 0px;
   flex: none;
   height: 4rem;
+  font-family: 'pkmn_rbygsc';  
   border: 1px black solid;
   @media screen and (min-width: $desktop-min-width) {
     flex: 1;
