@@ -237,13 +237,24 @@ body {
 
 .stats-heading {
     border: #1fa792 3px solid;
+    margin: 0 -6px;
+    padding: 4px 5px;
+    border-inline: 3px;
+    background-color: #001321;
+}
+
+#stats-column {
+    padding-top: 4px;
 }
 
 .stats-table {
-    height: 70%;
+    min-height: 78%;
+    margin: 0 15px;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    border: 1px black solid;
+    border-top: none;
     background-color: #001321;
 }
 
