@@ -259,10 +259,25 @@ body {
   display: flex;
 }
 
-.battle-health-bar {
+.battle-health-bar-wrapper {
   -webkit-box-flex: 3;
       -ms-flex: 3 1 auto;
           flex: 3 1 auto;
+}
+
+.battle-health-bounding-box {
+  background-color: #ccc;
+  height: 20px;
+  width: 500px;
+  margin: 0 auto;
+  border: solid 1px black;
+}
+
+.battle-health-bar {
+  background-color: #00fd4f;
+  width: calc(inherit - 1px);
+  height: 18px;
+  bottom: 56px;
 }
 
 .battle-monster {

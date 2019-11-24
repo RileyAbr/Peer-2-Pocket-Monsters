@@ -136,6 +136,7 @@ body {
     grid-template-rows: $battle-controller-scene-height calc(100% - #{$battle-controller-scene-height});
 }
 
+// Visuals
 #battle-scence {
     // background-image: url("/assets/img/DP_grass.png");
     // background-size: cover;
@@ -158,10 +159,28 @@ body {
     display: flex;
 }
 
-.battle-health-bar {
+// Health Bar
+.battle-health-bar-wrapper {
     flex: 3 1 auto;
 }
 
+.battle-health-bounding-box {
+    background-color: #ccc;
+    height: 20px;
+    width: 500px;
+    margin: 0 auto;
+    border: solid 1px black;
+}
+
+.battle-health-bar {
+    background-color: #00fd4f;
+    width: calc(inherit - 1px);
+    height: 18px;
+    // position: relative;
+    bottom: 56px;
+}
+
+// Monster Sprite
 .battle-monster {
     flex: 2;
 }
@@ -190,6 +209,7 @@ body {
     opacity: 0.9;
 }
 
+// Buttons
 #battle-controller-button-wrapper {
     display: flex;
     flex-flow: row wrap;
