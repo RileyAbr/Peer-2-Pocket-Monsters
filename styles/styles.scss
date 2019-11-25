@@ -37,11 +37,13 @@ body {
 .columns {
     display: flex;
     width: 100%;
-    border: black 2px solid;
+    border: black solid;
+    border-width: $battle-column-border-width 0;
 
     @media screen and (min-width: $desktop-min-width) {
         flex: 0 0 $column-width;
         max-width: $column-width;
+        border-width: 0 $battle-column-border-width;
     }
 }
 
@@ -98,13 +100,7 @@ body {
     flex: 1;
     color: black;
     @include grey-gradient-button;
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        100% calc(100% - #{$button-corner-angle}),
-        calc(100% - #{$button-corner-angle}) 100%,
-        0 100%
-    );
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
     line-height: $chat-input-line-height;
 }
 
@@ -214,22 +210,14 @@ body {
     flex-flow: row wrap;
     background-color: #4a4a4a;
     background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+    border-top: black calc(#{$battle-column-border-width} * 2) solid;
 }
 
 .battle-controller-button {
     @include battle-controller-button-width;
     border: none;
     @include grey-gradient-button;
-    clip-path: polygon(
-        $button-corner-angle 0,
-        calc(100% - #{$button-corner-angle}) 0,
-        100% $button-corner-angle,
-        100% calc(100% - #{$button-corner-angle}),
-        calc(100% - #{$button-corner-angle}) 100%,
-        $button-corner-angle 100%,
-        0 calc(100% - #{$button-corner-angle}),
-        0 $button-corner-angle
-    );
+    @include angled-corners;
 }
 
 /*
@@ -268,13 +256,23 @@ body {
 
 .stats-table {
     min-height: 78%;
-    margin: 0 15px;
+    margin: 15px 15px 0;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    border: 1px black solid;
-    border-top: none;
-    background-color: #001321;
+    align-content: space-around;
+    @include angled-corners;
+    background: rgb(8, 144, 232);
+    background: linear-gradient(
+        132deg,
+        rgba(8, 144, 232, 0.6) 0%,
+        rgba(8, 144, 232, 0.6) 25%,
+        rgba(16, 112, 160, 0.6) 26%,
+        rgba(16, 112, 160, 0.6) 74%,
+        rgba(8, 144, 232, 0.6) 75%,
+        rgba(8, 144, 232, 0.6) 100%
+    );
+    font-size: 1.25rem;
 }
 
 .stats-row {

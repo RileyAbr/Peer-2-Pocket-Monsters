@@ -110,7 +110,8 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  border: black 2px solid;
+  border: black solid;
+  border-width: 2px 0;
 }
 
 @media screen and (min-width: 992px) {
@@ -119,6 +120,7 @@ body {
         -ms-flex: 0 0 20%;
             flex: 0 0 20%;
     max-width: 20%;
+    border-width: 0 2px;
   }
 }
 
@@ -342,6 +344,7 @@ body {
           flex-flow: row wrap;
   background-color: #4a4a4a;
   background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+  border-top: black calc(2px * 2) solid;
 }
 
 .battle-controller-button {
@@ -351,8 +354,8 @@ body {
   background: #e2e2e2;
   background: -webkit-gradient(linear, left bottom, left top, from(#e2e2e2), color-stop(43%, #e2e2e2), color-stop(43%, #eee), color-stop(57%, #eee), color-stop(57%, #fff));
   background: linear-gradient(0deg, #e2e2e2 0%, #e2e2e2 43%, #eee 43%, #eee 57%, #fff 57%);
-  -webkit-clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
-          clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  -webkit-clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+          clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
 }
 
 /*
@@ -394,7 +397,7 @@ body {
 
 .stats-table {
   min-height: 78%;
-  margin: 0 15px;
+  margin: 15px 15px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -405,9 +408,13 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px black solid;
-  border-top: none;
-  background-color: #001321;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+          clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+  background: #0890e8;
+  background: linear-gradient(132deg, rgba(8, 144, 232, 0.6) 0%, rgba(8, 144, 232, 0.6) 25%, rgba(16, 112, 160, 0.6) 26%, rgba(16, 112, 160, 0.6) 74%, rgba(8, 144, 232, 0.6) 75%, rgba(8, 144, 232, 0.6) 100%);
+  font-size: 1.25rem;
 }
 
 .stats-row {

@@ -13,8 +13,23 @@
 $desktop-min-width: 992px;
 $tablet-min-width: 700px;
 
+$angled-corner: 15px;
+@mixin angled-corners {
+    clip-path: polygon(
+        $angled-corner 0,
+        calc(100% - #{$angled-corner}) 0,
+        100% $angled-corner,
+        100% calc(100% - #{$angled-corner}),
+        calc(100% - #{$angled-corner}) 100%,
+        $angled-corner 100%,
+        0 calc(100% - #{$angled-corner}),
+        0 $angled-corner
+    );
+}
+
 $battle-column-width: 60%;
 $column-width: (100% - $battle-column-width) / 2;
+$battle-column-border-width: 2px;
 
 $battle-controller-scene-height: 68%;
 
@@ -57,8 +72,6 @@ $battle-health-bar-roundness: 15px;
     background: rgb(226, 226, 226);
     background: linear-gradient(0deg, #e2e2e2 0%, #e2e2e2 43%, #eee 43%, #eee 57%, #fff 57%);
 }
-
-$button-corner-angle: 10px;
 
 $battle-controller-button-width-percent: 48%;
 @mixin battle-controller-button-width {
