@@ -157,15 +157,23 @@ body {
 
 // Health Bar
 .battle-health-bar-wrapper {
-    flex: 3 1 auto;
+    flex: 2 1 auto;
+
+    @media screen and (min-width: $desktop-min-width) {
+        flex: 3 1 auto;
+    }
 }
 
 .battle-health-bounding-box {
     background-color: #ccc;
     height: $battle-health-bar-height;
-    width: 275px;
+    width: 155px;
     border: solid 2px black;
     border-radius: $battle-health-bar-roundness;
+
+    @media screen and (min-width: $tablet-min-width) {
+        width: 275px;
+    }
 }
 
 .battle-health-bar {
@@ -190,10 +198,14 @@ body {
 }
 
 .battle-monster-sprite {
-    width: 100px;
+    width: 125px;
 
     @media screen and (min-width: $tablet-min-width) {
         width: 200px;
+    }
+
+    @media screen and (min-width: $desktop-min-width) {
+        width: 250px;
     }
 }
 
