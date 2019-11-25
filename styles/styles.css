@@ -413,7 +413,7 @@ body {
   -webkit-clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
           clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
   background: #0890e8;
-  background: linear-gradient(132deg, rgba(8, 144, 232, 0.6) 0%, rgba(8, 144, 232, 0.6) 25%, rgba(16, 112, 160, 0.6) 26%, rgba(16, 112, 160, 0.6) 74%, rgba(8, 144, 232, 0.6) 75%, rgba(8, 144, 232, 0.6) 100%);
+  background: linear-gradient(132deg, rgba(8, 72, 112, 0.6) 0%, rgba(8, 72, 112, 0.6) 25%, rgba(16, 112, 160, 0.6) 26%, rgba(16, 112, 160, 0.6) 74%, rgba(8, 72, 112, 0.6) 75%, rgba(8, 72, 112, 0.6) 100%);
   font-size: 1.25rem;
 }
 
