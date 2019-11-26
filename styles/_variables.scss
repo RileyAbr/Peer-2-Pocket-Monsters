@@ -95,7 +95,7 @@ $chat-input-line-height: 1.5;
 
 // Infinite slide hack
 @mixin infinite-slide {
-    animation: slide 30s linear infinite;
+    animation: slide 10s linear infinite;
 }
 
 @keyframes slide {
@@ -103,6 +103,6 @@ $chat-input-line-height: 1.5;
         background-position: 0 0;
     }
     to {
-        background-position: -400px -400px;
+        background-position: 0 400px;
     }
 }

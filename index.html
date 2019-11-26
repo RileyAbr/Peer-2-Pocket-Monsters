@@ -18,12 +18,12 @@
 
 <body>
 
-    <!-- ID Menu -->
-    <div id="id-menu-side">
-        <svg id="pulltab-side" height="40" width="30">
-            <polygon id="pulltab-triangle-side" class="pulltab-triangle" points="0,0 30,20 0,40" />
-            Sorry, your browser does not support inline SVG.
-        </svg>
+    <div id="login-menu">
+        <div id="login-menu-modal">
+            CLICK OFF THE MODAL TO DISMISS IT
+
+            <button id="login-menu-submit">Battle!</button>
+        </div>
     </div>
 
     <div id="poke-container">
@@ -198,7 +198,8 @@
             </div>
         </div>
 
-        <!-- Load JS files after DOM elements -->
+        <!-- Load JS files after DOM elements for performance -->
+        <script src="login-modal.js"></script>
         <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js"></script>
         <script src="connect.js"></script>
 </body>
