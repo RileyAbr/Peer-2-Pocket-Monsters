@@ -153,7 +153,7 @@ body {
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
-  height: 4rem;
+  height: 10rem;
   border: 1px black solid;
   background-color: #001321;
 }
@@ -163,6 +163,7 @@ body {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
+    height: 4rem;
   }
 }
 
@@ -273,16 +274,16 @@ body {
 }
 
 .battle-health-bar-wrapper {
-  -webkit-box-flex: 2;
-      -ms-flex: 2 1 auto;
-          flex: 2 1 auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 @media screen and (min-width: 992px) {
   .battle-health-bar-wrapper {
-    -webkit-box-flex: 3;
-        -ms-flex: 3 1 auto;
-            flex: 3 1 auto;
+    -webkit-box-flex: 2;
+        -ms-flex: 2 1 auto;
+            flex: 2 1 auto;
   }
 }
 
@@ -401,6 +402,13 @@ body {
 
 .stats-block {
   padding: 4px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 992px) {
+  .stats-block {
+    margin-bottom: 0;
+  }
 }
 
 .stats-heading {

@@ -72,11 +72,12 @@ body {
     margin-bottom: 0px;
     padding: 5px;
     flex: none;
-    height: 4rem;
+    height: 10rem;
     border: 1px black solid;
     background-color: #001321;
     @media screen and (min-width: $desktop-min-width) {
         flex: 1;
+        height: 4rem;
     }
 }
 
@@ -157,10 +158,10 @@ body {
 
 // Health Bar
 .battle-health-bar-wrapper {
-    flex: 2 1 auto;
+    flex: 1 1 auto;
 
     @media screen and (min-width: $desktop-min-width) {
-        flex: 3 1 auto;
+        flex: 2 1 auto;
     }
 }
 
@@ -252,6 +253,10 @@ body {
 
 .stats-block {
     padding: 4px;
+    margin-bottom: 20px;
+    @media screen and (min-width: $desktop-min-width) {
+        margin-bottom: 0;
+    }
 }
 
 .stats-heading {
