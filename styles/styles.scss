@@ -64,6 +64,24 @@ body {
     color: white;
 }
 
+// Room ID
+#room-info {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    @media screen and (min-width: $desktop-min-width) {
+        flex-flow: column;
+        align-items: end;
+    }
+}
+
+#room-id-label {
+}
+
+#room-id-key {
+}
+
 .chat-row-item {
     margin: 10px;
 }
