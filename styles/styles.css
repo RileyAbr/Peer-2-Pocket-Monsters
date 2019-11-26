@@ -135,6 +135,14 @@ body {
  #### ########     ##     ## ######## ##    ##  #######  
  
 */
+#id-menu-side {
+  position: fixed;
+}
+
+.pulltab-triangle {
+  fill: red;
+}
+
 /*
  
   ######  ##     ##    ###    ########    
