@@ -274,18 +274,16 @@ body {
     justify-content: center;
     align-content: space-around;
     @include angled-corners;
-    background: rgb(8, 144, 232);
+    background: rgba(8, 72, 112, 0.6);
     background: linear-gradient(
         132deg,
-        rgba(8, 72, 112, 0.6) 0%,
-        rgba(8, 72, 112, 0.6) 25%,
-        rgba(16, 112, 160, 0.6) 26%,
-        rgba(16, 112, 160, 0.6) 74%,
-        rgba(8, 72, 112, 0.6) 75%,
-        rgba(8, 72, 112, 0.6) 100%
+        rgba(16, 112, 160, 0.6) 0%,
+        rgba(16, 112, 160, 0.6) 25%,
+        rgba(8, 72, 112, 0.6) 26%,
+        rgba(8, 72, 112, 0.6) 74%,
+        rgba(16, 112, 160, 0.6) 75%,
+        rgba(16, 112, 160, 0.6) 100%
     );
-    // rgba(8, 144, 232, 0.6) 75%,
-    // rgba(8, 144, 232, 0.6) 100%
     font-size: 1.25rem;
 }
 
