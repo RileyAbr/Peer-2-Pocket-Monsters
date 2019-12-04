@@ -12,6 +12,16 @@ var sendMessageBox = document.getElementById("sendMessageBox");
 var sendButton = document.getElementById("sendButton");
 var clearMsgsButton = document.getElementById("clearMsgsButton");
 
+var hitButton = document.getElementById("hit");
+var healButton = document.getElementById("heal");
+var hit = document.getElementById("hit");
+var heal = document.getElementById("heal");
+
+var opponentHP = document.getElementById("opponentHP");
+var playerHP = document.getElementById("playerHP");
+
+var cueString = "<span class=\"cueMsg\">Cue: </span>";
+
 function initialize() {
     // Create own peer object with connection to shared PeerJS server
     peer = new Peer(null, {
@@ -93,9 +103,9 @@ function join() {
     });
 
     // // Handle incoming data (messages only since this is the signal sender)
-    // conn.on('data', function (data) {
-    //     addMessage("<span class=\"peerMsg\">Peer:</span> " + data);
-    // });
+    conn.on('data', function (data) {
+        addMessage("<span class=\"peerMsg\">Peer:</span> " + data);
+    });
 
     conn.on('close', function () {
         stat.innerHTML = "Connection closed";
@@ -118,6 +128,100 @@ function getUrlParam(name) {
     else
         return results[1];
 };
+
+function addMessage(msg) {
+    var now = new Date();
+    var h = now.getHours();
+    var m = addZero(now.getMinutes());
+    var s = addZero(now.getSeconds());
+    if (h > 12)
+        h -= 12;
+    else if (h === 0)
+        h = 12;
+    function addZero(t) {
+        if (t < 10)
+            t = "0" + t;
+        return t;
+    };
+    message.innerHTML = "<br><span class=\"msg-time\">" + h + ":" + m + ":" + s + "</span>  -  " + msg + message.innerHTML;
+};
+
+function clearMessages() {
+    message.innerHTML = "";
+    addMessage("Msgs cleared");
+};
+
+// Listen for enter
+sendMessageBox.onkeypress = function (e) {
+    var event = e || window.event;
+    var char = event.which || event.keyCode;
+    if (char == '13')
+        sendButton.click();
+};
+
+// Send message
+sendButton.onclick = function () {
+    if (conn.open) {
+        var msg = sendMessageBox.value;
+        sendMessageBox.value = "";
+        conn.send(msg);
+        console.log("Sent: " + msg)
+        addMessage("<span class=\"selfMsg\">Self: </span>" + msg);
+    }
+};
+
+// Clear messages box
+clearMsgsButton.onclick = function () {
+    clearMessages();
+};
+
+function ready() {
+    conn.on('data', function (data) {
+        console.log("Data recieved");
+        switch (data) {
+            case 'Hit for 10':
+                hit();
+                addMessage(cueString + data);
+                break;
+            case 'Heal for 10':
+                heal();
+                addMessage(cueString + data);
+                break;
+            default:
+                addMessage("<span class=\"peerMsg\">Peer: </span>" + data);
+                break;
+        };
+    });
+    conn.on('close', function () {
+        status.innerHTML = "Connection reset<br>Awaiting connection...";
+        conn = null;
+        start(true);
+    });
+}
+
+function hit() {
+    opponentHP.innerHTML = "HP ## -10";
+}
+
+function heal() {
+    playerHP.innerHTML = "HP ## +10";
+}
+
+function signal(sigName) {
+    if (conn.open) {
+        conn.send(sigName);
+        console.log(sigName + " signal sent");
+        addMessage(cueString + sigName);
+    }
+}
+
+hitButton.onclick = function () {
+    signal("Hit for 10");
+};
+healButton.onclick = function () {
+    signal("Heal for 10");
+};
+
 
 function recieve(friendCode) {
 
