@@ -202,7 +202,7 @@ body {
 #battle-scence-wrapper {
     height: 100%;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
 }
 
 .battle-scence-column {
