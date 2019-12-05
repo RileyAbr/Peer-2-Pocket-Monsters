@@ -6,6 +6,7 @@ var conn = null;
 var recvId = document.getElementById("room-key");
 var recvIdInput = document.getElementById("receiver-id-input");
 var connectButton = document.getElementById("login-menu-submit");
+var roomId = document.getElementById("room-id-key-ingame");
 var stat = document.getElementById("stat");
 
 var message = document.getElementById("chat-messages");
@@ -39,6 +40,7 @@ function initialize() {
         }
         console.log('ID: ' + peer.id);
         recvId.innerHTML = peer.id;
+        roomId.innerHTML = peer.id;
         stat.innerHTML = "Awaiting connection...";
     });
 
