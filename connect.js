@@ -4,7 +4,7 @@ var peerId = null;
 var conn = null;
 var recvId = document.getElementById("room-id-key");
 var recvIdInput = document.getElementById("receiver-id-input");
-var connectButton = document.getElementById("connect-button");
+var connectButton = document.getElementById("login-menu-submit");
 var stat = document.getElementById("stat");
 
 var message = document.getElementById("message");
