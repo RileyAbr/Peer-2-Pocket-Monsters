@@ -180,11 +180,11 @@ function ready() {
         console.log("Data recieved");
         switch (data) {
             case 'Hit for 10':
-                hit();
+                //hit();
                 addMessage(cueString + data);
                 break;
             case 'Heal for 10':
-                heal();
+                //heal();
                 addMessage(cueString + data);
                 break;
             default:
