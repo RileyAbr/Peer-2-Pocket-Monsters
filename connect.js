@@ -6,7 +6,7 @@ var conn = null;
 var recvId = document.getElementById("room-key");
 var recvIdInput = document.getElementById("receiver-id-input");
 var connectButton = document.getElementById("login-menu-submit");
-var roomId = document.getElementById("room-id-label");
+var roomId = document.getElementById("room-id-key-ingame");
 var stat = document.getElementById("stat");
 
 var message = document.getElementById("chat-messages");
