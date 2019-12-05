@@ -2,15 +2,23 @@ var lastPeerId = null;
 var peer = null; // Own peer object
 var peerId = null;
 var conn = null;
-var recvId = document.getElementById("room-id-key");
+// var recvId = document.getElementById("room-id-key");
+var recvId = document.getElementById("room-key");
 var recvIdInput = document.getElementById("receiver-id-input");
 var connectButton = document.getElementById("login-menu-submit");
 var stat = document.getElementById("stat");
 
-var message = document.getElementById("message");
-var sendMessageBox = document.getElementById("sendMessageBox");
-var sendButton = document.getElementById("sendButton");
-var clearMsgsButton = document.getElementById("clearMsgsButton");
+var message = document.getElementById("chat-messages");
+var sendMessageBox = document.getElementById("chat-send-message-input");
+var sendButton = document.getElementById("chat-send-message-button");
+// No html item
+// var clearMsgsButton = document.getElementById("clearMsgsButton");
+
+// Battle buttons
+var move0Button = document.getElementById("battle-move-0");
+var move1Button = document.getElementById("battle-move-1");
+var move2Button = document.getElementById("battle-move-2");
+var move3Button = document.getElementById("battle-move-3");
 
 var systemString = "<span class=\"cueMsg\">System: </span>";
 
@@ -163,10 +171,27 @@ sendButton.onclick = function () {
 };
 
 // Clear messages box
-clearMsgsButton.onclick = function () {
-    clearMessages();
+// clearMsgsButton.onclick = function () {
+//     clearMessages();
+// };
+
+
+// Battle buttons
+move0Button.onclick = function () {
+    signal("Hit for 10");
 };
 
+move1Button.onclick = function () {
+    signal("Heal for 10");
+};
+
+move2Button.onclick = function () {
+    signal("Hit for 10");
+};
+
+move3Button.onclick = function () {
+    signal("Heal for 10");
+};
 
 function ready() {
     conn.on('data', function (data) {
@@ -201,5 +226,4 @@ function send(friendCode) {
 }
 
 connectButton.addEventListener('click', join);
-
 initialize();
