@@ -100,6 +100,9 @@ function join() {
         var command = getUrlParam("command");
         if (command)
             conn.send(command);
+        loginModal.style.opacity = 0;
+        setTimeout(removeModal, 2000); //Wait two seconds before removing modal for animation to finish
+
     });
 
     // // Handle incoming data (messages only since this is the signal sender)
