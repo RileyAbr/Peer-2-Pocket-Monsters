@@ -56,6 +56,8 @@ function initialize() {
         conn = c;
         console.log("Connected to: " + conn.peer);
         stat.innerHTML = "Connected"
+        loginModal.style.opacity = 0;
+        setTimeout(removeModal, 2000); //Wait two seconds before removing modal for animation to finish
         ready();
     });
 
@@ -99,7 +101,7 @@ function join() {
     conn.on('open', function () {
         stat.innerHTML = "Connected to: " + conn.peer;
         console.log("Connected to: " + conn.peer);
-        
+
         // Fade out modal
         loginModal.style.opacity = 0;
         setTimeout(removeModal, 2000); //Wait two seconds before removing modal for animation to finish
