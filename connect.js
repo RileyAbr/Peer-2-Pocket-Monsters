@@ -11,6 +11,7 @@ var stat = document.getElementById("stat");
 var message = document.getElementById("chat-messages");
 var sendMessageBox = document.getElementById("chat-send-message-input");
 var sendButton = document.getElementById("chat-send-message-button");
+let loginModal = document.getElementById("login-menu");
 // No html item
 // var clearMsgsButton = document.getElementById("clearMsgsButton");
 
@@ -96,12 +97,15 @@ function join() {
     conn.on('open', function () {
         stat.innerHTML = "Connected to: " + conn.peer;
         console.log("Connected to: " + conn.peer);
+        
+        // Fade out modal
+        loginModal.style.opacity = 0;
+        setTimeout(removeModal, 2000); //Wait two seconds before removing modal for animation to finish
+
         // Check URL params for comamnds that should be sent immediately
         var command = getUrlParam("command");
         if (command)
             conn.send(command);
-        loginModal.style.opacity = 0;
-        setTimeout(removeModal, 2000); //Wait two seconds before removing modal for animation to finish
 
     });
 
