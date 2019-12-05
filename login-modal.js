@@ -15,8 +15,8 @@ removeModal = function () {
 //     }
 // }
 
-loginSubmitButton.onclick = function () {
-    loginModal.style.opacity = 0;
-    setTimeout(removeModal, 2000); //Wait two seconds before removing modal for animation to finish
-}
+// loginSubmitButton.onclick = function () {
+//     loginModal.style.opacity = 0;
+//     setTimeout(removeModal, 2000); //Wait two seconds before removing modal for animation to finish
+// }
 
