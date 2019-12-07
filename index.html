@@ -68,8 +68,7 @@
                             </div>
                             <div class="battle-monster">
                                 <div class="battle-monster-wrapper">
-                                    <img class="battle-monster-sprite"
-                                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png"
+                                    <img class="battle-monster-sprite" id="battle-monster-sprite-opponent" src=""
                                         alt="">
                                 </div>
                             </div>
@@ -110,9 +109,7 @@
                         <div class="battle-scence-column battle-scence-column-players">
                             <div class="battle-monster">
                                 <div class="battle-monster-wrapper">
-                                    <img class="battle-monster-sprite"
-                                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/37.png"
-                                        alt="">
+                                    <img class="battle-monster-sprite" id="battle-monster-sprite-player" src="" alt="">
                                 </div>
                             </div>
                             <div class="battle-health-bar-wrapper">
@@ -205,7 +202,7 @@
 
         <!-- Load JS files after DOM elements for performance -->
         <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js"></script>
-        <script src="connect.js"></script>
+        <script src="connect.js" type="module"></script>
 </body>
 
 </html>

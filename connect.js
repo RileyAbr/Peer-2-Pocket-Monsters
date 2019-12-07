@@ -1,4 +1,5 @@
-// Page-wide variables
+import { monsterLibraryDB } from "./assets/monster-library.js";
+
 var lastPeerId = null;
 var peer = null; // Own peer object
 var peerId = null;
@@ -18,7 +19,13 @@ let loginModal = document.getElementById("login-menu");
 // No html item
 // var clearMsgsButton = document.getElementById("clearMsgsButton");
 
-// Battle buttons
+// Battle system variables
+let monsterLibrary;
+let playerMonster;
+let opponentMonster;
+let playerMonsterSprite = document.getElementById("battle-monster-sprite-player");
+let opponentMonsterSprite = document.getElementById("battle-monster-sprite-opponent");
+let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 var move0Button = document.getElementById("battle-move-0");
 var move1Button = document.getElementById("battle-move-1");
 var move2Button = document.getElementById("battle-move-2");
@@ -34,10 +41,16 @@ function fadeModal(modal) {
     loginModal.style.display = "none"; //Wait two seconds before removing modal for animation to finish
 }
 
+function loadMonster(monsterChoice) {
+    return monsterLibrary[monsterChoice];
+}
 
-//
+////
 
 function initialize() {
+    // Connect to monster data
+    monsterLibrary = monsterLibraryDB;
+
     // Create own peer object with connection to shared PeerJS server
     peer = new Peer(null, {
         debug: 2
@@ -113,6 +126,15 @@ function join() {
     conn.on('open', function () {
         stat.innerHTML = "Connected to: " + conn.peer;
         console.log("Connected to: " + conn.peer);
+
+        // Load player monster data
+        playerMonster = loadMonster(0);
+        opponentMonster = loadMonster(0);
+        playerMonsterSprite.src = monsterSpriteURL + "back/" + playerMonster.id + ".png";
+        opponentMonsterSprite.src = monsterSpriteURL + opponentMonster.id + ".png";
+        console.log(playerMonster);
+
+
         loginModal.style.opacity = 0;
         setTimeout(fadeModal, fadeTimer); //Wait two seconds before removing modal for animation to finish
 
