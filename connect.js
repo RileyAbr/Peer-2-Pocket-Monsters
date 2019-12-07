@@ -106,15 +106,15 @@ function join() {
     if (conn) {
         conn.close();
     }
+
     // Create connection to destination peer specified in the input field
-    if (conn = peer.connect(recvIdInput.value, { reliable: true })) {
-        loginModal.style.opacity = 0;
-        setTimeout(fadeModal, fadeTimer); //Wait two seconds before removing modal for animation to finish
-    }
+    conn = peer.connect(recvIdInput.value, { reliable: true });
 
     conn.on('open', function () {
         stat.innerHTML = "Connected to: " + conn.peer;
         console.log("Connected to: " + conn.peer);
+        loginModal.style.opacity = 0;
+        setTimeout(fadeModal, fadeTimer); //Wait two seconds before removing modal for animation to finish
 
         // Check URL params for comamnds that should be sent immediately
         var command = getUrlParam("command");
