@@ -1,6 +1,11 @@
 @import "_variables";
 
+html {
+    height: 100%;
+}
+
 body {
+    height: 100%;
     font-family: "pkmn_rbygsc";
 }
 
@@ -23,13 +28,17 @@ body {
     // Background 2
     background-color: #030512;
     background-image: url("https://www.transparenttextures.com/patterns/graphy.png");
-    background-size: 48px;
+    @include infinite-slide;
+    transition: opacity 3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    // background-size: 48px;
     min-height: 100vh;
+
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
 
     @media screen and (min-width: $desktop-min-width) {
+        height: 100%;
         flex-flow: row wrap;
     }
 }
@@ -72,11 +81,11 @@ body {
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
     background-color: #030512;
-
+    opacity: 1;
     // Moving background slide
     background-image: url("https://www.transparenttextures.com/patterns/graphy.png");
     @include infinite-slide;
-    transition: opacity 3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: opacity 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #login-menu-modal {
@@ -105,15 +114,18 @@ body {
  
 */
 #chat-column {
-    // background-color: red;
     flex-flow: column wrap;
     color: white;
+    padding: 10px;
+    @media screen and (min-width: $desktop-min-width) {
+        height: 100%;
+    }
 }
 
 // Room ID
 #room-info {
     display: flex;
-    flex-flow: row;
+    flex-flow: row wrap;
     justify-content: space-between;
 }
 
@@ -124,7 +136,7 @@ body {
 }
 
 .chat-row-item {
-    margin: 10px;
+    margin: 5px 0;
 }
 
 #chat-messages {
@@ -133,15 +145,26 @@ body {
     flex: none;
     height: 10rem;
     border: 1px black solid;
+    border-right: none;
     background-color: #001321;
+    width: 100%;
+
+    overflow: auto;
     @media screen and (min-width: $desktop-min-width) {
         flex: 1;
+        height: 100%;
         height: 4rem;
     }
 }
 
+.chat-send-messages {
+    margin: 6px 0;
+    overflow-wrap: break-word;
+}
+
 #chat-send-message {
     margin-top: 0px;
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
 }
@@ -154,7 +177,7 @@ body {
     padding-inline-start: 5px;
     padding-inline-end: 1px;
     line-height: $chat-input-line-height;
-    min-width: 150px;
+    min-width: 10px;
 }
 
 #chat-send-message-button {

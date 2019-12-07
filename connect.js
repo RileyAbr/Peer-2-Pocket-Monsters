@@ -1,3 +1,4 @@
+// Page-wide variables
 var lastPeerId = null;
 var peer = null; // Own peer object
 var peerId = null;
@@ -9,6 +10,7 @@ var connectButton = document.getElementById("login-menu-submit");
 var roomId = document.getElementById("room-id-key-ingame");
 var stat = document.getElementById("stat");
 
+// Message variables
 var message = document.getElementById("chat-messages");
 var sendMessageBox = document.getElementById("chat-send-message-input");
 var sendButton = document.getElementById("chat-send-message-button");
@@ -22,7 +24,18 @@ var move1Button = document.getElementById("battle-move-1");
 var move2Button = document.getElementById("battle-move-2");
 var move3Button = document.getElementById("battle-move-3");
 
+// System variables
+let fadeTimer = 1650; // Controls when the login modal fades out
+
 var systemString = "<span class=\"cueMsg\">System: </span>";
+
+// Helper functions
+function fadeModal(modal) {
+    loginModal.style.display = "none"; //Wait two seconds before removing modal for animation to finish
+}
+
+
+//
 
 function initialize() {
     // Create own peer object with connection to shared PeerJS server
@@ -57,7 +70,7 @@ function initialize() {
         console.log("Connected to: " + conn.peer);
         stat.innerHTML = "Connected"
         loginModal.style.opacity = 0;
-        setTimeout(loginModal.style.display = "none", 2000); //Wait two seconds before removing modal for animation to finish
+        setTimeout(fadeModal, fadeTimer); //Wait two seconds before removing modal for animation to finish
         ready();
     });
 
@@ -96,7 +109,7 @@ function join() {
     // Create connection to destination peer specified in the input field
     if (conn = peer.connect(recvIdInput.value, { reliable: true })) {
         loginModal.style.opacity = 0;
-        setTimeout(loginModal.style.display = "none", 2000); //Wait two seconds before removing modal for animation to finish
+        setTimeout(fadeModal, fadeTimer); //Wait two seconds before removing modal for animation to finish
     }
 
     conn.on('open', function () {
@@ -151,7 +164,11 @@ function addMessage(msg) {
             t = "0" + t;
         return t;
     };
-    message.innerHTML = "<br><span class=\"msg-time\">" + h + ":" + m + ":" + s + "</span>  -  " + msg + message.innerHTML;
+    let newMessage = document.createElement('DIV');
+    newMessage.className = "chat-send-messages"
+    newMessage.innerHTML = "<span class=\"msg-time\">" + h + ":" + m + ":" + s + "</span>  -  " + msg;
+    message.appendChild(newMessage);
+    message.scrollTop = newMessage.offsetHeight + newMessage.offsetTop;
 };
 
 function clearMessages() {
@@ -174,7 +191,7 @@ sendButton.onclick = function () {
         sendMessageBox.value = "";
         conn.send(msg);
         console.log("Sent: " + msg)
-        addMessage("<span class=\"selfMsg\">Self: </span>" + msg);
+        addMessage("<span class=\"selfMsg\">You: </span>" + msg);
     }
 };
 
