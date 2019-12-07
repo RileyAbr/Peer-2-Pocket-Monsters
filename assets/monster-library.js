@@ -1,9 +1,9 @@
-{
-    "monsters": {
-        "fire-monster": {
+let monsterLibraryDB =
+    [
+        {
             "name": "Vulpix",
             "type": "Fire",
-            "id": 61,
+            "id": 37,
             "stats": {
                 "HP": 100,
                 "AT": 50,
@@ -55,7 +55,7 @@
                 }
             }
         },
-        "water-monster": {
+        {
             "name": "Poliwhirl",
             "type": "Water",
             "id": 61,
@@ -110,5 +110,6 @@
                 }
             }
         }
-    }
-}
+    ];
+
+export { monsterLibraryDB };
