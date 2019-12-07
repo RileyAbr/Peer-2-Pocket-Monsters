@@ -147,17 +147,18 @@ body {
 }
 
 #chat-send-message-input {
-    flex: 2;
+    flex: 2 1;
     border: 0px;
     border-inline-start: black 1px solid;
     border-inline-end: black 1px solid;
     padding-inline-start: 5px;
     padding-inline-end: 1px;
     line-height: $chat-input-line-height;
+    min-width: 150px;
 }
 
 #chat-send-message-button {
-    flex: 1;
+    flex: 1 2;
     color: black;
     @include grey-gradient-button;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
