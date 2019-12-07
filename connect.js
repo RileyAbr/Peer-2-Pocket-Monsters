@@ -94,7 +94,7 @@ function join() {
         conn.close();
     }
     // Create connection to destination peer specified in the input field
-    if(conn = peer.connect(recvIdInput.value, {reliable: true})) {
+    if (conn = peer.connect(recvIdInput.value, { reliable: true })) {
         loginModal.style.opacity = 0;
         setTimeout(loginModal.style.display = "none", 2000); //Wait two seconds before removing modal for animation to finish
     }
@@ -186,25 +186,37 @@ sendButton.onclick = function () {
 
 // Battle buttons
 move0Button.onclick = function () {
-    signal("Hit for 10");
+    signal("Move 0");
 };
 
 move1Button.onclick = function () {
-    signal("Heal for 10");
+    signal("Movie 1");
 };
 
 move2Button.onclick = function () {
-    signal("Hit for 10");
+    signal("Movie 2");
 };
 
 move3Button.onclick = function () {
-    signal("Heal for 10");
+    signal("Movie 3");
 };
 
 function ready() {
     conn.on('data', function (data) {
         console.log("Data recieved");
         switch (data) {
+            case 'Move 0':
+                addMessage(systemString + data);
+                break;
+            case 'Move 1':
+                addMessage(systemString + data);
+                break;
+            case 'Move 2':
+                addMessage(systemString + data);
+                break;
+            case 'Move 3':
+                addMessage(systemString + data);
+                break;
             default:
                 addMessage("<span class=\"peerMsg\">Peer: </span>" + data);
                 break;
