@@ -4,14 +4,14 @@ let monsterLibraryDB =
             "name": "Vulpix",
             "type": "Fire",
             "id": 37,
-            "stats": {
-                "HP": 100,
-                "AT": 50,
-                "DF": 50,
-                "AC": 100,
-                "EV": 100,
-                "SP": 5
-            },
+            "stats": [
+                100,    //HP
+                50,     //AT
+                50,     //DF
+                100,    //AC
+                100,    //EV
+                5       //SP
+            ],
             "moves": {
                 "move0": {
                     "name": "Tackle",
@@ -59,14 +59,14 @@ let monsterLibraryDB =
             "name": "Poliwhirl",
             "type": "Water",
             "id": 61,
-            "stats": {
-                "HP": 100,
-                "AT": 50,
-                "DF": 50,
-                "AC": 100,
-                "EV": 100,
-                "SP": 5
-            },
+            "stats": [
+                100,    //HP
+                50,     //AT
+                50,     //DF
+                100,    //AC
+                100,    //EV
+                5       //SP
+            ],
             "moves": {
                 "move0": {
                     "name": "Pound",
