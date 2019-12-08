@@ -125,6 +125,14 @@ function refreshStats() {
     }
 }
 
+function startBattle() {
+
+}
+
+function endBattle() {
+    
+}
+
 // Disables buttons when it is not the players turn
 function disableButtons(buttons) {
     let button;
@@ -236,7 +244,7 @@ function join() {
 
     // // Handle incoming data (messages only since this is the signal sender)
     conn.on('data', function (data) {
-        if (data[0] == 9) {
+        if (data[0] == 1) {
             addMessage("<span class=\"peerMsg\">Peer:</span> " + data);
         }
     });
@@ -267,7 +275,6 @@ function addMessage(msg) {
     var now = new Date();
     var h = now.getHours();
     var m = addZero(now.getMinutes());
-    var s = addZero(now.getSeconds());
     if (h > 12)
         h -= 12;
     else if (h === 0)
@@ -279,7 +286,7 @@ function addMessage(msg) {
     };
     let newMessage = document.createElement('DIV');
     newMessage.className = "chat-send-messages"
-    newMessage.innerHTML = "<span class=\"msg-time\">" + h + ":" + m + ":" + s + "</span>  -  " + msg;
+    newMessage.innerHTML = "<span class=\"msg-time\">" + h + ":" + m   + "</span>  -  " + msg;
     message.appendChild(newMessage);
     message.scrollTop = newMessage.offsetHeight + newMessage.offsetTop;
 };
@@ -299,11 +306,11 @@ sendMessageBox.onkeypress = function (e) {
 // Send message
 sendButton.onclick = function () {
     if (conn.open) {
-        var msg = [9, sendMessageBox.value];
+        var msg = [1, sendMessageBox.value];
         sendMessageBox.value = "";
         conn.send(msg);
         console.log("Sent: " + msg)
-        addMessage("<span class=\"selfMsg\">You: </span>" + msg);
+        addMessage("<span class=\"selfMsg\">You: </span>" + msg[1]);
     }
 };
 
@@ -320,7 +327,7 @@ function ready() {
                 startBattle(data[1]);
                 break;
             case 1: // Chat
-                addMessage(data[1]);
+                addMessage("<span class=\"selfMsg\">Peer: </span>" + data[1]);
                 break;
             case 2: // Attack
                 attackType(data[1]);
@@ -340,11 +347,11 @@ function ready() {
     });
 }
 
-function signal(sigName) {
+function signal(data) {
     if (conn.open) {
-        conn.send(sigName);
-        console.log(sigName + " signal sent");
-        addMessage(systemString + sigName);
+        conn.send(data);
+        console.log(data + " signal sent");
+        // addMessage(systemString + sigName);
     }
 }
 
@@ -434,15 +441,12 @@ function items(heal){
 move0Button.onclick = function () {
     signal([2, 0]);
 };
-
 move1Button.onclick = function () {
     signal([2, 1]);
 };
-
 move2Button.onclick = function () {
     signal([2, 2]);
 };
-
 move3Button.onclick = function () {
     signal([2, 3]);
 };
