@@ -59,11 +59,29 @@ function loadMonsterLibrary() {
     }
 }
 
+function setUpBattle() {
+    // Load player monster data
+    let playerMonsterChoice = document.getElementById("login-monster-choice");
+    playerMonster = loadMonster([playerMonsterChoice.selectedIndex]);
+    opponentMonster = loadMonster(0);
+
+    //  Load Sprites
+    playerMonsterSprite.src = monsterSpriteURL + "back/" + playerMonster.id + ".png";
+    opponentMonsterSprite.src = monsterSpriteURL + opponentMonster.id + ".png";
+
+    // Load stats for the first time
+    refreshStats();
+
+    // Fade out login modal
+    loginModal.style.opacity = 0;
+    setTimeout(fadeModal, fadeTimer);
+}
+
 function loadMonster(monsterChoice) {
     return monsterLibrary[monsterChoice];
 }
 
-function loadInitialStats() {
+function refreshStats() {
     let stat;
 
     for (stat in playerMonster.stats) {
@@ -115,8 +133,9 @@ function initialize() {
         conn = c;
         console.log("Connected to: " + conn.peer);
         stat.innerHTML = "Connected"
-        loginModal.style.opacity = 0;
-        setTimeout(fadeModal, fadeTimer); //Wait two seconds before removing modal for animation to finish
+
+        setUpBattle();
+
         disableButtons(moveButtons);
         ready();
     });
@@ -161,17 +180,7 @@ function join() {
         stat.innerHTML = "Connected to: " + conn.peer;
         console.log("Connected to: " + conn.peer);
 
-        // Load player monster data
-        let playerMonsterChoice = document.getElementById("login-monster-choice");
-        playerMonster = loadMonster([playerMonsterChoice.selectedIndex]);
-        opponentMonster = loadMonster(0);
-        playerMonsterSprite.src = monsterSpriteURL + "back/" + playerMonster.id + ".png";
-        opponentMonsterSprite.src = monsterSpriteURL + opponentMonster.id + ".png";
-        loadInitialStats();
-
-
-        loginModal.style.opacity = 0;
-        setTimeout(fadeModal, fadeTimer); //Wait two seconds before removing modal for animation to finish
+        setUpBattle();
 
         // Check URL params for comamnds that should be sent immediately
         var command = getUrlParam("command");
