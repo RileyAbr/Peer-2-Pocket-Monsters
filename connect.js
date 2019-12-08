@@ -51,15 +51,12 @@ let opponentStatsValueLabels = document.getElementsByClassName("stats-value-oppo
 let playerMonsterSprite = document.getElementById("battle-monster-sprite-player");
 let opponentMonsterSprite = document.getElementById("battle-monster-sprite-opponent");
 let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+// Battle Buttons
 var moveButtons = document.getElementsByClassName("battle-controller-button");
 var move0Button = document.getElementById("battle-move-0");
 var move1Button = document.getElementById("battle-move-1");
 var move2Button = document.getElementById("battle-move-2");
 var move3Button = document.getElementById("battle-move-3");
-
-// System variables
-var systemString = "<span class=\"cueMsg\">System: </span>";
-
 
 /*
  
@@ -99,6 +96,9 @@ function setUpBattle() {
     // Load stats for the first time
     refreshStats();
 
+    // Load moves to buttons
+    loadButtonsDesc(moveButtons);
+
     // Fade out login modal
     loginModal.style.opacity = 0;
     let fadeTimer = 1650; // Controls when the login modal fades out
@@ -127,13 +127,13 @@ function refreshHealthBar() {
 
 }
 
-function startBattle() {
-    setUpBattle();
-    //disableButtons(moveButtons);
-}
-
-function endBattle() {
-    
+// 
+function loadButtonsDesc(buttons) {
+    let button;
+    for (let i = 0; i < buttons.length; i++) {
+        console.log(buttons[i]);
+        buttons[i].children[0].innerHTML = playerMonster.moves[i].name;
+    }
 }
 
 // Disables buttons when it is not the players turn
@@ -144,6 +144,14 @@ function disableButtons(buttons) {
     }
 }
 
+function startBattle() {
+    setUpBattle();
+    //disableButtons(moveButtons);
+}
+
+function endBattle() {
+    
+}
 
 /*
 ..######...#######..##....##.##....##.########..######..########
@@ -216,11 +224,14 @@ function initialize() {
     });
 }
 
-/**
-* Create the connection between the two Peers.
-*
-* Sets up callbacks that handle any events related to the
-* connection and data received on it.
+/*
+..######..########.##....##.########..####.##....##..######......########..########.########.########.
+.##....##.##.......###...##.##.....##..##..###...##.##....##.....##.....##.##.......##.......##.....##
+.##.......##.......####..##.##.....##..##..####..##.##...........##.....##.##.......##.......##.....##
+..######..######...##.##.##.##.....##..##..##.##.##.##...####....########..######...######...########.
+.......##.##.......##..####.##.....##..##..##..####.##....##.....##........##.......##.......##...##..
+.##....##.##.......##...###.##.....##..##..##...###.##....##.....##........##.......##.......##....##.
+..######..########.##....##.########..####.##....##..######......##........########.########.##.....##
 */
 function join() {
     // Close old connection
@@ -270,54 +281,15 @@ function join() {
     });
 };
 
-function addMessage(msg) {
-    var now = new Date();
-    var h = now.getHours();
-    var m = addZero(now.getMinutes());
-    if (h > 12)
-        h -= 12;
-    else if (h === 0)
-        h = 12;
-    function addZero(t) {
-        if (t < 10)
-            t = "0" + t;
-        return t;
-    };
-    let newMessage = document.createElement('DIV');
-    newMessage.className = "chat-send-messages"
-    newMessage.innerHTML = "<span class=\"msg-time\">" + h + ":" + m   + "</span>  -  " + msg;
-    message.appendChild(newMessage);
-    message.scrollTop = newMessage.offsetHeight + newMessage.offsetTop;
-};
-
-// function clearMessages() {
-//     message.innerHTML = "";
-//     addMessage("Msgs cleared");
-// };
-
-// Listen for enter
-sendMessageBox.onkeypress = function (e) {
-    var event = e || window.event;
-    var char = event.which || event.keyCode;
-    if (char == '13')
-        sendButton.click();
-};
-// Send message
-sendButton.onclick = function () {
-    if (conn.open) {
-        var msg = [1, sendMessageBox.value];
-        sendMessageBox.value = "";
-        conn.send(msg);
-        console.log("Sent: " + msg)
-        addMessage("<span class=\"selfMsg\">You: </span>" + msg[1]);
-    }
-};
-
-// Clear messages box
-// clearMsgsButton.onclick = function () {
-//     clearMessages();
-// };
-
+/*
+.########..########..######..########.####.##.....##.########....########..########.########.########.
+.##.....##.##.......##....##.##........##..##.....##.##..........##.....##.##.......##.......##.....##
+.##.....##.##.......##.......##........##..##.....##.##..........##.....##.##.......##.......##.....##
+.########..######...##.......######....##..##.....##.######......########..######...######...########.
+.##...##...##.......##.......##........##...##...##..##..........##........##.......##.......##...##..
+.##....##..##.......##....##.##........##....##.##...##..........##........##.......##.......##....##.
+.##.....##.########..######..########.####....###....########....##........########.########.##.....##
+*/
 function ready() {
     conn.on('data', function (data) {
         console.log("Data recieved");
@@ -356,9 +328,51 @@ function signal(data) {
     if (conn.open) {
         conn.send(data);
         console.log(data + " signal sent");
-        // addMessage(systemString + sigName);
     }
 }
+
+// Messages Functionality
+function addMessage(msg) {
+    var now = new Date();
+    var h = now.getHours();
+    var m = addZero(now.getMinutes());
+    if (h > 12)
+        h -= 12;
+    else if (h === 0)
+        h = 12;
+    function addZero(t) {
+        if (t < 10)
+            t = "0" + t;
+        return t;
+    };
+    let newMessage = document.createElement('DIV');
+    newMessage.className = "chat-send-messages"
+    newMessage.innerHTML = "<span class=\"msg-time\">" + h + ":" + m   + "</span>  -  " + msg;
+    message.appendChild(newMessage);
+    message.scrollTop = newMessage.offsetHeight + newMessage.offsetTop;
+};
+
+// Listen for enter
+sendMessageBox.onkeypress = function (e) {
+    var event = e || window.event;
+    var char = event.which || event.keyCode;
+    if (char == '13')
+        sendButton.click();
+};
+// Send message
+sendButton.onclick = function () {
+    if (conn.open) {
+        var msg = [1, sendMessageBox.value];
+        sendMessageBox.value = "";
+        conn.send(msg);
+        console.log("Sent: " + msg)
+        addMessage("<span class=\"selfMsg\">You: </span>" + msg[1]);
+    }
+};
+// function clearMessages() {
+//     message.innerHTML = "";
+//     addMessage("Msgs cleared");
+// };
 
 /*
 .########.....###....########.########.##.......########
@@ -566,7 +580,6 @@ function itemsPlayer(heal){
 
 // Battle buttons
 move0Button.onclick = function () {
-    //checkType
     signal([2, 0]);
     attackTypePlayer(0);
 };
