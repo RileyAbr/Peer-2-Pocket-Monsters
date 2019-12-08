@@ -80,7 +80,7 @@ html {
 body {
   height: 100%;
   font-family: 'pokmon_dp_proregular';
-  font-size: 1.75em;
+  font-size: 1.95em;
 }
 
 /*
@@ -175,17 +175,26 @@ body {
 }
 
 #login-menu-modal {
-  background-color: lightgreen;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
   width: 60%;
   height: 75%;
+  -webkit-clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+          clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+  background: linear-gradient(132deg, rgba(16, 112, 160, 0.7) 0%, rgba(16, 112, 160, 0.7) 25%, rgba(0, 39, 68, 0.7) 26%, rgba(0, 39, 68, 0.7) 74%, rgba(16, 112, 160, 0.7) 75%, rgba(16, 112, 160, 0.7) 100%);
+  color: white;
 }
 
 #login-menu-submit {
-  border: 2px black solid;
-  padding: 5px;
+  width: 33%;
+  border: none;
+  background: #e2e2e2;
+  background: -webkit-gradient(linear, left bottom, left top, from(#e2e2e2), color-stop(43%, #e2e2e2), color-stop(43%, #eee), color-stop(57%, #eee), color-stop(57%, #fff));
+  background: linear-gradient(0deg, #e2e2e2 0%, #e2e2e2 43%, #eee 43%, #eee 57%, #fff 57%);
+  -webkit-clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+          clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+  height: 15%;
+  color: black;
 }
 
 /*
@@ -338,7 +347,8 @@ body {
 }
 
 #battle-scence {
-  background: repeating-linear-gradient(#c0e8e0, #c0e8e0 5px, #d8eee0 5px, #d8eee0 8px);
+  background-image: url("/assets/img/grass_daytime_background.jpg");
+  background-size: cover;
 }
 
 #battle-scence-wrapper {
@@ -543,7 +553,7 @@ body {
           clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
   background: rgba(8, 72, 112, 0.6);
   background: linear-gradient(132deg, rgba(16, 112, 160, 0.7) 0%, rgba(16, 112, 160, 0.7) 25%, rgba(0, 39, 68, 0.7) 26%, rgba(0, 39, 68, 0.7) 74%, rgba(16, 112, 160, 0.7) 75%, rgba(16, 112, 160, 0.7) 100%);
-  font-size: 1.25rem;
+  font-size: 1.8rem;
 }
 
 .stats-row {
