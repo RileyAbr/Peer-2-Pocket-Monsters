@@ -71,10 +71,12 @@ var systemString = "<span class=\"cueMsg\">System: </span>";
  ##     ## ######## ######## ##        ######## ##     ##  ######  
  
 */
+// Fades out the modal for loggining in
 function fadeModal(modal) {
     loginModal.style.display = "none";
 }
 
+// Loads all monsters for play
 function loadMonsterLibrary() {
     monsterLibrary = monsterLibraryDB;
     let monsterChoiceDropdown = document.getElementById("login-monster-choice");
@@ -87,7 +89,7 @@ function loadMonsterLibrary() {
     }
 }
 
-// Runs when 
+// Runs when the players connect to inititally set up the game
 function setUpBattle() {
     // Load player monster data
     let playerMonsterChoice = document.getElementById("login-monster-choice");
@@ -108,10 +110,12 @@ function setUpBattle() {
     setTimeout(fadeModal, fadeTimer);
 }
 
+// Loads the monster 
 function loadMonster(monsterChoice) {
     return monsterLibrary[monsterChoice];
 }
 
+// Refreshes the stats on the webpage to match the data structures
 function refreshStats() {
     let stat;
 
@@ -121,6 +125,7 @@ function refreshStats() {
     }
 }
 
+// Disables buttons when it is not the players turn
 function disableButtons(buttons) {
     let button;
     for (button of buttons) {
@@ -316,24 +321,24 @@ sendButton.onclick = function () {
 .##.....##..##...##.....##.......##....##.......##......
 .########..##.....##....##.......##....##.......######..
 .##.....##.#########....##.......##....##.......##......
-.##.....##.##.....##....##.......##....##.......##......
+.##.....##.##....   .##....##.......##....##.......##......
 .########..##.....##....##.......##....########.########
 */
 // Battle buttons
 move0Button.onclick = function () {
-    signal("Move 0");
+    signal([2, 0]);
 };
 
 move1Button.onclick = function () {
-    signal("Movie 1");
+    signal([2, 1]);
 };
 
 move2Button.onclick = function () {
-    signal("Movie 2");
+    signal([2, 2]);
 };
 
 move3Button.onclick = function () {
-    signal("Movie 3");
+    signal([2, 3]);
 };
 
 function ready() {
