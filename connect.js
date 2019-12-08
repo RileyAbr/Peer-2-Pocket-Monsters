@@ -359,36 +359,75 @@ function signal(sigName) {
 */
 //determine what types of move is chose
 function attackType(move){
-    monsterMove = playerMonster.moves[move];
-    moveType = monsterMove.type;
+    var monsterMove = playerMonster.moves[move];
+    var moveType = monsterMove.type;
+    var damage = monsterMove.base-power;
+    var effect = monsterMove.effect;
     switch(moveType){
         //attack
         case 0:
-            attack(monsterMove.base-power);
-            refreshStats();
+            attack(damage);
             break;
         //status
         case 1:
-            status();
+            status(effect.stat, effect.value);
             break;
         //attack,status
         case 2:
-            attack_status();
+            attack_status(damage, monsterMove.base-accuracy, effect.status, effect.chance);
             break;
         //items
         case 3:
-            var limit = monster-library[monster][moves][move][limit];
+            var limit = monsterMove.limit;
             if(limit > 0){
-                items();
-                limit--;
+                items(effect.heal);
+                monsterMove.limit--;
             }
             break;
     }
+    refreshStats();
 }
 
 //attack type move
 function attack(damage){
-    opponentMonster.stats[0] = opponentMonster.stats[0]- (playerMonster.stat[1]/opponentMonster.stat[2] * damage);
+    opponentMonster.stats[0] += (playerMonster.stat[1]/opponentMonster.stat[2] * damage);
+}
+
+//status type move
+function status(stat, value){
+    var statIndex;
+    switch(stat){
+        case "AT":
+            statIndex = 1;
+        case "DF":
+            statIndex = 2;
+        case "AC":
+            statIndex = 3;
+        case "EV":
+            statIndex = 4;
+        case "SP":
+            statIndex = 5;
+    }
+    opponentMonster.stat[statIndex] += value;
+}
+
+//attack + status type move
+function attack_status(damage, accuracy, status, chance){
+    //damage accuracy?
+    let randAccuracy = Math.floor(Math.random() * 10);
+    if(randAccuracy < (accuracy/10)){
+        opponentMonster.stats[0] += (playerMonster.stat[1]/opponentMonster.stat[2] * damage);
+        let randChance = Math.floor(Math.random() * 10);
+        if(randChance < (chance/10)){
+            //if status = burn, dealls 10% of the target's health as damage each turn
+            //if status = freeze, prevents the target from acting for 1 turn
+        }
+    }
+}
+
+//item type move
+function items(heal){
+    playerMonster.stats[0] += heal;
 }
 
 // Battle buttons
