@@ -1,6 +1,27 @@
-// Data Imports
+/*
+ 
+ #### ##     ## ########   #######  ########  ########  ######  
+  ##  ###   ### ##     ## ##     ## ##     ##    ##    ##    ## 
+  ##  #### #### ##     ## ##     ## ##     ##    ##    ##       
+  ##  ## ### ## ########  ##     ## ########     ##     ######  
+  ##  ##     ## ##        ##     ## ##   ##      ##          ## 
+  ##  ##     ## ##        ##     ## ##    ##     ##    ##    ## 
+ #### ##     ## ##         #######  ##     ##    ##     ######  
+ 
+*/
 import { monsterLibraryDB } from "./assets/monster-library.js";
 
+/*
+ 
+ ##     ##    ###    ########  ####    ###    ########  ##       ########  ######  
+ ##     ##   ## ##   ##     ##  ##    ## ##   ##     ## ##       ##       ##    ## 
+ ##     ##  ##   ##  ##     ##  ##   ##   ##  ##     ## ##       ##       ##       
+ ##     ## ##     ## ########   ##  ##     ## ########  ##       ######    ######  
+  ##   ##  ######### ##   ##    ##  ######### ##     ## ##       ##             ## 
+   ## ##   ##     ## ##    ##   ##  ##     ## ##     ## ##       ##       ##    ## 
+    ###    ##     ## ##     ## #### ##     ## ########  ######## ########  ######  
+ 
+*/
 // PeerJS Variables
 var lastPeerId = null;
 var peer = null; // Own peer object
@@ -43,7 +64,17 @@ var move3Button = document.getElementById("battle-move-3");
 var systemString = "<span class=\"cueMsg\">System: </span>";
 
 
-// Helper functions
+/*
+ 
+ ##     ## ######## ##       ########  ######## ########   ######  
+ ##     ## ##       ##       ##     ## ##       ##     ## ##    ## 
+ ##     ## ##       ##       ##     ## ##       ##     ## ##       
+ ######### ######   ##       ########  ######   ########   ######  
+ ##     ## ##       ##       ##        ##       ##   ##         ## 
+ ##     ## ##       ##       ##        ##       ##    ##  ##    ## 
+ ##     ## ######## ######## ##        ######## ##     ##  ######  
+ 
+*/
 function fadeModal(modal) {
     loginModal.style.display = "none"; //Wait two seconds before removing modal for animation to finish
 }
@@ -59,6 +90,7 @@ function loadMonsterLibrary() {
     }
 }
 
+// Runs when 
 function setUpBattle() {
     // Load player monster data
     let playerMonsterChoice = document.getElementById("login-monster-choice");
@@ -96,8 +128,19 @@ function disableButtons(buttons) {
         button.disabled = true;
     }
 }
-//////
 
+
+/*
+ 
+ ##     ##    ###    #### ##    ## 
+ ###   ###   ## ##    ##  ###   ## 
+ #### ####  ##   ##   ##  ####  ## 
+ ## ### ## ##     ##  ##  ## ## ## 
+ ##     ## #########  ##  ##  #### 
+ ##     ## ##     ##  ##  ##   ### 
+ ##     ## ##     ## #### ##    ## 
+ 
+*/
 function initialize() {
     // Connect to monster data
     loadMonsterLibrary();
@@ -330,5 +373,17 @@ function send(friendCode) {
 
 }
 
+
+/*
+ 
+  ######  ########    ###    ########  ######## 
+ ##    ##    ##      ## ##   ##     ##    ##    
+ ##          ##     ##   ##  ##     ##    ##    
+  ######     ##    ##     ## ########     ##    
+       ##    ##    ######### ##   ##      ##    
+ ##    ##    ##    ##     ## ##    ##     ##    
+  ######     ##    ##     ## ##     ##    ##    
+ 
+*/
 connectButton.addEventListener('click', join);
 initialize();

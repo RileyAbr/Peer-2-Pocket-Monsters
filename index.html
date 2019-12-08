@@ -18,6 +18,17 @@
 
 <body>
 
+    <!--
+ 
+ ##        #######   ######   #### ##    ## 
+ ##       ##     ## ##    ##   ##  ###   ## 
+ ##       ##     ## ##         ##  ####  ## 
+ ##       ##     ## ##   ####  ##  ## ## ## 
+ ##       ##     ## ##    ##   ##  ##  #### 
+ ##       ##     ## ##    ##   ##  ##   ### 
+ ########  #######   ######   #### ##    ## 
+ 
+-->
     <div id="login-menu">
         <div id="login-menu-modal">
             CLICK OFF THE MODAL TO DISMISS IT
@@ -27,7 +38,7 @@
             <h1>ID: <span id="room-key"></span></h1>
             <input type="text" name="" id="receiver-id-input">
             <select name="" id="login-monster-choice">
-
+                <!-- Options load in from monster library -->
             </select>
             <div id="stat"></div>
             <button id="login-menu-submit">Battle!</button>
@@ -36,6 +47,17 @@
 
     <div id="poke-container">
 
+        <!--
+ 
+  ######  ##     ##    ###    ######## 
+ ##    ## ##     ##   ## ##      ##    
+ ##       ##     ##  ##   ##     ##    
+ ##       ######### ##     ##    ##    
+ ##       ##     ## #########    ##    
+ ##    ## ##     ## ##     ##    ##    
+  ######  ##     ## ##     ##    ##    
+ 
+-->
         <div id="chat-column" class="columns">
             <div class="chat-row-item">
                 <div id="room-info">
@@ -52,6 +74,17 @@
             </div>
         </div>
 
+        <!--
+ 
+ ########     ###    ######## ######## ##       ######## 
+ ##     ##   ## ##      ##       ##    ##       ##       
+ ##     ##  ##   ##     ##       ##    ##       ##       
+ ########  ##     ##    ##       ##    ##       ######   
+ ##     ## #########    ##       ##    ##       ##       
+ ##     ## ##     ##    ##       ##    ##       ##       
+ ########  ##     ##    ##       ##    ######## ######## 
+ 
+-->
         <div id="battle-column" class="columns">
             <div id="battle-controller">
                 <div id="battle-scence">
@@ -142,6 +175,17 @@
             </div>
         </div>
 
+        <!--
+ 
+  ######  ########    ###    ########  ######  
+ ##    ##    ##      ## ##      ##    ##    ## 
+ ##          ##     ##   ##     ##    ##       
+  ######     ##    ##     ##    ##     ######  
+       ##    ##    #########    ##          ## 
+ ##    ##    ##    ##     ##    ##    ##    ## 
+  ######     ##    ##     ##    ##     ######  
+ 
+-->
         <div id="stats-column" class="columns">
             <div class="stats-block">
                 <h2 class="stats-heading">Opponents Stats</h2>
@@ -206,6 +250,7 @@
         <!-- Load JS files after DOM elements for performance -->
         <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js"></script>
         <script src="connect.js" type="module"></script>
+    </div>
 </body>
 
 </html>
