@@ -358,6 +358,40 @@ function signal(sigName) {
 .##.....##.##....   .##....##.......##....##.......##......
 .########..##.....##....##.......##....########.########
 */
+//determine what types of move is chose
+function attackType(move){
+    monsterMove = playerMonster.moves[move];
+    moveType = monsterMove.type;
+    switch(moveType){
+        //attack
+        case 0:
+            attack(monsterMove.base-power);
+            refreshStats();
+            break;
+        //status
+        case 1:
+            status();
+            break;
+        //attack,status
+        case 2:
+            attack_status();
+            break;
+        //items
+        case 3:
+            var limit = monster-library[monster][moves][move][limit];
+            if(limit > 0){
+                items();
+                limit--;
+            }
+            break;
+    }
+}
+
+//attack type move
+function attack(damage){
+    opponentMonster.stats[0] = opponentMonster.stats[0]- (playerMonster.stat[1]/opponentMonster.stat[2] * damage);
+}
+
 // Battle buttons
 move0Button.onclick = function () {
     signal([2, 0]);
