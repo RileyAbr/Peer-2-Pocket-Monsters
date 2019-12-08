@@ -370,6 +370,7 @@ function signal(data) {
 .########..##.....##....##.......##....########.########
 */
 //determine what types of move is chose
+//status shows on opponent's site
 function attackType(move){
     var monsterMove = playerMonster.moves[move];
     var moveType = monsterMove.type;
@@ -401,14 +402,16 @@ function attackType(move){
 }
 
 //attack type move
+//on opponent site, change hp value to player
 function attackOpponent(damage){
     var attack = opponentMonster.stats[1]
     var defense = playerMonster.stats[2]
-    var damageValue = (attack / defense * damage)
+    var damageValue = Math.ceil(attack / defense * damage)
     playerMonster.stats[0] = playerMonster.stats[0] - damageValue;
 }
 
 //status type move
+//on opponent site, change stat value to player
 function statusOpponent(stat, value){
     var statIndex;
     switch(stat){
@@ -434,12 +437,13 @@ function statusOpponent(stat, value){
 }
 
 //attack + status type move
+//on opponent site, change hp and status effect on player
 function attack_statusOpponent(damage, accuracy, status, chance){
     //damage accuracy?
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
     if(randAccuracy < (accuracy/10)){
-        playerMonster.stats[0] -= (opponentMonster.stats[1]/playerMonster.stats[2] * damage);
+        playerMonster.stats[0] -= Math.ceil(opponentMonster.stats[1]/playerMonster.stats[2] * damage);
         let randChance = Math.floor(Math.random() * 10);
         if(randChance < (chance/10)){
             //if status = burn, dealls 10% of the target's health as damage each turn
@@ -449,8 +453,9 @@ function attack_statusOpponent(damage, accuracy, status, chance){
 }
 
 //item type move
+//on opponent site, change hp value for opponent
 function itemsOpponent(heal){
-    if(opponentMonster.stsats[0] <= 100){
+    if(opponentMonster.stats[0] <= 100){
         opponentMonster.stats[0] += heal;
     }
     if(opponentMonster.stats[0] > 100){
@@ -465,22 +470,117 @@ function itemsOpponent(heal){
 //     }
 // }
 
+//determine what types of move is chose
+//status shows on player's site
+function attackTypePlayer(move){
+    var monsterMove = playerMonster.moves[move];
+    var moveType = monsterMove.type;
+    var damage = monsterMove["base-power"];
+    var effect = monsterMove.effect;
+    switch(moveType){
+        //attack
+        case 0:
+            attackPlayer(damage);
+            break;
+        //status
+        case 1:
+            statusPlayer(effect.stat, effect.value)
+            break;
+        //attack,status
+        case 2:
+            attack_statusPlayer(damage, monsterMove["base-accuracy"], effect.status, effect.chance);
+            break;
+        //items
+        case 3:
+            var limit = monsterMove.limit;
+            if(limit > 0){
+                itemsPlayer(effect.heal);
+                monsterMove.limit--;
+            }
+            break;
+    }
+    refreshStats();
+}
+
+//attack type move
+//on player site, change hp value for opponent
+function attackPlayer(damage){
+    var attack = playerMonster.stats[1]
+    var defense = opponentMonster.stats[2]
+    var damageValue = Math.ceil(attack / defense * damage)
+    opponentMonster.stats[0] = opponentMonster.stats[0] - damageValue;
+}
+
+//status type move
+//on player site, change stat value to opponent
+function statusPlayer(stat, value){
+    var statIndex;
+    switch(stat){
+        case "AT":
+            statIndex = 1;
+            break;
+        case "DF":
+            statIndex = 2;
+            break;
+        case "AC":
+            statIndex = 3;
+            break;
+        case "EV":
+            statIndex = 4;
+            break;
+        case "SP":
+            statIndex = 5;
+            break;
+        default:
+            console.log("Stat name is invalid")
+    }
+    opponentMonster.stats[statIndex] += parseInt(value);
+}
+
+//attack + status type move
+//on player site, change hp and status effect on opponent
+function attack_statusPlayer(damage, accuracy, status, chance){
+    //damage accuracy?
+    let randAccuracy = Math.floor(Math.random() * 10);
+    console.log(randAccuracy);
+    if(randAccuracy < (accuracy/10)){
+        opponentMonster.stats[0] -= Math.ceil(playerMonster.stats[1]/opponentMonster.stats[2] * damage);
+        let randChance = Math.floor(Math.random() * 10);
+        if(randChance < (chance/10)){
+            //if status = burn, dealls 10% of the target's health as damage each turn
+            //if status = freeze, prevents the target from acting for 1 turn
+        }
+    }
+}
+
+//item type move
+//on player site, chang hp value on player
+function itemsPlayer(heal){
+    if(playerMonster.stats[0] <= 100){
+        playerMonster.stats[0] += heal;
+    }
+    if(playerMonster.stats[0] > 100){
+        playerMonster.stats[0] = 100;
+    }
+}
+
 // Battle buttons
 move0Button.onclick = function () {
+    //checkType
     signal([2, 0]);
-    refreshStats();
+    attackTypePlayer(0);
 };
 move1Button.onclick = function () {
     signal([2, 1]);
-    refreshStats();
+    attackTypePlayer(1);
 };
 move2Button.onclick = function () {
     signal([2, 2]);
-    refreshStats();
+    attackTypePlayer(2);
 };
 move3Button.onclick = function () {
     signal([2, 3]);
-    refreshStats();
+    attackTypePlayer(3);
 };
 
 
