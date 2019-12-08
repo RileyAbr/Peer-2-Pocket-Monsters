@@ -48,6 +48,8 @@ let opponentMonster;
 let playerMonsterChoice = document.getElementById("login-monster-choice");
 let playerStatsValueLabels = document.getElementsByClassName("stats-value-player");
 let opponentStatsValueLabels = document.getElementsByClassName("stats-value-opponent");
+
+
 let playerMonsterSprite = document.getElementById("battle-monster-sprite-player");
 let opponentMonsterSprite = document.getElementById("battle-monster-sprite-opponent");
 let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
@@ -124,8 +126,15 @@ function refreshStats() {
 }
 
 function refreshHealthBar() {
+    //initialize both player's health to max
+    var playerMaxHealth = playerMonster.stats[0],
+    playerCurHealth = playerMaxHealth;
+    var opponentMaxHealth = opponentMonster.stats[0],
+    opponentCurHealth = opponentMaxHealth;
 
+    
 }
+
 
 function startBattle() {
     setUpBattle();

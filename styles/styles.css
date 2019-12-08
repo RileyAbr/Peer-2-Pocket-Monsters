@@ -393,7 +393,7 @@ body {
 }
 
 .battle-health-bounding-box {
-  background-color: #ccc;
+  background-color: darkslategray;
   height: 12px;
   width: 155px;
   border: solid 2px black;
