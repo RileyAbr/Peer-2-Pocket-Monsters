@@ -1,5 +1,7 @@
+// Data Imports
 import { monsterLibraryDB } from "./assets/monster-library.js";
 
+// PeerJS Variables
 var lastPeerId = null;
 var peer = null; // Own peer object
 var peerId = null;
@@ -11,13 +13,16 @@ var connectButton = document.getElementById("login-menu-submit");
 var roomId = document.getElementById("room-id-key-ingame");
 var stat = document.getElementById("stat");
 
+// Login variables
+let fadeTimer = 1650; // Controls when the login modal fades out
+let monsterChoiceDropdown = document.getElementById("login-monster-choice");
+
 // Message variables
 var message = document.getElementById("chat-messages");
 var sendMessageBox = document.getElementById("chat-send-message-input");
 var sendButton = document.getElementById("chat-send-message-button");
 let loginModal = document.getElementById("login-menu");
-// No html item
-// var clearMsgsButton = document.getElementById("clearMsgsButton");
+// var clearMsgsButton = document.getElementById("clearMsgsButton"); Does not currently exist
 
 // Battle system variables
 let monsterLibrary;
@@ -32,24 +37,33 @@ var move2Button = document.getElementById("battle-move-2");
 var move3Button = document.getElementById("battle-move-3");
 
 // System variables
-let fadeTimer = 1650; // Controls when the login modal fades out
-
 var systemString = "<span class=\"cueMsg\">System: </span>";
+
 
 // Helper functions
 function fadeModal(modal) {
     loginModal.style.display = "none"; //Wait two seconds before removing modal for animation to finish
 }
 
+function loadMonsterLibrary() {
+    monsterLibrary = monsterLibraryDB;
+
+    let monster;
+    for (monster of monsterLibrary) {
+        let monsterOption = document.createElement("option");
+        monsterOption.text = monster.name;
+        monsterChoiceDropdown.add(monsterOption);
+    }
+}
+
 function loadMonster(monsterChoice) {
     return monsterLibrary[monsterChoice];
 }
-
-////
+//////
 
 function initialize() {
     // Connect to monster data
-    monsterLibrary = monsterLibraryDB;
+    loadMonsterLibrary();
 
     // Create own peer object with connection to shared PeerJS server
     peer = new Peer(null, {
@@ -128,7 +142,8 @@ function join() {
         console.log("Connected to: " + conn.peer);
 
         // Load player monster data
-        playerMonster = loadMonster(0);
+        let playerMonsterChoice = document.getElementById("login-monster-choice");
+        playerMonster = loadMonster([playerMonsterChoice.selectedIndex]);
         opponentMonster = loadMonster(0);
         playerMonsterSprite.src = monsterSpriteURL + "back/" + playerMonster.id + ".png";
         opponentMonsterSprite.src = monsterSpriteURL + opponentMonster.id + ".png";
