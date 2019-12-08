@@ -32,7 +32,6 @@
   src: url("/assets/fonts/PKMN DP/pokemon-dp-pro-webfont.woff2") format("woff2"), url("/assets/fonts/PKMN DP/pokemon-dp-pro-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  font-size: 48;
 }
 
 /*
@@ -80,7 +79,8 @@ html {
 
 body {
   height: 100%;
-  font-family: 'pkmn_rbygsc';
+  font-family: 'pokmon_dp_proregular';
+  font-size: 1.75em;
 }
 
 /*
