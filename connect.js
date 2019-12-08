@@ -119,6 +119,12 @@ function refreshStats() {
         playerStatsValueLabels[i].innerHTML = playerMonster.stats[i];
         opponentStatsValueLabels[i].innerHTML = opponentMonster.stats[i];
     }
+
+    refreshHealthBar();
+}
+
+function refreshHealthBar() {
+
 }
 
 function startBattle() {
@@ -362,7 +368,7 @@ function signal(data) {
 .##.....##..##...##.....##.......##....##.......##......
 .########..##.....##....##.......##....##.......######..
 .##.....##.#########....##.......##....##.......##......
-.##.....##.##....   .##....##.......##....##.......##......
+.##.....##.##.....##....##.......##....##.......##......
 .########..##.....##....##.......##....########.########
 */
 //determine what types of move is chose
@@ -378,7 +384,7 @@ function attackType(move){
             break;
         //status
         case 1:
-            statusOpponent(effect.stat, effect.vaue)
+            statusOpponent(effect.stat, effect.value)
             break;
         //attack,status
         case 2:
