@@ -14,13 +14,20 @@ var clearMsgsButton = document.getElementById("clearMsgsButton");
 
 var hitButton = document.getElementById("hit");
 var healButton = document.getElementById("heal");
-var hit = document.getElementById("hit");
-var heal = document.getElementById("heal");
+// var hit = document.getElementById("hit");
+// var heal = document.getElementById("heal");
 
 var opponentHP = document.getElementById("opponentHP");
 var playerHP = document.getElementById("playerHP");
 
+var hpOpp = parseInt(document.getElementById("opponentHP").innerText);
+var hpPlay = parseInt(document.getElementById("playerHP").innerText);
+
+
 var cueString = "<span class=\"cueMsg\">Cue: </span>";
+
+var monsterData = "../assets/monster-library.js"
+var moveData = "../assets/moves-lookup.js"
 
 function initialize() {
     // Create own peer object with connection to shared PeerJS server
@@ -180,11 +187,11 @@ function ready() {
         console.log("Data recieved");
         switch (data) {
             case 'Hit for 10':
-                //hit();
+                hit();
                 addMessage(cueString + data);
                 break;
             case 'Heal for 10':
-                //heal();
+                heal();
                 addMessage(cueString + data);
                 break;
             default:
@@ -200,11 +207,13 @@ function ready() {
 }
 
 function hit() {
-    opponentHP.innerHTML = "HP ## -10";
+    playerHP.innerHTML = hpPlay - 10;
 }
 
+//use opponentHP because this will show on opponent's page
+//add our own hp means add opponent's opponent's hp
 function heal() {
-    playerHP.innerHTML = "HP ## +10";
+    opponentHP.innerHTML = hpOpp + 10;
 }
 
 function signal(sigName) {
@@ -216,9 +225,11 @@ function signal(sigName) {
 }
 
 hitButton.onclick = function () {
+    opponentHP.innerHTML = hpOpp -10;
     signal("Hit for 10");
 };
 healButton.onclick = function () {
+    playerHP.innerHTML = (hpPlay + 10);
     signal("Heal for 10");
 };
 
