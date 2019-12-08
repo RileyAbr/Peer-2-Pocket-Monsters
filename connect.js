@@ -255,8 +255,6 @@ function join() {
     conn.on('data', function (data) {
         switch (data[0]) {
             case 0: // Load Opponent Monster
-                // opponentMonster = Object.assign({}, loadMonster(data[1]));
-                // playerMonster = Object.assign({}, loadMonster([playerMonsterChoice.selectedIndex]));
                 opponentMonster = JSON.parse(JSON.stringify(loadMonster(data[1])));
                 playerMonster = JSON.parse(JSON.stringify(loadMonster([playerMonsterChoice.selectedIndex])));
                 signal([8, "Start"]);
@@ -400,7 +398,7 @@ function attackType(move){
             break;
         //attack,status
         case 2:
-            attack_statusOpponent(damage, monsterMove.base-accuracy, effect.status, effect.chance);
+            attack_statusOpponent(damage, monsterMove["base-accuracy"], effect.status, effect.chance);
             break;
         //items
         case 3:
@@ -428,16 +426,23 @@ function statusOpponent(stat, value){
     switch(stat){
         case "AT":
             statIndex = 1;
+            break;
         case "DF":
             statIndex = 2;
+            break;
         case "AC":
             statIndex = 3;
+            break;
         case "EV":
             statIndex = 4;
+            break;
         case "SP":
             statIndex = 5;
+            break;
+        default:
+            console.log("Stat name is invalid")
     }
-    playerMonster.stats[statIndex] += value;
+    playerMonster.stats[statIndex] += parseInt(value);
 }
 
 //attack + status type move
@@ -457,7 +462,12 @@ function attack_statusOpponent(damage, accuracy, status, chance){
 
 //item type move
 function itemsOpponent(heal){
-    opponentMonster.stats[0] += heal;
+    if(opponentMonster.stsats[0] <= 100){
+        opponentMonster.stats[0] += heal;
+    }
+    if(opponentMonster.stats[0] > 100){
+        opponentMonster.stats[0] = 100;
+    }
 }
 
 // function opponentFaint(){
