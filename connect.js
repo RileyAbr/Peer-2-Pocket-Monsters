@@ -34,10 +34,6 @@ var connectButton = document.getElementById("login-menu-submit");
 var roomId = document.getElementById("room-id-key-ingame");
 var stat = document.getElementById("stat");
 
-// Login variables
-let fadeTimer = 1650; // Controls when the login modal fades out
-let monsterChoiceDropdown = document.getElementById("login-monster-choice");
-
 // Message variables
 var message = document.getElementById("chat-messages");
 var sendMessageBox = document.getElementById("chat-send-message-input");
@@ -76,11 +72,12 @@ var systemString = "<span class=\"cueMsg\">System: </span>";
  
 */
 function fadeModal(modal) {
-    loginModal.style.display = "none"; //Wait two seconds before removing modal for animation to finish
+    loginModal.style.display = "none";
 }
 
 function loadMonsterLibrary() {
     monsterLibrary = monsterLibraryDB;
+    let monsterChoiceDropdown = document.getElementById("login-monster-choice");
 
     let monster;
     for (monster of monsterLibrary) {
@@ -106,6 +103,8 @@ function setUpBattle() {
 
     // Fade out login modal
     loginModal.style.opacity = 0;
+    let fadeTimer = 1650; // Controls when the login modal fades out
+    //Wait two seconds before removing modal for animation to finish
     setTimeout(fadeModal, fadeTimer);
 }
 
