@@ -117,11 +117,11 @@ function loadMonster(monsterChoice) {
 
 // Refreshes the stats on the webpage to match the data structures
 function refreshStats() {
-    let stat;
+    let i;
 
-    for (stat in playerMonster.stats) {
-        playerStatsValueLabels[stat].innerHTML = playerMonster.stats[stat];
-        opponentStatsValueLabels[stat].innerHTML = opponentMonster.stats[stat];
+    for (i = 0; i< playerMonster.stats.length; i++) {
+        playerStatsValueLabels[i].innerHTML = playerMonster.stats[i];
+        opponentStatsValueLabels[i].innerHTML = opponentMonster.stats[i];
     }
 }
 
@@ -291,10 +291,10 @@ function addMessage(msg) {
     message.scrollTop = newMessage.offsetHeight + newMessage.offsetTop;
 };
 
-function clearMessages() {
-    message.innerHTML = "";
-    addMessage("Msgs cleared");
-};
+// function clearMessages() {
+//     message.innerHTML = "";
+//     addMessage("Msgs cleared");
+// };
 
 // Listen for enter
 sendMessageBox.onkeypress = function (e) {
@@ -373,21 +373,21 @@ function attackType(move){
     switch(moveType){
         //attack
         case 0:
-            attack(damage);
+            attackOpponent(damage);
             break;
         //status
         case 1:
-            status(effect.stat, effect.value);
+            statusOpponent(effect.stat, effect.vaue)
             break;
         //attack,status
         case 2:
-            attack_status(damage, monsterMove.base-accuracy, effect.status, effect.chance);
+            attack_statusOpponent(damage, monsterMove.base-accuracy, effect.status, effect.chance);
             break;
         //items
         case 3:
             var limit = monsterMove.limit;
             if(limit > 0){
-                items(effect.heal);
+                itemsOpponent(effect.heal);
                 monsterMove.limit--;
             }
             break;
@@ -396,12 +396,15 @@ function attackType(move){
 }
 
 //attack type move
-function attack(damage){
-    opponentMonster.stats[0] += (playerMonster.stats[1]/opponentMonster.stats[2] * damage);
+function attackOpponent(damage){
+    var attack = opponentMonster.stats[1]
+    var defense = playerMonster.stats[2]
+    var damageValue = (attack / defense * damage)
+    playerMonster.stats[0] = playerMonster.stats[0] - damageValue;
 }
 
 //status type move
-function status(stat, value){
+function statusOpponent(stat, value){
     var statIndex;
     switch(stat){
         case "AT":
@@ -415,16 +418,16 @@ function status(stat, value){
         case "SP":
             statIndex = 5;
     }
-    opponentMonster.stats[statIndex] += value;
+    playerMonster.stats[statIndex] += value;
 }
 
 //attack + status type move
-function attack_status(damage, accuracy, status, chance){
+function attack_statusOpponent(damage, accuracy, status, chance){
     //damage accuracy?
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
     if(randAccuracy < (accuracy/10)){
-        opponentMonster.stats[0] += (playerMonster.stats[1]/opponentMonster.stats[2] * damage);
+        playerMonster.stats[0] -= (opponentMonster.stats[1]/playerMonster.stats[2] * damage);
         let randChance = Math.floor(Math.random() * 10);
         if(randChance < (chance/10)){
             //if status = burn, dealls 10% of the target's health as damage each turn
@@ -434,22 +437,33 @@ function attack_status(damage, accuracy, status, chance){
 }
 
 //item type move
-function items(heal){
-    playerMonster.stats[0] += heal;
+function itemsOpponent(heal){
+    opponentMonster.stats[0] += heal;
 }
+
+// function opponentFaint(){
+//     if(opponentMonster.stats[0] <= 0){
+//         return true;
+//         //message box shows message
+//     }
+// }
 
 // Battle buttons
 move0Button.onclick = function () {
     signal([2, 0]);
+    refreshStats();
 };
 move1Button.onclick = function () {
     signal([2, 1]);
+    refreshStats();
 };
 move2Button.onclick = function () {
     signal([2, 2]);
+    refreshStats();
 };
 move3Button.onclick = function () {
     signal([2, 3]);
+    refreshStats();
 };
 
 
