@@ -45,6 +45,7 @@ let loginModal = document.getElementById("login-menu");
 let monsterLibrary;
 let playerMonster;
 let opponentMonster;
+let playerMonsterChoice = document.getElementById("login-monster-choice");
 let playerStatsValueLabels = document.getElementsByClassName("stats-value-player");
 let opponentStatsValueLabels = document.getElementsByClassName("stats-value-opponent");
 let playerMonsterSprite = document.getElementById("battle-monster-sprite-player");
@@ -91,9 +92,11 @@ function loadMonsterLibrary() {
 
 // Runs when the players connect to inititally set up the game
 function setUpBattle() {
+    // conn.send([0, playerMonsterChoice.selectedIndex]);
+
     // Load player monster data
-    let playerMonsterChoice = document.getElementById("login-monster-choice");
     playerMonster = loadMonster([playerMonsterChoice.selectedIndex]);
+    //opponentMonster = loadMonster(0);
 
     //  Load Sprites
     playerMonsterSprite.src = monsterSpriteURL + "back/" + playerMonster.id + ".png";
@@ -124,8 +127,14 @@ function refreshStats() {
     }
 }
 
-function startBattle(data) {
+function setUpOpponentMonster(data) {
     opponentMonster = loadMonster(data);
+    opponentMonsterSprite.src = monsterSpriteURL + opponentMonster.id + ".png";
+}
+
+function startBattle() {
+    setUpBattle();
+    //disableButtons(moveButtons);
 }
 
 function endBattle() {
@@ -186,12 +195,8 @@ function initialize() {
         console.log("Connected to: " + conn.peer);
         stat.innerHTML = "Connected"
 
-        let playerMonsterChoice = document.getElementById("login-monster-choice");
-        conn.send([0, playerMonsterChoice.selectedIndex]);
+        signal([0, [playerMonsterChoice.selectedIndex]]);
 
-        setUpBattle();
-
-        disableButtons(moveButtons);
         ready();
     });
 
@@ -235,22 +240,42 @@ function join() {
         stat.innerHTML = "Connected to: " + conn.peer;
         console.log("Connected to: " + conn.peer);
 
-        let playerMonsterChoice = document.getElementById("login-monster-choice");
-        conn.send([0, playerMonsterChoice.selectedIndex]);
-        setUpBattle();
 
-        // Check URL params for comamnds that should be sent immediately
-        var command = getUrlParam("command");
-        if (command)
-            conn.send(command);
 
+        // // Check URL params for comamnds that should be sent immediately
+        // var command = getUrlParam("command");
+        // if (command)
+        //     conn.send(command);
+
+        
+        signal([0, playerMonsterChoice.selectedIndex]);
+        // setUpBattle();
     });
 
     // // Handle incoming data (messages only since this is the signal sender)
     conn.on('data', function (data) {
-        if (data[0] == 1) {
-            addMessage("<span class=\"peerMsg\">Peer:</span> " + data);
-        }
+        switch (data[0]) {
+            case 0: // Load Opponent Monster
+                opponentMonster = loadMonster(data[1]);
+                playerMonster = loadMonster([playerMonsterChoice.selectedIndex]);
+                signal([8, "Start"]);
+                break;
+            case 1: // Chat
+                addMessage("<span class=\"selfMsg\">Peer: </span>" + data[1]);
+                break;
+            case 2: // Attack
+                attackType(data[1]);
+                break;
+            case 8:
+                startBattle(data[1]);
+                break;
+            case 9: //End Game
+                endBattle(data[1]);
+                break;
+            default:
+                console.log("Message is invalid");
+                break;
+        };
     });
 
     conn.on('close', function () {
@@ -327,14 +352,20 @@ function ready() {
     conn.on('data', function (data) {
         console.log("Data recieved");
         switch (data[0]) {
-            case 0: // Start battle
-                startBattle(data[1]);
+            case 0: // Load Monsters
+                opponentMonster = loadMonster(data[1]);
+                playerMonster = loadMonster([playerMonsterChoice.selectedIndex]);
+                signal([0, playerMonsterChoice.selectedIndex]);
+                signal([8, "Start"]);
                 break;
             case 1: // Chat
                 addMessage("<span class=\"selfMsg\">Peer: </span>" + data[1]);
                 break;
             case 2: // Attack
                 attackType(data[1]);
+                break;
+            case 8:
+                startBattle(data[1]);
                 break;
             case 9: //End Game
                 endBattle(data[1]);
