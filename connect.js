@@ -119,6 +119,12 @@ function refreshStats() {
         playerStatsValueLabels[i].innerHTML = playerMonster.stats[i];
         opponentStatsValueLabels[i].innerHTML = opponentMonster.stats[i];
     }
+
+    refreshHealthBar();
+}
+
+function refreshHealthBar() {
+
 }
 
 function startBattle() {
@@ -360,7 +366,7 @@ function signal(data) {
 .##.....##..##...##.....##.......##....##.......##......
 .########..##.....##....##.......##....##.......######..
 .##.....##.#########....##.......##....##.......##......
-.##.....##.##....   .##....##.......##....##.......##......
+.##.....##.##.....##....##.......##....##.......##......
 .########..##.....##....##.......##....########.########
 */
 //determine what types of move is chose
