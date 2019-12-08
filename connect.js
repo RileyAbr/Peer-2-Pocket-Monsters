@@ -316,21 +316,21 @@ sendButton.onclick = function () {
 function ready() {
     conn.on('data', function (data) {
         console.log("Data recieved");
-        switch (data) {
-            case 'Move 0':
+        switch (data[0]) {
+            case 0: // Start battle
                 addMessage(systemString + data);
                 break;
-            case 'Move 1':
+            case 1: // Chat
                 addMessage(systemString + data);
                 break;
-            case 'Move 2':
-                addMessage(systemString + data);
+            case 2: // Attack
+                attackType(data[1]);
                 break;
-            case 'Move 3':
+            case 9: //End Game
                 addMessage(systemString + data);
                 break;
             default:
-                addMessage("<span class=\"peerMsg\">Peer: </span>" + data);
+                console.log("Message is invalid");
                 break;
         };
     });
@@ -374,15 +374,6 @@ move2Button.onclick = function () {
 move3Button.onclick = function () {
     signal([2, 3]);
 };
-
-
-function recieve(friendCode) {
-
-}
-
-function send(friendCode) {
-
-}
 
 
 /*
