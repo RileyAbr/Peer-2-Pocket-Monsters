@@ -78,7 +78,7 @@ let monsterLibraryDB =
                 },
                 {
                     "name": "Bubble",
-                    "type": 1,
+                    "type": 2,
                     "base-power": 40,
                     "base-accuracy": 70,
                     "effect": {
