@@ -368,7 +368,7 @@ function signal(data) {
 function attackType(move){
     var monsterMove = playerMonster.moves[move];
     var moveType = monsterMove.type;
-    var damage = monsterMove.base-power;
+    var damage = monsterMove["base-power"];
     var effect = monsterMove.effect;
     switch(moveType){
         //attack
@@ -422,6 +422,7 @@ function status(stat, value){
 function attack_status(damage, accuracy, status, chance){
     //damage accuracy?
     let randAccuracy = Math.floor(Math.random() * 10);
+    console.log(randAccuracy);
     if(randAccuracy < (accuracy/10)){
         opponentMonster.stats[0] += (playerMonster.stat[1]/opponentMonster.stat[2] * damage);
         let randChance = Math.floor(Math.random() * 10);
