@@ -397,7 +397,7 @@ function attackType(move){
 
 //attack type move
 function attack(damage){
-    opponentMonster.stats[0] += (playerMonster.stat[1]/opponentMonster.stat[2] * damage);
+    opponentMonster.stats[0] += (playerMonster.stats[1]/opponentMonster.stats[2] * damage);
 }
 
 //status type move
@@ -415,7 +415,7 @@ function status(stat, value){
         case "SP":
             statIndex = 5;
     }
-    opponentMonster.stat[statIndex] += value;
+    opponentMonster.stats[statIndex] += value;
 }
 
 //attack + status type move
@@ -424,7 +424,7 @@ function attack_status(damage, accuracy, status, chance){
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
     if(randAccuracy < (accuracy/10)){
-        opponentMonster.stats[0] += (playerMonster.stat[1]/opponentMonster.stat[2] * damage);
+        opponentMonster.stats[0] += (playerMonster.stats[1]/opponentMonster.stats[2] * damage);
         let randChance = Math.floor(Math.random() * 10);
         if(randChance < (chance/10)){
             //if status = burn, dealls 10% of the target's health as damage each turn
