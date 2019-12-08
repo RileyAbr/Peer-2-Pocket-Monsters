@@ -51,14 +51,12 @@ let opponentStatsValueLabels = document.getElementsByClassName("stats-value-oppo
 let playerMonsterSprite = document.getElementById("battle-monster-sprite-player");
 let opponentMonsterSprite = document.getElementById("battle-monster-sprite-opponent");
 let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+// Battle Buttons
 var moveButtons = document.getElementsByClassName("battle-controller-button");
 var move0Button = document.getElementById("battle-move-0");
 var move1Button = document.getElementById("battle-move-1");
 var move2Button = document.getElementById("battle-move-2");
 var move3Button = document.getElementById("battle-move-3");
-
-// System variables
-var systemString = "<span class=\"cueMsg\">System: </span>";
 
 
 /*
@@ -136,7 +134,6 @@ function loadButtonsDesc(buttons) {
     for (let i = 0; i < buttons.length; i++) {
         console.log(buttons[i]);
         buttons[i].children[0].innerHTML = playerMonster.moves[i].name;
-        buttons[i].children[1].innerHTML = playerMonster.moves[i].desc;
     }
 }
 
@@ -368,7 +365,6 @@ function signal(data) {
     if (conn.open) {
         conn.send(data);
         console.log(data + " signal sent");
-        // addMessage(systemString + sigName);
     }
 }
 
@@ -479,6 +475,7 @@ function itemsOpponent(heal){
 
 // Battle buttons
 move0Button.onclick = function () {
+    
     signal([2, 0]);
     refreshStats();
 };
