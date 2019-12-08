@@ -12,8 +12,8 @@ let monsterLibraryDB =
                 100,    //EV
                 5       //SP
             ],
-            "moves": {
-                "move0": {
+            "moves": [
+                {
                     "name": "Tackle",
                     "type": 0,
                     "base-power": 40,
@@ -21,7 +21,7 @@ let monsterLibraryDB =
                     "effect": null,
                     "limit": null
                 },
-                "move1": {
+                {
                     "name": "Tail Whip",
                     "type": 1,
                     "base-power": 0,
@@ -32,7 +32,7 @@ let monsterLibraryDB =
                     },
                     "limit": null
                 },
-                "move2": {
+                {
                     "name": "Ember",
                     "type": 2,
                     "base-power": 30,
@@ -43,7 +43,7 @@ let monsterLibraryDB =
                     },
                     "limit": null
                 },
-                "move3": {
+                {
                     "name": "Potion",
                     "type": 3,
                     "base-power": 0,
@@ -53,7 +53,7 @@ let monsterLibraryDB =
                     },
                     "limit": 1
                 }
-            }
+            ]
         },
         {
             "name": "Poliwhirl",
@@ -67,8 +67,8 @@ let monsterLibraryDB =
                 100,    //EV
                 5       //SP
             ],
-            "moves": {
-                "move0": {
+            "moves": [
+                {
                     "name": "Pound",
                     "type": 0,
                     "base-power": 40,
@@ -76,7 +76,7 @@ let monsterLibraryDB =
                     "effect": null,
                     "limit": null
                 },
-                "move1": {
+                {
                     "name": "Bubble",
                     "type": 1,
                     "base-power": 40,
@@ -87,7 +87,7 @@ let monsterLibraryDB =
                     },
                     "limit": null
                 },
-                "move2": {
+                {
                     "name": "Ice Ball",
                     "type": 2,
                     "base-power": 30,
@@ -98,7 +98,7 @@ let monsterLibraryDB =
                     },
                     "limit": null
                 },
-                "move3": {
+                {
                     "name": "Potion",
                     "type": 3,
                     "base-power": 0,
@@ -108,7 +108,7 @@ let monsterLibraryDB =
                     },
                     "limit": 1
                 }
-            }
+            ]
         }
     ];
 
