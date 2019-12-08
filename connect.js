@@ -296,7 +296,6 @@ sendMessageBox.onkeypress = function (e) {
     if (char == '13')
         sendButton.click();
 };
-
 // Send message
 sendButton.onclick = function () {
     if (conn.open) {
@@ -318,16 +317,16 @@ function ready() {
         console.log("Data recieved");
         switch (data[0]) {
             case 0: // Start battle
-                addMessage(systemString + data);
+                startBattle(data[1]);
                 break;
             case 1: // Chat
-                addMessage(systemString + data);
+                addMessage(data[1]);
                 break;
             case 2: // Attack
                 attackType(data[1]);
                 break;
             case 9: //End Game
-                addMessage(systemString + data);
+                endBattle(data[1]);
                 break;
             default:
                 console.log("Message is invalid");
