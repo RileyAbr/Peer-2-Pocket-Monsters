@@ -94,7 +94,6 @@ function setUpBattle() {
     // Load player monster data
     let playerMonsterChoice = document.getElementById("login-monster-choice");
     playerMonster = loadMonster([playerMonsterChoice.selectedIndex]);
-    opponentMonster = loadMonster(0);
 
     //  Load Sprites
     playerMonsterSprite.src = monsterSpriteURL + "back/" + playerMonster.id + ".png";
@@ -125,8 +124,8 @@ function refreshStats() {
     }
 }
 
-function startBattle() {
-
+function startBattle(data) {
+    opponentMonster = loadMonster(data);
 }
 
 function endBattle() {
@@ -187,6 +186,9 @@ function initialize() {
         console.log("Connected to: " + conn.peer);
         stat.innerHTML = "Connected"
 
+        let playerMonsterChoice = document.getElementById("login-monster-choice");
+        conn.send([0, playerMonsterChoice.selectedIndex]);
+
         setUpBattle();
 
         disableButtons(moveButtons);
@@ -233,6 +235,8 @@ function join() {
         stat.innerHTML = "Connected to: " + conn.peer;
         console.log("Connected to: " + conn.peer);
 
+        let playerMonsterChoice = document.getElementById("login-monster-choice");
+        conn.send([0, playerMonsterChoice.selectedIndex]);
         setUpBattle();
 
         // Check URL params for comamnds that should be sent immediately
