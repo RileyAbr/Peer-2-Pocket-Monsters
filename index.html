@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body onload="randombg()">
 
     <!--
  
@@ -83,7 +83,7 @@
  ##     ## ##     ##    ##       ##    ##       ##       
  ########  ##     ##    ##       ##    ######## ######## 
  
--->
+--> 
         <div id="battle-column" class="columns">
             <div id="battle-controller">
                 <div id="battle-scence">
@@ -245,11 +245,11 @@
                 </div>
             </div>
         </div>
-
+    </div>
         <!-- Load JS files after DOM elements for performance -->
         <script src="https://unpkg.com/peerjs@1.0.0/dist/peerjs.min.js"></script>
         <script src="connect.js" type="module"></script>
-    </div>
+        <script src="randombg.js"></script>
 </body>
 
 </html>
