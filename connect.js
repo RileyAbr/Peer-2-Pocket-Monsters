@@ -99,6 +99,9 @@ function setUpBattle() {
     // Load stats for the first time
     refreshStats();
 
+    // Load moves to buttons
+    loadButtonsDesc(moveButtons);
+
     // Fade out login modal
     loginModal.style.opacity = 0;
     let fadeTimer = 1650; // Controls when the login modal fades out
@@ -127,13 +130,14 @@ function refreshHealthBar() {
 
 }
 
-function startBattle() {
-    setUpBattle();
-    //disableButtons(moveButtons);
-}
-
-function endBattle() {
-    
+// 
+function loadButtonsDesc(buttons) {
+    let button;
+    for (let i = 0; i < buttons.length; i++) {
+        console.log(buttons[i]);
+        buttons[i].children[0].innerHTML = playerMonster.moves[i].name;
+        buttons[i].children[1].innerHTML = playerMonster.moves[i].desc;
+    }
 }
 
 // Disables buttons when it is not the players turn
@@ -144,6 +148,14 @@ function disableButtons(buttons) {
     }
 }
 
+function startBattle() {
+    setUpBattle();
+    //disableButtons(moveButtons);
+}
+
+function endBattle() {
+    
+}
 
 /*
 ..######...#######..##....##.##....##.########..######..########
