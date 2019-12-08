@@ -92,12 +92,6 @@ function loadMonsterLibrary() {
 
 // Runs when the players connect to inititally set up the game
 function setUpBattle() {
-    // conn.send([0, playerMonsterChoice.selectedIndex]);
-
-    // Load player monster data
-    playerMonster = loadMonster([playerMonsterChoice.selectedIndex]);
-    //opponentMonster = loadMonster(0);
-
     //  Load Sprites
     playerMonsterSprite.src = monsterSpriteURL + "back/" + playerMonster.id + ".png";
     opponentMonsterSprite.src = monsterSpriteURL + opponentMonster.id + ".png";
@@ -125,11 +119,6 @@ function refreshStats() {
         playerStatsValueLabels[stat].innerHTML = playerMonster.stats[stat];
         opponentStatsValueLabels[stat].innerHTML = opponentMonster.stats[stat];
     }
-}
-
-function setUpOpponentMonster(data) {
-    opponentMonster = loadMonster(data);
-    opponentMonsterSprite.src = monsterSpriteURL + opponentMonster.id + ".png";
 }
 
 function startBattle() {
@@ -239,25 +228,17 @@ function join() {
     conn.on('open', function () {
         stat.innerHTML = "Connected to: " + conn.peer;
         console.log("Connected to: " + conn.peer);
-
-
-
-        // // Check URL params for comamnds that should be sent immediately
-        // var command = getUrlParam("command");
-        // if (command)
-        //     conn.send(command);
-
         
         signal([0, playerMonsterChoice.selectedIndex]);
         // setUpBattle();
     });
 
-    // // Handle incoming data (messages only since this is the signal sender)
+    // Sender Peer message parser
     conn.on('data', function (data) {
         switch (data[0]) {
             case 0: // Load Opponent Monster
-                opponentMonster = loadMonster(data[1]);
-                playerMonster = loadMonster([playerMonsterChoice.selectedIndex]);
+                opponentMonster = Object.assign({}, loadMonster(data[1]));
+                playerMonster = Object.assign({}, loadMonster([playerMonsterChoice.selectedIndex]));
                 signal([8, "Start"]);
                 break;
             case 1: // Chat
@@ -281,23 +262,6 @@ function join() {
     conn.on('close', function () {
         stat.innerHTML = "Connection closed";
     });
-};
-
-/**
- * Get first "GET style" parameter from href.
- * This enables delivering an initial command upon page load.
- *
- * Would have been easier to use location.hash.
- */
-function getUrlParam(name) {
-    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-    var regexS = "[\\?&]" + name + "=([^&#]*)";
-    var regex = new RegExp(regexS);
-    var results = regex.exec(window.location.href);
-    if (results == null)
-        return null;
-    else
-        return results[1];
 };
 
 function addMessage(msg) {
@@ -353,8 +317,8 @@ function ready() {
         console.log("Data recieved");
         switch (data[0]) {
             case 0: // Load Monsters
-                opponentMonster = loadMonster(data[1]);
-                playerMonster = loadMonster([playerMonsterChoice.selectedIndex]);
+                opponentMonster = Object.assign({}, loadMonster(data[1]));
+                playerMonster = Object.assign({}, loadMonster([playerMonsterChoice.selectedIndex]));
                 signal([0, playerMonsterChoice.selectedIndex]);
                 signal([8, "Start"]);
                 break;
