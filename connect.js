@@ -28,9 +28,12 @@ let loginModal = document.getElementById("login-menu");
 let monsterLibrary;
 let playerMonster;
 let opponentMonster;
+let playerStatsValueLabels = document.getElementsByClassName("stats-value-player");
+let opponentStatsValueLabels = document.getElementsByClassName("stats-value-opponent");
 let playerMonsterSprite = document.getElementById("battle-monster-sprite-player");
 let opponentMonsterSprite = document.getElementById("battle-monster-sprite-opponent");
 let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+var moveButtons = document.getElementsByClassName("battle-controller-button");
 var move0Button = document.getElementById("battle-move-0");
 var move1Button = document.getElementById("battle-move-1");
 var move2Button = document.getElementById("battle-move-2");
@@ -58,6 +61,22 @@ function loadMonsterLibrary() {
 
 function loadMonster(monsterChoice) {
     return monsterLibrary[monsterChoice];
+}
+
+function loadInitialStats() {
+    let stat;
+
+    for (stat in playerMonster.stats) {
+        playerStatsValueLabels[stat].innerHTML = playerMonster.stats[stat];
+        opponentStatsValueLabels[stat].innerHTML = opponentMonster.stats[stat];
+    }
+}
+
+function disableButtons(buttons) {
+    let button;
+    for (button of buttons) {
+        button.disabled = true;
+    }
 }
 //////
 
@@ -98,6 +117,7 @@ function initialize() {
         stat.innerHTML = "Connected"
         loginModal.style.opacity = 0;
         setTimeout(fadeModal, fadeTimer); //Wait two seconds before removing modal for animation to finish
+        disableButtons(moveButtons);
         ready();
     });
 
@@ -147,7 +167,7 @@ function join() {
         opponentMonster = loadMonster(0);
         playerMonsterSprite.src = monsterSpriteURL + "back/" + playerMonster.id + ".png";
         opponentMonsterSprite.src = monsterSpriteURL + opponentMonster.id + ".png";
-        console.log(playerMonster);
+        loadInitialStats();
 
 
         loginModal.style.opacity = 0;
@@ -162,7 +182,9 @@ function join() {
 
     // // Handle incoming data (messages only since this is the signal sender)
     conn.on('data', function (data) {
-        addMessage("<span class=\"peerMsg\">Peer:</span> " + data);
+        if (data[0] == 9) {
+            addMessage("<span class=\"peerMsg\">Peer:</span> " + data);
+        }
     });
 
     conn.on('close', function () {
@@ -224,7 +246,7 @@ sendMessageBox.onkeypress = function (e) {
 // Send message
 sendButton.onclick = function () {
     if (conn.open) {
-        var msg = sendMessageBox.value;
+        var msg = [9, sendMessageBox.value];
         sendMessageBox.value = "";
         conn.send(msg);
         console.log("Sent: " + msg)

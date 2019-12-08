@@ -314,6 +314,12 @@ body {
     border: none;
     @include grey-gradient-button;
     @include angled-corners;
+
+    &:disabled,
+    [disabled] {
+        opacity: 0.7;
+        cursor: default;
+    }
 }
 
 /*
