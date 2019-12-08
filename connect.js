@@ -237,8 +237,10 @@ function join() {
     conn.on('data', function (data) {
         switch (data[0]) {
             case 0: // Load Opponent Monster
-                opponentMonster = Object.assign({}, loadMonster(data[1]));
-                playerMonster = Object.assign({}, loadMonster([playerMonsterChoice.selectedIndex]));
+                // opponentMonster = Object.assign({}, loadMonster(data[1]));
+                // playerMonster = Object.assign({}, loadMonster([playerMonsterChoice.selectedIndex]));
+                opponentMonster = JSON.parse(JSON.stringify(loadMonster(data[1])));
+                playerMonster = JSON.parse(JSON.stringify(loadMonster([playerMonsterChoice.selectedIndex])));
                 signal([8, "Start"]);
                 break;
             case 1: // Chat
@@ -317,8 +319,8 @@ function ready() {
         console.log("Data recieved");
         switch (data[0]) {
             case 0: // Load Monsters
-                opponentMonster = Object.assign({}, loadMonster(data[1]));
-                playerMonster = Object.assign({}, loadMonster([playerMonsterChoice.selectedIndex]));
+                opponentMonster = JSON.parse(JSON.stringify(loadMonster(data[1])));
+                playerMonster = JSON.parse(JSON.stringify(loadMonster([playerMonsterChoice.selectedIndex])));
                 signal([0, playerMonsterChoice.selectedIndex]);
                 signal([8, "Start"]);
                 break;
