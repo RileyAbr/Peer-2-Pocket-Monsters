@@ -55,6 +55,8 @@ let playerMonsterSprite = document.getElementById("battle-monster-sprite-player"
 let opponentMonsterSprite = document.getElementById("battle-monster-sprite-opponent");
 let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 var moveButtons = document.getElementsByClassName("battle-controller-button");
+let moveButtonsNames = document.getElementsByClassName("battle-move-name");
+let moveButtonsDesc = document.getElementsByClassName("battle-move-desc");
 var move0Button = document.getElementById("battle-move-0");
 var move1Button = document.getElementById("battle-move-1");
 var move2Button = document.getElementById("battle-move-2");
@@ -62,7 +64,7 @@ var move3Button = document.getElementById("battle-move-3");
 
 // System variables
 var systemString = "<span class=\"cueMsg\">System: </span>";
-
+let noBreakingSpace = "\u00A0"
 
 /*
  
@@ -124,6 +126,7 @@ function refreshStats() {
     }
 
     refreshHealthBar();
+    refreshButtons();
 }
 
 function refreshHealthBar() {
@@ -137,8 +140,37 @@ function refreshHealthBar() {
 }
 
 function refreshButtons() {
-    for (i = 0; i < buttons.length; i++) {
-        buttons[i].children[0] = playerMonster.moves[i].name;
+    let moves = playerMonster.moves;
+
+    let i = 0;
+    for (i = 0; i < moveButtons.length; i++) {
+        moveButtons[i].children[0].src = "/assets/symbols/" + moves[i].type + ".png";
+        moveButtonsNames[i].innerHTML = moves[i].name;
+
+        switch (moves[i].type) {
+            case 0:
+                moveButtonsDesc[0 + (3 * i)].innerHTML += moves[i]["base-power"];
+                moveButtonsDesc[1 + (3 * i)].innerHTML += moves[i]["base-accuracy"];
+                moveButtonsDesc[2 + (3 * i)].innerHTML = noBreakingSpace;
+                break;
+            case 1:
+                moveButtonsDesc[0 + (3 * i)].innerHTML = noBreakingSpace;
+                moveButtonsDesc[1 + (3 * i)].innerHTML += moves[i]["base-accuracy"];
+                moveButtonsDesc[2 + (3 * i)].innerHTML = "Effect: " + moves[i]["effect"]["stat"] + " " + moves[i]["effect"]["value"];
+                break;
+            case 2:
+                moveButtonsDesc[0 + (3 * i)].innerHTML += moves[i]["base-power"];
+                moveButtonsDesc[1 + (3 * i)].innerHTML += moves[i]["base-accuracy"];
+                let effectKeys = Object.keys(moves[i]["effect"]);
+                moveButtonsDesc[2 + (3 * i)].innerHTML = "Effect: " + moves[i]["effect"][effectKeys[0]] + " " + moves[i]["effect"][effectKeys[1]] + ((effectKeys[1] == "chance") ? "% Chance" : "");
+                break;
+            case 3:
+                moveButtonsDesc[0 + (3 * i)].innerHTML = "Heal: " + moves[i]["effect"]["heal"];
+                moveButtonsDesc[1 + (3 * i)].innerHTML = "Uses: " + moves[i]["limit"];
+                moveButtonsDesc[2 + (3 * i)].innerHTML = noBreakingSpace;
+                break;
+
+        }
     }
 }
 

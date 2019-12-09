@@ -360,6 +360,7 @@ body {
     font-size: 0.7em;
     @media screen and (min-width: $desktop-min-width) {
         font-size: 0.9em;
+        text-decoration: underline;
     }
 }
 
