@@ -79,7 +79,7 @@ html {
 
 body {
   height: 100%;
-  font-family: 'pokmon_dp_proregular';
+  font-family: "pokmon_dp_proregular";
   font-size: 1.95em;
 }
 
@@ -460,6 +460,13 @@ body {
   opacity: 0.9;
 }
 
+@media screen and (min-width: 700px) {
+  #pokeball-turn-indicator {
+    width: 50px;
+    height: 50px;
+  }
+}
+
 #battle-controller-button-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -482,12 +489,55 @@ body {
   background: linear-gradient(0deg, #e2e2e2 0%, #e2e2e2 43%, #eee 43%, #eee 57%, #fff 57%);
   -webkit-clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
           clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .battle-controller-button:disabled,
 .battle-controller-button [disabled] {
   opacity: 0.6;
   cursor: default;
+}
+
+.battle-move-symbol {
+  width: 15%;
+  height: auto;
+}
+
+.battle-move-wrapper {
+  width: 50%;
+  text-align: left;
+}
+
+.battle-move-name {
+  font-size: 0.7em;
+}
+
+@media screen and (min-width: 992px) {
+  .battle-move-name {
+    font-size: 0.9em;
+  }
+}
+
+.battle-move-desc {
+  font-size: 0.4em;
+}
+
+@media screen and (min-width: 992px) {
+  .battle-move-desc {
+    font-size: 0.7em;
+  }
 }
 
 /*
@@ -502,6 +552,7 @@ body {
  
 */
 #stats-column {
+  height: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto;
@@ -557,7 +608,7 @@ body {
 }
 
 .stats-row {
-  margin: 15px;
+  margin: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

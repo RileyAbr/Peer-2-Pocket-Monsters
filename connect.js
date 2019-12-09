@@ -136,14 +136,10 @@ function refreshHealthBar() {
 
 }
 
-
-function startBattle() {
-    setUpBattle();
-    //disableButtons(moveButtons);
-}
-
-function endBattle() {
-
+function refreshButtons() {
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].children[0] = playerMonster.moves[i].name;
+    }
 }
 
 // Disables buttons when it is not the players turn
@@ -154,6 +150,14 @@ function disableButtons(buttons) {
     }
 }
 
+function startBattle() {
+    setUpBattle();
+    //disableButtons(moveButtons);
+}
+
+function endBattle() {
+
+}
 
 /*
 ..######...#######..##....##.##....##.########..######..########
@@ -463,10 +467,10 @@ function attack_statusOpponent(damage, accuracy, status, chance) {
 
 //item type move
 function itemsOpponent(heal) {
-    if(opponentMonster.stats[0] < 100){
+    if (opponentMonster.stats[0] < 100) {
         opponentMonster.stats[0] += heal;
-    }        
-    if(opponentMonster.stats[0] > 100)
+    }
+    if (opponentMonster.stats[0] > 100)
         opponentMonster.stats[0] = 100;
 }
 
@@ -558,9 +562,9 @@ function attack_statusPlayer(damage, accuracy, status, chance) {
 
 //item type move
 function itemsPlayer(heal) {
-    if(playerMonster.stats[0] < 100)
+    if (playerMonster.stats[0] < 100)
         playerMonster.stats[0] += heal;
-    if(playerMonster.stats[0] > 100)
+    if (playerMonster.stats[0] > 100)
         playerMonster.stats[0] = 100;
 }
 

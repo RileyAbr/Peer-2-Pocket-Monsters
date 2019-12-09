@@ -35,7 +35,7 @@
             <br>
             <br>
             <h1>Your Battle ID: <span id="room-key"></span></h1>
-            <input type="text" name="" id="receiver-id-input" autocomplete = "off">
+            <input type="text" name="" id="receiver-id-input" autocomplete="off">
             <select name="" id="login-monster-choice">
                 <!-- Options load in from monster library -->
             </select>
@@ -83,7 +83,7 @@
  ##     ## ##     ##    ##       ##    ##       ##       
  ########  ##     ##    ##       ##    ######## ######## 
  
---> 
+-->
         <div id="battle-column" class="columns">
             <div id="battle-controller">
                 <div id="battle-scence">
@@ -98,7 +98,7 @@
                                         <div class="health-bar-blue"></div> -->
                                         <div class="battle-health-bar"></div>
                                     </div>
-                                    <span id = "battle-health-bar-value-opponent">100</span>/100
+                                    <span id="battle-health-bar-value-opponent">100</span>/100
                                 </div>
                             </div>
                             <div class="battle-monster">
@@ -152,23 +152,48 @@
                                 <div class="battle-health-bounding-box">
                                     <div class="battle-health-bar"></div>
                                 </div>
-                                <span id = "battle-health-bar-value-player">100</span>/100
+                                <span id="battle-health-bar-value-player">100</span>/100
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Icons made by Freepik from www.flaticon.com -->
                 <div id="battle-controller-button-wrapper">
                     <button id="battle-move-0" class="battle-controller-button">
-                        <h5>Move 0</h5>
+                        <img class="battle-move-symbol" src="/assets/img/symbols/attack.png" alt="">
+                        <div class="battle-move-wrapper">
+                            <h5 class="battle-move-name">Move 0</h5>
+                            <h6 class="battle-move-desc">Power: <span id="battle-move0-power"></span></h6>
+                            <h6 class="battle-move-desc">Accuracy: <span id="battle-move0-accuracy"></span></h6>
+                            <h6 class="battle-move-desc">Effect: <span id="battle-move0-effect"></span></h6>
+                        </div>
                     </button>
                     <button id="battle-move-1" class="battle-controller-button">
-                        <h5>Move 0</h5>
+                        <img class="battle-move-symbol" src="/assets/img/symbols/attack.png" alt="">
+                        <div class="battle-move-wrapper">
+                            <h5 class="battle-move-name">Move 0</h5>
+                            <h6 class="battle-move-desc">Power: <span id="battle-move1-power"></span></h6>
+                            <h6 class="battle-move-desc">Accuracy: <span id="battle-move1-accuracy"></span></h6>
+                            <h6 class="battle-move-desc">Effect: <span id="battle-move1-effect"></span></h6>
+                        </div>
                     </button>
                     <button id="battle-move-2" class="battle-controller-button">
-                        <h5>Move 0</h5>
+                        <img class="battle-move-symbol" src="/assets/img/symbols/attack.png" alt="">
+                        <div class="battle-move-wrapper">
+                            <h5 class="battle-move-name">Move 0</h5>
+                            <h6 class="battle-move-desc">Power: <span id="battle-move2-power"></span></h6>
+                            <h6 class="battle-move-desc">Accuracy: <span id="battle-move2-accuracy"></span></h6>
+                            <h6 class="battle-move-desc">Effect: <span id="battle-move0-effect"></span></h6>
+                        </div>
                     </button>
                     <button id="battle-move-3" class="battle-controller-button">
-                        <h5>Move 0</h5>
+                        <img class="battle-move-symbol" src="/assets/img/symbols/attack.png" alt="">
+                        <div class="battle-move-wrapper">
+                            <h5 class="battle-move-name">Move 0</h5>
+                            <h6 class="battle-move-desc">Power: <span id="battle-move3-power"></span></h6>
+                            <h6 class="battle-move-desc">Accuracy: <span id="battle-move3-accuracy"></span></h6>
+                            <h6 class="battle-move-desc">Effect: <span id="battle-move3-effect"></span></h6>
+                        </div>
                     </button>
                 </div>
             </div>
