@@ -9,7 +9,7 @@ let monsterLibraryDB =
                 50,     //AT
                 50,     //DF
                 100,    //AC
-                100,    //EV
+                0,    //EV
                 5       //SP
             ],
             "moves": [
@@ -64,7 +64,7 @@ let monsterLibraryDB =
                 50,     //AT
                 50,     //DF
                 100,    //AC
-                100,    //EV
+                0,    //EV
                 5       //SP
             ],
             "moves": [

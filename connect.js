@@ -465,7 +465,9 @@ function attackOpponent(damage) {
     var attack = opponentMonster.stats[1]
     var defense = playerMonster.stats[2]
     var damageValue = Math.ceil(attack / defense * damage)
-    playerMonster.stats[0] -= damageValue;
+    var chanceToHit = opponentMonster.stats[3] - (opponentMonster.stats[3]*(playerMonster.stats[4]/100));
+    if(Math.floor(Math.random() * 10) < (chanceToHit/10))
+        playerMonster.stats[0] -= damageValue;
 }
 
 //status type move
@@ -491,7 +493,9 @@ function statusOpponent(stat, value) {
             console.log("the stat is invalid");
             break;
     }
-    playerMonster.stats[statIndex] += parseInt(value);
+    var chanceToHit = opponentMonster.stats[3] - (opponentMonster.stats[3]*(playerMonster.stats[4]/100));
+    if(Math.floor(Math.random() * 10) < (chanceToHit/10))
+        playerMonster.stats[statIndex] += parseInt(value);
 }
 
 //attack + status type move
@@ -499,7 +503,9 @@ function attack_statusOpponent(damage, accuracy, status, chance) {
     //damage accuracy?
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
-    if (randAccuracy < (accuracy / 10)) {
+    let updateAccuracy = accuracy * opponentMonster.stats[3] / 100;
+    let chanceToHit = updateAccuracy - (updateAccuracy * (playerMonster.stats[4]/100));
+    if (randAccuracy < (chanceToHit / 10)) {
         playerMonster.stats[0] -= Math.ceil(opponentMonster.stats[1] / playerMonster.stats[2] * damage);
         let randChance = Math.floor(Math.random() * 10);
         if (randChance < (chance / 10)) {
@@ -513,7 +519,9 @@ function attack_statusOpponent(damage, accuracy, status, chance) {
 function at_StatOpponent(damage, accuracy, stat, value) {
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
-    if (randAccuracy < (accuracy / 10)) {
+    let updateAccuracy = accuracy * opponentMonster.stats[3] / 100;
+    let chanceToHit = updateAccuracy - (updateAccuracy * (playerMonster.stats[4]/100));
+    if (randAccuracy < (chanceToHit / 10)) {
         playerMonster.stats[0] -= Math.ceil(opponentMonster.stats[1] / playerMonster.stats[2] * damage);
         statusOpponent(stat, value);
     }
@@ -577,7 +585,9 @@ function attackPlayer(damage) {
     var attack = playerMonster.stats[1]
     var defense = opponentMonster.stats[2]
     var damageValue = Math.ceil(attack / defense * damage)
-    opponentMonster.stats[0] -= damageValue;
+    var chanceToHit = playerMonster.stats[3] - (playerMonster.stats[3]*(opponentMonster.stats[4]/100));
+    if(Math.floor(Math.random() * 10) < (chanceToHit/10))
+        opponentMonster.stats[0] -= damageValue;
 }
 
 //status type move
@@ -603,7 +613,9 @@ function statusPlayer(stat, value) {
             console.log("the stat is invalid");
             break;
     }
-    opponentMonster.stats[statIndex] += parseInt(value);
+    var chanceToHit = playerMonster.stats[3] - (playerMonster.stats[3]*(opponentMonster.stats[4]/100));
+    if(Math.floor(Math.random() * 10) < (chanceToHit/10))
+        opponentMonster.stats[statIndex] += parseInt(value);
 }
 
 //attack + status type move
@@ -611,7 +623,9 @@ function attack_statusPlayer(damage, accuracy, status, chance) {
     //damage accuracy?
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
-    if (randAccuracy < (accuracy / 10)) {
+    let updateAccuracy = accuracy * playerMonster.stats[3] / 100;
+    let chanceToHit = updateAccuracy - (updateAccuracy * (opponentMonster.stats[4]/100));
+    if (randAccuracy < (chanceToHit / 10)) {
         opponentMonster.stats[0] -= Math.ceil(playerMonster.stats[1] / opponentMonster.stats[2] * damage);
         let randChance = Math.floor(Math.random() * 10);
         if (randChance < (chance / 10)) {
@@ -624,7 +638,9 @@ function attack_statusPlayer(damage, accuracy, status, chance) {
 function at_StatPlayer(damage, accuracy, stat, value) {
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
-    if (randAccuracy < (accuracy / 10)) {
+    let updateAccuracy = accuracy * playerMonster.stats[3] / 100;
+    let chanceToHit = updateAccuracy - (updateAccuracy * (opponentMonster.stats[4]/100));
+    if (randAccuracy < (chanceToHit / 10)) {
         opponentMonster.stats[0] -= Math.ceil(playerMonster.stats[1] / opponentMonster.stats[2] * damage);
         statusPlayer(stat, value);
     }
