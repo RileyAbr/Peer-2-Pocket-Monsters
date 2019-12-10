@@ -614,7 +614,7 @@ body {
 
 @media screen and (min-width: 992px) {
   .battle-monster-wrapper::after {
-    width: 270px;
+    width: 260px;
     height: 150px;
   }
 }
