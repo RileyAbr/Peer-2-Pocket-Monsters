@@ -496,6 +496,8 @@ body {
   width: 100%;
   height: calc(12px - 4px);
   border-radius: 15px;
+  -webkit-transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .battle-health-bar-opponent {
@@ -503,6 +505,8 @@ body {
   width: 100%;
   height: calc(12px - 4px);
   border-radius: 15px;
+  -webkit-transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .battle-monster {

@@ -320,6 +320,7 @@ body {
     width: 100%;
     height: calc(#{$battle-health-bar-height} - 4px);
     border-radius: $battle-health-bar-roundness;
+    transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .battle-health-bar-opponent {
@@ -327,6 +328,7 @@ body {
     width: 100%;
     height: calc(#{$battle-health-bar-height} - 4px);
     border-radius: $battle-health-bar-roundness;
+    transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 // Monster Sprite
 .battle-monster {
