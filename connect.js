@@ -55,6 +55,8 @@ let playerHPBar = document.getElementsByClassName('battle-health-bar-player')[0]
 let opponentHPBar = document.getElementsByClassName('battle-health-bar-opponent')[0];
 let playerMonsterSprite = document.getElementById("battle-monster-sprite-player");
 let opponentMonsterSprite = document.getElementById("battle-monster-sprite-opponent");
+let playerMonsterName = document.getElementById("battle-monster-name-player");
+let opponentMonsterName = document.getElementById("battle-monster-name-opponent");
 let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 var moveButtons = document.getElementsByClassName("battle-controller-button");
 let moveButtonsNames = document.getElementsByClassName("battle-move-name");
@@ -102,6 +104,10 @@ function setUpBattle() {
     playerMonsterSprite.src = monsterSpriteURL + "back/" + playerMonster.id + ".png";
     opponentMonsterSprite.src = monsterSpriteURL + opponentMonster.id + ".png";
 
+    // Load names
+    playerMonsterName.innerHTML = playerMonster.name;
+    opponentMonsterName.innerHTML = opponentMonster.name;
+
     // Load stats for the first time
     refreshStats();
 
@@ -140,8 +146,8 @@ function refreshHealthBar() {
     opponentHPLabel.innerHTML = opponentCurHealth;
 
     //update both health bars' widths
-    let playerHealthPercentage = (playerCurHealth/100)*100 + "%"; //this will have to be adjusted if we ever make the base HP different than 100
-    let opponentHealthPercentage = (opponentCurHealth/100)*100 + "%";
+    let playerHealthPercentage = (playerCurHealth / 100) * 100 + "%"; //this will have to be adjusted if we ever make the base HP different than 100
+    let opponentHealthPercentage = (opponentCurHealth / 100) * 100 + "%";
     playerHPBar.style.width = playerHealthPercentage;
     opponentHPBar.style.width = opponentHealthPercentage;
 
@@ -476,8 +482,8 @@ function attackOpponent(damage) {
     var attack = opponentMonster.stats[1]
     var defense = playerMonster.stats[2]
     var damageValue = Math.ceil(attack / defense * damage)
-    var chanceToHit = opponentMonster.stats[3] - (opponentMonster.stats[3]*(playerMonster.stats[4]/100));
-    if(Math.floor(Math.random() * 10) < (chanceToHit/10))
+    var chanceToHit = opponentMonster.stats[3] - (opponentMonster.stats[3] * (playerMonster.stats[4] / 100));
+    if (Math.floor(Math.random() * 10) < (chanceToHit / 10))
         playerMonster.stats[0] -= damageValue;
 }
 
@@ -504,8 +510,8 @@ function statusOpponent(stat, value) {
             console.log("the stat is invalid");
             break;
     }
-    var chanceToHit = opponentMonster.stats[3] - (opponentMonster.stats[3]*(playerMonster.stats[4]/100));
-    if(Math.floor(Math.random() * 10) < (chanceToHit/10))
+    var chanceToHit = opponentMonster.stats[3] - (opponentMonster.stats[3] * (playerMonster.stats[4] / 100));
+    if (Math.floor(Math.random() * 10) < (chanceToHit / 10))
         playerMonster.stats[statIndex] += parseInt(value);
 }
 
@@ -515,7 +521,7 @@ function attack_statusOpponent(damage, accuracy, status, chance) {
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
     let updateAccuracy = accuracy * opponentMonster.stats[3] / 100;
-    let chanceToHit = updateAccuracy - (updateAccuracy * (playerMonster.stats[4]/100));
+    let chanceToHit = updateAccuracy - (updateAccuracy * (playerMonster.stats[4] / 100));
     if (randAccuracy < (chanceToHit / 10)) {
         playerMonster.stats[0] -= Math.ceil(opponentMonster.stats[1] / playerMonster.stats[2] * damage);
         let randChance = Math.floor(Math.random() * 10);
@@ -531,7 +537,7 @@ function at_StatOpponent(damage, accuracy, stat, value) {
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
     let updateAccuracy = accuracy * opponentMonster.stats[3] / 100;
-    let chanceToHit = updateAccuracy - (updateAccuracy * (playerMonster.stats[4]/100));
+    let chanceToHit = updateAccuracy - (updateAccuracy * (playerMonster.stats[4] / 100));
     if (randAccuracy < (chanceToHit / 10)) {
         playerMonster.stats[0] -= Math.ceil(opponentMonster.stats[1] / playerMonster.stats[2] * damage);
         statusOpponent(stat, value);
@@ -547,14 +553,14 @@ function itemsOpponent(heal) {
         opponentMonster.stats[0] = 100;
 }
 
-function opponentFaintOpponent(){
-    if(playerMonster.stats[0] <= 0){
+function opponentFaintOpponent() {
+    if (playerMonster.stats[0] <= 0) {
         playerMonster.stats[0] = 0;
     }
 }
 
-function opponentFaintPlayer(){
-    if(opponentMonster.stats[0] <= 0){
+function opponentFaintPlayer() {
+    if (opponentMonster.stats[0] <= 0) {
         opponentMonster.stats[0] = 0
     }
 }
@@ -602,8 +608,8 @@ function attackPlayer(damage) {
     var attack = playerMonster.stats[1]
     var defense = opponentMonster.stats[2]
     var damageValue = Math.ceil(attack / defense * damage)
-    var chanceToHit = playerMonster.stats[3] - (playerMonster.stats[3]*(opponentMonster.stats[4]/100));
-    if(Math.floor(Math.random() * 10) < (chanceToHit/10))
+    var chanceToHit = playerMonster.stats[3] - (playerMonster.stats[3] * (opponentMonster.stats[4] / 100));
+    if (Math.floor(Math.random() * 10) < (chanceToHit / 10))
         opponentMonster.stats[0] -= damageValue;
 }
 
@@ -630,8 +636,8 @@ function statusPlayer(stat, value) {
             console.log("the stat is invalid");
             break;
     }
-    var chanceToHit = playerMonster.stats[3] - (playerMonster.stats[3]*(opponentMonster.stats[4]/100));
-    if(Math.floor(Math.random() * 10) < (chanceToHit/10))
+    var chanceToHit = playerMonster.stats[3] - (playerMonster.stats[3] * (opponentMonster.stats[4] / 100));
+    if (Math.floor(Math.random() * 10) < (chanceToHit / 10))
         opponentMonster.stats[statIndex] += parseInt(value);
 }
 
@@ -641,7 +647,7 @@ function attack_statusPlayer(damage, accuracy, status, chance) {
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
     let updateAccuracy = accuracy * playerMonster.stats[3] / 100;
-    let chanceToHit = updateAccuracy - (updateAccuracy * (opponentMonster.stats[4]/100));
+    let chanceToHit = updateAccuracy - (updateAccuracy * (opponentMonster.stats[4] / 100));
     if (randAccuracy < (chanceToHit / 10)) {
         opponentMonster.stats[0] -= Math.ceil(playerMonster.stats[1] / opponentMonster.stats[2] * damage);
         let randChance = Math.floor(Math.random() * 10);
@@ -656,7 +662,7 @@ function at_StatPlayer(damage, accuracy, stat, value) {
     let randAccuracy = Math.floor(Math.random() * 10);
     console.log(randAccuracy);
     let updateAccuracy = accuracy * playerMonster.stats[3] / 100;
-    let chanceToHit = updateAccuracy - (updateAccuracy * (opponentMonster.stats[4]/100));
+    let chanceToHit = updateAccuracy - (updateAccuracy * (opponentMonster.stats[4] / 100));
     if (randAccuracy < (chanceToHit / 10)) {
         opponentMonster.stats[0] -= Math.ceil(playerMonster.stats[1] / opponentMonster.stats[2] * damage);
         statusPlayer(stat, value);

@@ -551,10 +551,6 @@ body {
   }
 }
 
-#battle-health-bar-beam-player:before {
-  background: black;
-}
-
 .battle-health-bar-player {
   background-color: #00fd4f;
   width: 100%;

@@ -350,9 +350,6 @@ body {
     @media screen and (min-width: $tablet-min-width) {
         margin-right: 60px;
     }
-    &:before {
-        background: black;
-    }
 }
 
 .battle-health-bar-player {
