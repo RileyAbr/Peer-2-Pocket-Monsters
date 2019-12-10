@@ -504,9 +504,10 @@ body {
 
 .stats-block {
     padding: 4px;
-    margin-bottom: 20px;
+    margin: 20px 0 50px;
+
     @media screen and (min-width: $desktop-min-width) {
-        margin-bottom: 0;
+        margin: 0;
     }
 }
 
@@ -521,7 +522,7 @@ body {
 
 .stats-table {
     min-height: 78%;
-    margin: 15px 15px 0;
+    margin: 15px 15px;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -538,6 +539,9 @@ body {
         rgba(16, 112, 160, 0.7) 100%
     );
     font-size: 1.8rem;
+    @media screen and (min-width: $desktop-min-width) {
+        margin-bottom: 0;
+    }
 }
 
 .stats-row {

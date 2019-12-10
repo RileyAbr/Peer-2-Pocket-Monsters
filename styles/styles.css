@@ -761,12 +761,12 @@ body {
 
 .stats-block {
   padding: 4px;
-  margin-bottom: 20px;
+  margin: 20px 0 50px;
 }
 
 @media screen and (min-width: 992px) {
   .stats-block {
-    margin-bottom: 0;
+    margin: 0;
   }
 }
 
@@ -784,7 +784,7 @@ body {
 
 .stats-table {
   min-height: 78%;
-  margin: 15px 15px 0;
+  margin: 15px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -802,6 +802,12 @@ body {
   background: rgba(8, 72, 112, 0.6);
   background: linear-gradient(132deg, rgba(16, 112, 160, 0.7) 0%, rgba(16, 112, 160, 0.7) 25%, rgba(0, 39, 68, 0.7) 26%, rgba(0, 39, 68, 0.7) 74%, rgba(16, 112, 160, 0.7) 75%, rgba(16, 112, 160, 0.7) 100%);
   font-size: 1.8rem;
+}
+
+@media screen and (min-width: 992px) {
+  .stats-table {
+    margin-bottom: 0;
+  }
 }
 
 .stats-row {
