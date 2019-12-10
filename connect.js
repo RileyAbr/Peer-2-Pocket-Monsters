@@ -32,7 +32,7 @@ var recvId = document.getElementById("room-key");
 var recvIdInput = document.getElementById("receiver-id-input");
 var connectButton = document.getElementById("login-menu-submit");
 var roomId = document.getElementById("room-id-key-ingame");
-var stat = document.getElementById("stat");
+var stat = document.getElementById("login-status");
 
 // Message variables
 var message = document.getElementById("chat-messages");

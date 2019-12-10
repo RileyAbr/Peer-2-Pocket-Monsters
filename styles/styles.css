@@ -73,6 +73,30 @@
   }
 }
 
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 html {
   height: 100%;
 }
@@ -167,8 +191,6 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.4);
   background-color: #030512;
   opacity: 1;
   background-image: url("https://www.transparenttextures.com/patterns/graphy.png");
@@ -181,7 +203,6 @@ body {
 #login-menu-title {
   width: 100%;
   border: #1fa792 3px solid;
-  margin: 0 -6px;
   padding: 4px 5px;
   border-inline: 3px;
   background-color: #001321;
@@ -195,14 +216,58 @@ body {
 }
 
 #login-menu-modal {
-  margin: auto;
-  padding: 20px;
+  margin: 0 auto auto;
+  padding: 5px 20px 20px;
   width: 60%;
   height: 75%;
   -webkit-clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
           clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
   background: linear-gradient(132deg, rgba(16, 112, 160, 0.7) 0%, rgba(16, 112, 160, 0.7) 25%, rgba(0, 39, 68, 0.7) 26%, rgba(0, 39, 68, 0.7) 74%, rgba(16, 112, 160, 0.7) 75%, rgba(16, 112, 160, 0.7) 100%);
   color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  text-align: center;
+}
+
+#login-menu-id-wrapper {
+  width: 100%;
+}
+
+#login-menu-battle-id {
+  width: 100%;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  text-align: center;
+}
+
+#login-menu-input-wrapper {
+  height: 1.3em;
+}
+
+#receiver-id-input {
+  height: 100%;
+}
+
+#login-monster-choice {
+  height: 100%;
+}
+
+#login-status {
+  font-size: 1.4em;
+  -webkit-animation: flickerAnimation 3.3s infinite;
+  animation: flickerAnimation 3.3s infinite;
 }
 
 #login-menu-submit {
@@ -603,7 +668,6 @@ body {
 
 .stats-heading {
   border: #1fa792 3px solid;
-  margin: 0 -6px;
   padding: 4px 5px;
   border-inline: 3px;
   background-color: #001321;
