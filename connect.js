@@ -51,8 +51,8 @@ let playerStatsValueLabels = document.getElementsByClassName("stats-value-player
 let opponentStatsValueLabels = document.getElementsByClassName("stats-value-opponent");
 let playerHPLabel = document.getElementById('battle-health-bar-value-player');
 let opponentHPLabel = document.getElementById('battle-health-bar-value-opponent');
-let playerHPBar = document.getElementById('battle-health-bar-player');
-let opponentHPBar = document.getElementById('battle-health-bar-opponent');
+let playerHPBar = document.getElementsByClassName('battle-health-bar-player')[0];
+let opponentHPBar = document.getElementsByClassName('battle-health-bar-opponent')[0];
 let playerMonsterSprite = document.getElementById("battle-monster-sprite-player");
 let opponentMonsterSprite = document.getElementById("battle-monster-sprite-opponent");
 let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
@@ -131,25 +131,22 @@ function refreshStats() {
 }
 
 function refreshHealthBar() {
-    //initialize both player's health to max
-    var playerMaxHealth = playerMonster.stats[0],
-        playerCurHealth = playerMaxHealth;
-    var opponentMaxHealth = opponentMonster.stats[0],
-        opponentCurHealth = opponentMaxHealth;
+    //grab current HP values
+    let playerCurHealth = playerMonster.stats[0];
+    let opponentCurHealth = opponentMonster.stats[0];
 
-    //have battle scene reflect current (maximum) health
-    playerHPLabel.innerHTML = playerMaxHealth;
-    opponentHPLabel.innerHTML = opponentMaxHealth;
+    //have battle scene reflect current health
+    playerHPLabel.innerHTML = playerCurHealth;
+    opponentHPLabel.innerHTML = opponentCurHealth;
 
-    //initialize both health bars' widths
-    //playerHPBar.style.width = "100%";
-    //opponentHPBar.style.width = "100%";
-
-    
-
-
-
-
+    //update both health bars' widths
+    let defaultWidth = 271; //this is how wide (in px) the initial health bars are
+    let playerHealthPercentage = playerCurHealth/100; //this will have to be adjusted if we ever make the base HP different than 100
+    let opponentHealthPercentage = opponentCurHealth/100;
+    let playerHPBarPercentage = playerHealthPercentage * 271;
+    let opponentHPBarPercentage = opponentHealthPercentage * 271;
+    playerHPBar.style.width = playerHPBarPercentage + "px";
+    opponentHPBar.style.width = opponentHPBarPercentage + "px";
 
 
 }
