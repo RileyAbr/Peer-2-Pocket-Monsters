@@ -140,11 +140,8 @@ function refreshHealthBar() {
     opponentHPLabel.innerHTML = opponentCurHealth;
 
     //update both health bars' widths
-    let defaultWidth = 271; //this is how wide (in px) the initial health bars are
     let playerHealthPercentage = (playerCurHealth/100)*100 + "%"; //this will have to be adjusted if we ever make the base HP different than 100
     let opponentHealthPercentage = (opponentCurHealth/100)*100 + "%";
-    let playerHPBarPercentage = playerHealthPercentage * 271;
-    let opponentHPBarPercentage = opponentHealthPercentage * 271;
     playerHPBar.style.width = playerHealthPercentage;
     opponentHPBar.style.width = opponentHealthPercentage;
 
