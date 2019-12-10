@@ -74,7 +74,7 @@ body {
     display: flex;
     flex-flow: row wrap;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     left: 0;
     top: 0;
     width: 100%;
@@ -333,7 +333,7 @@ body {
     width: min-content;
     @media screen and (min-width: $tablet-min-width) {
         margin: 20px 0;
-        padding: 20px;
+        padding: 10px 20px;
     }
 }
 
@@ -381,8 +381,29 @@ body {
     height: 100%;
 }
 
+.battle-monster-wrapper::after {
+    content: "";
+    -webkit-clip-path: ellipse(50% 10% at 50% 90%);
+    clip-path: ellipse(50% 10% at 50% 90%);
+    background: black;
+    position: absolute;
+    width: 98px;
+    height: 84px;
+    z-index: 1;
+    mix-blend-mode: soft-light;
+    @media screen and (min-width: $tablet-min-width) {
+        width: 220px;
+        height: 134px;
+    }
+    @media screen and (min-width: $desktop-min-width) {
+        width: 270px;
+        height: 150px;
+    }
+}
+
 .battle-monster-sprite {
     width: 125px;
+    z-index: 2;
 
     @media screen and (min-width: $tablet-min-width) {
         width: 200px;
