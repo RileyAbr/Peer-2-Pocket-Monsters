@@ -45,7 +45,7 @@ let monsterLibraryDB =
                 },
                 {
                     "name": "Potion",
-                    "type": 3,
+                    "type": 4,
                     "base-power": 0,
                     "base-accuracy": 0,
                     "effect": {
@@ -78,7 +78,7 @@ let monsterLibraryDB =
                 },
                 {
                     "name": "Bubble",
-                    "type": 2,
+                    "type": 3,
                     "base-power": 40,
                     "base-accuracy": 70,
                     "effect": {
@@ -100,7 +100,7 @@ let monsterLibraryDB =
                 },
                 {
                     "name": "Potion",
-                    "type": 3,
+                    "type": 4,
                     "base-power": 0,
                     "base-accuracy": 0,
                     "effect": {

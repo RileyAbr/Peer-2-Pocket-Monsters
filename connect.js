@@ -58,7 +58,6 @@ let opponentMonsterSprite = document.getElementById("battle-monster-sprite-oppon
 let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 var moveButtons = document.getElementsByClassName("battle-controller-button");
 let moveButtonsNames = document.getElementsByClassName("battle-move-name");
-let moveButtonsDesc = document.getElementsByClassName("battle-move-desc");
 var move0Button = document.getElementById("battle-move-0");
 var move1Button = document.getElementById("battle-move-1");
 var move2Button = document.getElementById("battle-move-2");
@@ -163,27 +162,33 @@ function refreshButtons() {
         moveButtons[i].children[0].src = "/assets/symbols/" + moves[i].type + ".png";
         moveButtonsNames[i].innerHTML = moves[i].name;
 
+        let moveDesc = [].slice.call(moveButtons[i].children[1].children).slice(1, 4);
+
         switch (moves[i].type) {
-            case 0:
-                moveButtonsDesc[0 + (3 * i)].innerHTML += moves[i]["base-power"];
-                moveButtonsDesc[1 + (3 * i)].innerHTML += moves[i]["base-accuracy"];
-                moveButtonsDesc[2 + (3 * i)].innerHTML = noBreakingSpace;
+            case 0: // Attack
+                moveDesc[0].innerHTML = `Power: ${moves[i]["base-power"]}`;
+                moveDesc[1].innerHTML = `Accuracy: ${moves[i]["base-accuracy"]}`;
+                moveDesc[2].innerHTML = noBreakingSpace;
                 break;
-            case 1:
-                moveButtonsDesc[0 + (3 * i)].innerHTML = noBreakingSpace;
-                moveButtonsDesc[1 + (3 * i)].innerHTML += moves[i]["base-accuracy"];
-                moveButtonsDesc[2 + (3 * i)].innerHTML = "Effect: " + moves[i]["effect"]["stat"] + " " + moves[i]["effect"]["value"];
+            case 1: // Stat 
+                moveDesc[0].innerHTML = `Accuracy: ${moves[i]["base-accuracy"]}`;
+                moveDesc[1].innerHTML = `Effect: ${moves[i]["effect"]["stat"]} ${moves[i]["effect"]["value"]}`;
+                moveDesc[2].innerHTML = noBreakingSpace;
                 break;
-            case 2:
-                moveButtonsDesc[0 + (3 * i)].innerHTML += moves[i]["base-power"];
-                moveButtonsDesc[1 + (3 * i)].innerHTML += moves[i]["base-accuracy"];
-                let effectKeys = Object.keys(moves[i]["effect"]);
-                moveButtonsDesc[2 + (3 * i)].innerHTML = "Effect: " + moves[i]["effect"][effectKeys[0]] + " " + moves[i]["effect"][effectKeys[1]] + ((effectKeys[1] == "chance") ? "% Chance" : "");
+            case 2: // Attack/Status
+                moveDesc[0].innerHTML = `Power: ${moves[i]["base-power"]}`;
+                moveDesc[1].innerHTML = `Accuracy: ${moves[i]["base-accuracy"]}`;
+                moveDesc[2].innerHTML = `Effect: ${moves[i]["effect"]["status"]} ${moves[i]["effect"]["chance"]}%`;
                 break;
-            case 3:
-                moveButtonsDesc[0 + (3 * i)].innerHTML = "Heal: " + moves[i]["effect"]["heal"];
-                moveButtonsDesc[1 + (3 * i)].innerHTML = "Uses: " + moves[i]["limit"];
-                moveButtonsDesc[2 + (3 * i)].innerHTML = noBreakingSpace;
+            case 3: // Attack/Stat
+                moveDesc[0].innerHTML = `Power: ${moves[i]["base-power"]}`;
+                moveDesc[1].innerHTML = `Accuracy: ${moves[i]["base-accuracy"]}`;
+                moveDesc[2].innerHTML = `Effect: ${moves[i]["effect"]["stat"]} ${moves[i]["effect"]["value"]}`;
+                break;
+            case 4: //Item
+                moveDesc[0].innerHTML = `Heal: ${moves[i]["effect"]["heal"]}`;
+                moveDesc[1].innerHTML = `Uses: ${moves[i]["limit"]}`;
+                moveDesc[2].innerHTML = noBreakingSpace;
                 break;
 
         }
@@ -452,13 +457,20 @@ function attackType(move) {
         case 2:
             attack_statusOpponent(damage, monsterMove["base-accuracy"], effect.status, effect.chance);
             break;
-        //items
+        //attack,stat
         case 3:
+            at_StatOpponent(damage, monsterMove["base-accuracy"], effect.stat, effect.value);
+            break;
+        //items
+        case 4:
             var limit = monsterMove.limit;
             if (limit > 0) {
                 itemsOpponent(effect.heal);
                 monsterMove.limit--;
             }
+            break;
+        default:
+            console.log("The move type is invalid");
             break;
     }
     refreshStats();
@@ -513,6 +525,16 @@ function attack_statusOpponent(damage, accuracy, status, chance) {
     }
 }
 
+//attack + stat type move
+function at_StatOpponent(damage, accuracy, stat, value) {
+    let randAccuracy = Math.floor(Math.random() * 10);
+    console.log(randAccuracy);
+    if (randAccuracy < (accuracy / 10)) {
+        playerMonster.stats[0] -= Math.ceil(opponentMonster.stats[1] / playerMonster.stats[2] * damage);
+        statusOpponent(stat, value);
+    }
+}
+
 //item type move
 function itemsOpponent(heal) {
     if (opponentMonster.stats[0] < 100) {
@@ -547,13 +569,20 @@ function attackTypePlayer(move) {
         case 2:
             attack_statusPlayer(damage, monsterMove["base-accuracy"], effect.status, effect.chance);
             break;
-        //items
+        //attack, stat
         case 3:
+            at_StatPlayer(damage, monsterMove["base-accuracy"], effect.stat, effect.value);
+            break;
+        //items
+        case 4:
             var limit = monsterMove.limit;
             if (limit > 0) {
                 itemsPlayer(effect.heal);
                 monsterMove.limit--;
             }
+            break;
+        default:
+            console.log("The move type is invalid");
             break;
     }
     refreshStats();
@@ -605,6 +634,15 @@ function attack_statusPlayer(damage, accuracy, status, chance) {
             //if status = burn, dealls 10% of the target's health as damage each turn
             //if status = freeze, prevents the target from acting for 1 turn
         }
+    }
+}
+
+function at_StatPlayer(damage, accuracy, stat, value) {
+    let randAccuracy = Math.floor(Math.random() * 10);
+    console.log(randAccuracy);
+    if (randAccuracy < (accuracy / 10)) {
+        opponentMonster.stats[0] -= Math.ceil(playerMonster.stats[1] / opponentMonster.stats[2] * damage);
+        statusPlayer(stat, value);
     }
 }
 
