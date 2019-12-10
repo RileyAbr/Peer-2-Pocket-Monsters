@@ -203,9 +203,9 @@ function disableButtons(buttons) {
     }
 }
 
-function enableButtons(buttons){
+function enableButtons(buttons) {
     let button;
-    for (button of buttons){
+    for (button of buttons) {
         button.disabled = false;
     }
 }
@@ -328,6 +328,7 @@ function join() {
                 break;
             case 2: // Attack
                 attackType(data[1]);
+                enableButtons(moveButtons);
                 break;
             case 8:
                 startBattle(data[1]);
@@ -409,9 +410,11 @@ function ready() {
                 break;
             case 2: // Attack
                 attackType(data[1]);
+                enableButtons(moveButtons);
                 break;
             case 8:
                 startBattle(data[1]);
+                disableButtons(moveButtons);
                 break;
             case 9: //End Game
                 endBattle(data[1]);
@@ -688,18 +691,22 @@ function itemsPlayer(heal) {
 move0Button.onclick = function () {
     signal([2, 0]);
     attackTypePlayer(0);
+    disableButtons(moveButtons);
 };
 move1Button.onclick = function () {
     signal([2, 1]);
     attackTypePlayer(1);
+    disableButtons(moveButtons);
 };
 move2Button.onclick = function () {
     signal([2, 2]);
     attackTypePlayer(2);
+    disableButtons(moveButtons);
 };
 move3Button.onclick = function () {
     signal([2, 3]);
     attackTypePlayer(3);
+    disableButtons(moveButtons);
 };
 
 
