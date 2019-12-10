@@ -28,7 +28,7 @@
 }
 
 @font-face {
-  font-family: 'pokmon_dp_proregular';
+  font-family: "pokmon_dp_proregular";
   src: url("/assets/fonts/PKMN DP/pokemon-dp-pro-webfont.woff2") format("woff2"), url("/assets/fonts/PKMN DP/pokemon-dp-pro-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -156,6 +156,10 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -172,6 +176,22 @@ body {
           animation: slide 10s linear infinite;
   -webkit-transition: opacity 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: opacity 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#login-menu-title {
+  width: 100%;
+  border: #1fa792 3px solid;
+  margin: 0 -6px;
+  padding: 4px 5px;
+  border-inline: 3px;
+  background-color: #001321;
+  margin: 15px 0 0;
+  color: white;
+  font-size: 2em;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  text-align: center;
 }
 
 #login-menu-modal {
@@ -454,16 +474,16 @@ body {
 }
 
 #pokeball-turn-indicator {
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
   margin: auto;
   opacity: 0.9;
 }
 
 @media screen and (min-width: 700px) {
   #pokeball-turn-indicator {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
   }
 }
 
@@ -580,6 +600,7 @@ body {
   padding: 4px 5px;
   border-inline: 3px;
   background-color: #001321;
+  margin: 0 -6px;
 }
 
 #stats-column {

@@ -72,6 +72,7 @@ body {
 // Perfect Full-Page Modal example from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 #login-menu {
     display: flex;
+    flex-flow: row wrap;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -87,6 +88,16 @@ body {
     background-image: url("https://www.transparenttextures.com/patterns/graphy.png");
     @include infinite-slide;
     transition: opacity 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#login-menu-title {
+    width: 100%;
+    @include header-banner;
+    margin: 15px 0 0;
+    color: white;
+    font-size: 2em;
+    height: min-content;
+    text-align: center;
 }
 
 #login-menu-modal {
@@ -310,13 +321,13 @@ body {
 }
 
 #pokeball-turn-indicator {
-    width: 75px;
-    height: 75px;
+    width: 50px;
+    height: 50px;
     margin: auto;
     opacity: 0.9;
     @media screen and (min-width: $tablet-min-width) {
-        width: 50px;
-        height: 50px;
+        width: 75px;
+        height: 75px;
     }
 }
 
@@ -399,11 +410,8 @@ body {
 }
 
 .stats-heading {
-    border: #1fa792 3px solid;
+    @include header-banner;
     margin: 0 -6px;
-    padding: 4px 5px;
-    border-inline: 3px;
-    background-color: #001321;
 }
 
 #stats-column {
