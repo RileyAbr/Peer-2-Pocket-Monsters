@@ -132,6 +132,18 @@ function refreshStats() {
         opponentStatsValueLabels[i].innerHTML = opponentMonster.stats[i];
     }
 
+    if(opponentMonster.stats[0] == 0){
+        addMessage("<span class=\"selfMsg\">System: </span>" + "You win, opponent dies!");
+        // endBattle();
+        disableButtons(moveButtons);
+    }
+
+    if(playerMonster.stats[0] == 0){
+        addMessage("<span class=\"selfMsg\">System: </span>" + "Game Over, you die!");
+        // endBattle();
+        disableButtons(moveButtons);
+    }
+
     refreshHealthBar();
     refreshButtons();
 }
@@ -216,7 +228,12 @@ function startBattle() {
 }
 
 function endBattle() {
-
+    let button;
+    for (button of moveButtons){
+        if(button.disabled = false){
+            button.disabled = true;
+        }
+    }
 }
 
 /*
