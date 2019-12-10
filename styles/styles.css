@@ -406,7 +406,14 @@ body {
   }
 }
 
-.battle-health-bar {
+.battle-health-bar-player {
+  background-color: #00fd4f;
+  width: 100%;
+  height: calc(12px - 4px);
+  border-radius: 15px;
+}
+
+.battle-health-bar-opponent {
   background-color: #00fd4f;
   width: 100%;
   height: calc(12px - 4px);
