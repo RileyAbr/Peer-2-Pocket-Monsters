@@ -470,6 +470,7 @@ function attackType(move) {
             console.log("The move type is invalid");
             break;
     }
+    opponentFaintOpponent();
     refreshStats();
 }
 
@@ -549,12 +550,17 @@ function itemsOpponent(heal) {
         opponentMonster.stats[0] = 100;
 }
 
-// function opponentFaint(){
-//     if(opponentMonster.stats[0] <= 0){
-//         return true;
-//         //message box shows message
-//     }
-// }
+function opponentFaintOpponent(){
+    if(playerMonster.stats[0] <= 0){
+        playerMonster.stats[0] = 0;
+    }
+}
+
+function opponentFaintPlayer(){
+    if(opponentMonster.stats[0] <= 0){
+        opponentMonster.stats[0] = 0
+    }
+}
 
 function attackTypePlayer(move) {
     var monsterMove = playerMonster.moves[move];
@@ -590,6 +596,7 @@ function attackTypePlayer(move) {
             console.log("The move type is invalid");
             break;
     }
+    opponentFaintPlayer();
     refreshStats();
 }
 
