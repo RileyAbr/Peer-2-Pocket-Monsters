@@ -200,6 +200,13 @@ function disableButtons(buttons) {
     }
 }
 
+function enableButtons(buttons){
+    let button;
+    for (button of buttons){
+        button.disabled = false;
+    }
+}
+
 function startBattle() {
     setUpBattle();
     //disableButtons(moveButtons);
