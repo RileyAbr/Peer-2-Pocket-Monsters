@@ -142,8 +142,8 @@ function refreshHealthBar() {
     opponentHPLabel.innerHTML = opponentMaxHealth;
 
     //initialize both health bars' widths
-    playerHPBar.style.width = '100%';
-    opponentHPBar.style.width = '100%';
+    //playerHPBar.style.width = "100%";
+    //opponentHPBar.style.width = "100%";
 
     
 
