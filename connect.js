@@ -436,13 +436,20 @@ function attackType(move) {
         case 2:
             attack_statusOpponent(damage, monsterMove["base-accuracy"], effect.status, effect.chance);
             break;
-        //items
+        //attack,stat
         case 3:
+            at_StatOpponent(damage, monsterMove["base-accuracy"], effect.stat, effect.value);
+            break;
+        //items
+        case 4:
             var limit = monsterMove.limit;
             if (limit > 0) {
                 itemsOpponent(effect.heal);
                 monsterMove.limit--;
             }
+            break;
+        default:
+            console.log("The move type is invalid");
             break;
     }
     refreshStats();
@@ -497,6 +504,16 @@ function attack_statusOpponent(damage, accuracy, status, chance) {
     }
 }
 
+//attack + stat type move
+function at_StatOpponent(damage, accuracy, stat, value) {
+    let randAccuracy = Math.floor(Math.random() * 10);
+    console.log(randAccuracy);
+    if (randAccuracy < (accuracy / 10)) {
+        playerMonster.stats[0] -= Math.ceil(opponentMonster.stats[1] / playerMonster.stats[2] * damage);
+        statusOpponent(stat, value);
+    }
+}
+
 //item type move
 function itemsOpponent(heal) {
     if (opponentMonster.stats[0] < 100) {
@@ -531,13 +548,20 @@ function attackTypePlayer(move) {
         case 2:
             attack_statusPlayer(damage, monsterMove["base-accuracy"], effect.status, effect.chance);
             break;
-        //items
+        //attack, stat
         case 3:
+            at_StatPlayer(damage, monsterMove["base-accuracy"], effect.stat, effect.value);
+            break;
+        //items
+        case 4:
             var limit = monsterMove.limit;
             if (limit > 0) {
                 itemsPlayer(effect.heal);
                 monsterMove.limit--;
             }
+            break;
+        default:
+            console.log("The move type is invalid");
             break;
     }
     refreshStats();
@@ -589,6 +613,15 @@ function attack_statusPlayer(damage, accuracy, status, chance) {
             //if status = burn, dealls 10% of the target's health as damage each turn
             //if status = freeze, prevents the target from acting for 1 turn
         }
+    }
+}
+
+function at_StatPlayer(damage, accuracy, stat, value) {
+    let randAccuracy = Math.floor(Math.random() * 10);
+    console.log(randAccuracy);
+    if (randAccuracy < (accuracy / 10)) {
+        opponentMonster.stats[0] -= Math.ceil(playerMonster.stats[1] / opponentMonster.stats[2] * damage);
+        statusPlayer(stat, value);
     }
 }
 
