@@ -436,7 +436,7 @@ body {
         -ms-flex: 0 0 60%;
             flex: 0 0 60%;
     max-width: 60%;
-    height: auto;
+    height: 100%;
   }
 }
 
@@ -614,8 +614,8 @@ body {
 
 @media screen and (min-width: 992px) {
   .battle-monster-wrapper::after {
-    width: 260px;
-    height: 150px;
+    width: 12vw;
+    height: 17vh;
   }
 }
 
@@ -632,7 +632,7 @@ body {
 
 @media screen and (min-width: 992px) {
   .battle-monster-sprite {
-    width: 250px;
+    width: 12vw;
   }
 }
 
@@ -709,6 +709,13 @@ body {
 
 @media screen and (min-width: 992px) {
   .battle-move-name {
+    font-size: 0.6em;
+    text-decoration: underline;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .battle-move-name {
     font-size: 0.9em;
     text-decoration: underline;
   }
@@ -719,6 +726,12 @@ body {
 }
 
 @media screen and (min-width: 992px) {
+  .battle-move-desc {
+    font-size: 0.5em;
+  }
+}
+
+@media screen and (min-width: 1400px) {
   .battle-move-desc {
     font-size: 0.7em;
   }
@@ -748,12 +761,12 @@ body {
 
 .stats-block {
   padding: 4px;
-  margin-bottom: 20px;
+  margin: 20px 0 50px;
 }
 
 @media screen and (min-width: 992px) {
   .stats-block {
-    margin-bottom: 0;
+    margin: 0;
   }
 }
 
@@ -771,7 +784,7 @@ body {
 
 .stats-table {
   min-height: 78%;
-  margin: 15px 15px 0;
+  margin: 15px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -791,14 +804,20 @@ body {
   font-size: 1.8rem;
 }
 
+@media screen and (min-width: 992px) {
+  .stats-table {
+    margin-bottom: 0;
+  }
+}
+
 .stats-row {
-  margin: 8px;
+  margin: 6px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  width: 120px;
+  width: 95px;
 }
 /*# sourceMappingURL=styles.css.map */
