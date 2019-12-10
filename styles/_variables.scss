@@ -31,7 +31,6 @@ $angled-corner: 15px;
 // Banner Headers
 @mixin header-banner {
     border: #1fa792 3px solid;
-    margin: 0 -6px;
     padding: 4px 5px;
     border-inline: 3px;
     background-color: #001321;
@@ -122,4 +121,59 @@ $chat-input-line-height: 1.5;
     to {
         background-position: 0 400px;
     }
+}
+
+// Text Fade Pulse Effect
+// Credit to: https://stackoverflow.com/questions/23985018/simple-css-animation-loop-fading-in-out-loading-text
+$fade-speed: 3.3s;
+
+@keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-o-keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-moz-keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@mixin animate-flicker {
+    -webkit-animation: flickerAnimation $fade-speed infinite;
+    -moz-animation: flickerAnimation $fade-speed infinite;
+    -o-animation: flickerAnimation $fade-speed infinite;
+    animation: flickerAnimation $fade-speed infinite;
 }
