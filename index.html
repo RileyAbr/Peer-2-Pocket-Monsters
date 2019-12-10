@@ -92,7 +92,7 @@
                     <div id="battle-scence-wrapper">
                         <div class="battle-scence-column battle-scence-column-players">
                             <div class="battle-health-bar-wrapper">
-                                <div class="battle-health-bar-beam">
+                                <div class="battle-health-bar-beam" id="battle-health-bar-beam-opponent">
                                     <h3>Health Bar</h3>
                                     <div class="battle-health-bounding-box">
                                         <!-- Currently unused -->
@@ -150,11 +150,13 @@
                                 </div>
                             </div>
                             <div class="battle-health-bar-wrapper">
-                                <h3>Health Bar</h3>
-                                <div class="battle-health-bounding-box">
-                                    <div class="battle-health-bar-player"></div>
+                                <div class="battle-health-bar-beam" id="battle-health-bar-beam-player">
+                                    <h3>Health Bar</h3>
+                                    <div class="battle-health-bounding-box">
+                                        <div class="battle-health-bar-player"></div>
+                                    </div>
+                                    <span id="battle-health-bar-value-player">100</span>/100
                                 </div>
-                                <span id="battle-health-bar-value-player">100</span>/100
                             </div>
                         </div>
                     </div>

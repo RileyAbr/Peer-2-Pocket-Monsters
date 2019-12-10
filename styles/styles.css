@@ -208,17 +208,23 @@ body {
   background-color: #001321;
   margin: 15px 0 0;
   color: white;
-  font-size: 2em;
+  font-size: 1em;
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   text-align: center;
 }
 
+@media screen and (min-width: 700px) {
+  #login-menu-title {
+    font-size: 2em;
+  }
+}
+
 #login-menu-modal {
   margin: 0 auto auto;
   padding: 5px 20px 20px;
-  width: 60%;
+  width: 88%;
   height: 75%;
   -webkit-clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
           clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
@@ -240,6 +246,12 @@ body {
   text-align: center;
 }
 
+@media screen and (min-width: 992px) {
+  #login-menu-modal {
+    width: 60%;
+  }
+}
+
 #login-menu-id-wrapper {
   width: 100%;
 }
@@ -258,6 +270,7 @@ body {
 
 #receiver-id-input {
   height: 100%;
+  margin-bottom: 4px;
 }
 
 #login-monster-choice {
@@ -271,7 +284,7 @@ body {
 }
 
 #login-menu-submit {
-  width: 33%;
+  width: 55%;
   border: none;
   background: #e2e2e2;
   background: -webkit-gradient(linear, left bottom, left top, from(#e2e2e2), color-stop(43%, #e2e2e2), color-stop(43%, #eee), color-stop(57%, #eee), color-stop(57%, #fff));
@@ -280,6 +293,12 @@ body {
           clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
   height: 15%;
   color: black;
+}
+
+@media screen and (min-width: 992px) {
+  #login-menu-submit {
+    width: 33%;
+  }
 }
 
 /*
@@ -489,6 +508,51 @@ body {
   .battle-health-bounding-box {
     width: 275px;
   }
+}
+
+.battle-health-bar-beam {
+  background: #e2e2e2;
+  background: -webkit-gradient(linear, left bottom, left top, from(#e2e2e2), color-stop(43%, #e2e2e2), color-stop(43%, #eee), color-stop(57%, #eee), color-stop(57%, #fff));
+  background: linear-gradient(0deg, #e2e2e2 0%, #e2e2e2 43%, #eee 43%, #eee 57%, #fff 57%);
+  -webkit-clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+          clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+  margin: 10px 0;
+  padding: 10px;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+@media screen and (min-width: 700px) {
+  .battle-health-bar-beam {
+    margin: 20px 0;
+    padding: 20px;
+  }
+}
+
+#battle-health-bar-beam-opponent {
+  margin-left: 20px;
+}
+
+@media screen and (min-width: 700px) {
+  #battle-health-bar-beam-opponent {
+    margin-left: 60px;
+  }
+}
+
+#battle-health-bar-beam-player {
+  float: right;
+  margin-right: 20px;
+}
+
+@media screen and (min-width: 700px) {
+  #battle-health-bar-beam-player {
+    margin-right: 60px;
+  }
+}
+
+#battle-health-bar-beam-player:before {
+  background: black;
 }
 
 .battle-health-bar-player {
