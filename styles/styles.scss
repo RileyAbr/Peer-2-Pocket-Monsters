@@ -74,7 +74,7 @@ body {
     display: flex;
     flex-flow: row wrap;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     left: 0;
     top: 0;
     width: 100%;
@@ -93,15 +93,18 @@ body {
     @include header-banner;
     margin: 15px 0 0;
     color: white;
-    font-size: 2em;
+    font-size: 1em;
     height: min-content;
     text-align: center;
+    @media screen and (min-width: $tablet-min-width) {
+        font-size: 2em;
+    }
 }
 
 #login-menu-modal {
     margin: 0 auto auto;
     padding: 5px 20px 20px;
-    width: 60%;
+    width: 88%;
     height: 75%;
     @include angled-corners;
     background: linear-gradient(
@@ -119,6 +122,9 @@ body {
     align-items: center;
     justify-content: space-evenly;
     text-align: center;
+    @media screen and (min-width: $desktop-min-width) {
+        width: 60%;
+    }
 }
 
 #login-menu-id-wrapper {
@@ -137,6 +143,7 @@ body {
 
 #receiver-id-input {
     height: 100%;
+    margin-bottom: 4px;
 }
 
 #login-monster-choice {
@@ -149,12 +156,15 @@ body {
 }
 
 #login-menu-submit {
-    width: 33%;
+    width: 55%;
     border: none;
     @include grey-gradient-button;
     @include angled-corners;
     height: 15%;
     color: black;
+    @media screen and (min-width: $desktop-min-width) {
+        width: 33%;
+    }
 }
 
 /*
@@ -315,11 +325,39 @@ body {
     }
 }
 
+.battle-health-bar-beam {
+    @include grey-gradient-button;
+    @include angled-corners;
+    margin: 10px 0;
+    padding: 10px;
+    width: min-content;
+    @media screen and (min-width: $tablet-min-width) {
+        margin: 20px 0;
+        padding: 10px 20px;
+    }
+}
+
+#battle-health-bar-beam-opponent {
+    margin-left: 20px;
+    @media screen and (min-width: $tablet-min-width) {
+        margin-left: 60px;
+    }
+}
+
+#battle-health-bar-beam-player {
+    float: right;
+    margin-right: 20px;
+    @media screen and (min-width: $tablet-min-width) {
+        margin-right: 60px;
+    }
+}
+
 .battle-health-bar-player {
     background-color: #00fd4f;
     width: 100%;
     height: calc(#{$battle-health-bar-height} - 4px);
     border-radius: $battle-health-bar-roundness;
+    transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .battle-health-bar-opponent {
@@ -327,6 +365,7 @@ body {
     width: 100%;
     height: calc(#{$battle-health-bar-height} - 4px);
     border-radius: $battle-health-bar-roundness;
+    transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 // Monster Sprite
 .battle-monster {
@@ -342,8 +381,29 @@ body {
     height: 100%;
 }
 
+.battle-monster-wrapper::after {
+    content: "";
+    -webkit-clip-path: ellipse(50% 10% at 50% 90%);
+    clip-path: ellipse(50% 10% at 50% 90%);
+    background: black;
+    position: absolute;
+    width: 98px;
+    height: 84px;
+    z-index: 1;
+    mix-blend-mode: soft-light;
+    @media screen and (min-width: $tablet-min-width) {
+        width: 220px;
+        height: 134px;
+    }
+    @media screen and (min-width: $desktop-min-width) {
+        width: 260px;
+        height: 150px;
+    }
+}
+
 .battle-monster-sprite {
     width: 125px;
+    z-index: 2;
 
     @media screen and (min-width: $tablet-min-width) {
         width: 200px;
