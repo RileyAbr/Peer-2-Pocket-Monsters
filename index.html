@@ -32,12 +32,16 @@
     <div id="login-menu">
         <h1 id="login-menu-title">Enter Your Partner's Battle ID and Choose a Pocket Monster!</h1>
         <div id="login-menu-modal">
-            <h2>Your Battle ID: <span id="room-key"></span></h2>
-            <input type="text" name="" id="receiver-id-input" autocomplete="off">
-            <select name="" id="login-monster-choice">
-                <!-- Options load in from monster library -->
-            </select>
-            <div id="stat"></div>
+            <div id="login-menu-id-wrapper">
+                <h2 id="login-menu-battle-id">Your Battle ID: <span id="room-key"></span></h2>
+                <div id="login-menu-input-wrapper">
+                    <input type="text" name="" id="receiver-id-input" autocomplete="off">
+                    <select name="" id="login-monster-choice">
+                        <!-- Options load in from monster library -->
+                    </select>
+                </div>
+            </div>
+            <div id="login-status"></div>
             <button id="login-menu-submit">Battle!</button>
         </div>
     </div>
@@ -94,7 +98,7 @@
                                         <!-- Currently unused -->
                                         <!-- <div class="health-bar-red"></div>
                                         <div class="health-bar-blue"></div> -->
-                                        <div class="battle-health-bar"></div>
+                                        <div class="battle-health-bar-opponent"></div>
                                     </div>
                                     <span id="battle-health-bar-value-opponent">100</span>/100
                                 </div>
@@ -148,7 +152,7 @@
                             <div class="battle-health-bar-wrapper">
                                 <h3>Health Bar</h3>
                                 <div class="battle-health-bounding-box">
-                                    <div class="battle-health-bar"></div>
+                                    <div class="battle-health-bar-player"></div>
                                 </div>
                                 <span id="battle-health-bar-value-player">100</span>/100
                             </div>
