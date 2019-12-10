@@ -315,13 +315,19 @@ body {
     }
 }
 
-.battle-health-bar {
+.battle-health-bar-player {
     background-color: #00fd4f;
     width: 100%;
     height: calc(#{$battle-health-bar-height} - 4px);
     border-radius: $battle-health-bar-roundness;
 }
 
+.battle-health-bar-opponent {
+    background-color: #00fd4f;
+    width: 100%;
+    height: calc(#{$battle-health-bar-height} - 4px);
+    border-radius: $battle-health-bar-roundness;
+}
 // Monster Sprite
 .battle-monster {
     flex: 2;

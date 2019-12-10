@@ -51,6 +51,8 @@ let playerStatsValueLabels = document.getElementsByClassName("stats-value-player
 let opponentStatsValueLabels = document.getElementsByClassName("stats-value-opponent");
 let playerHPLabel = document.getElementById('battle-health-bar-value-player');
 let opponentHPLabel = document.getElementById('battle-health-bar-value-opponent');
+let playerHPBar = document.getElementById('battle-health-bar-player');
+let opponentHPBar = document.getElementById('battle-health-bar-opponent');
 let playerMonsterSprite = document.getElementById("battle-monster-sprite-player");
 let opponentMonsterSprite = document.getElementById("battle-monster-sprite-opponent");
 let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
@@ -134,6 +136,20 @@ function refreshHealthBar() {
         playerCurHealth = playerMaxHealth;
     var opponentMaxHealth = opponentMonster.stats[0],
         opponentCurHealth = opponentMaxHealth;
+
+    //have battle scene reflect current (maximum) health
+    playerHPLabel.innerHTML = playerMaxHealth;
+    opponentHPLabel.innerHTML = opponentMaxHealth;
+
+    //initialize both health bars' widths
+    //playerHPBar.style.width = "100%";
+    //opponentHPBar.style.width = "100%";
+
+    
+
+
+
+
 
 
 }
