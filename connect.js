@@ -133,13 +133,13 @@ function refreshStats() {
     }
 
     if (opponentMonster.stats[0] == 0) {
-        addMessage("<span class=\"selfMsg\">System: </span>" + "You win, opponent dies!");
+        addMessage("<span class=\"selfMsg\">System: </span>" + "Congratulations, you win!");
         // endBattle();
         disableButtons(moveButtons);
     }
 
     if (playerMonster.stats[0] == 0) {
-        addMessage("<span class=\"selfMsg\">System: </span>" + "Game Over, you die!");
+        addMessage("<span class=\"selfMsg\">System: </span>" + "Game Over, you lost!");
         // endBattle();
         disableButtons(moveButtons);
     }
@@ -162,7 +162,6 @@ function refreshHealthBar() {
     let opponentHealthPercentage = (opponentCurHealth / 100) * 100 + "%";
     playerHPBar.style.width = playerHealthPercentage;
     opponentHPBar.style.width = opponentHealthPercentage;
-
 
 }
 
@@ -202,7 +201,6 @@ function refreshButtons() {
                 moveDesc[1].innerHTML = `Uses: ${moves[i]["limit"]}`;
                 moveDesc[2].innerHTML = noBreakingSpace;
                 break;
-
         }
     }
 }
@@ -384,11 +382,6 @@ function addMessage(msg) {
     message.scrollTop = newMessage.offsetHeight + newMessage.offsetTop;
 };
 
-// function clearMessages() {
-//     message.innerHTML = "";
-//     addMessage("Msgs cleared");
-// };
-
 // Listen for enter
 sendMessageBox.onkeypress = function (e) {
     var event = e || window.event;
@@ -407,6 +400,10 @@ sendButton.onclick = function () {
     }
 };
 
+// function clearMessages() {
+//     message.innerHTML = "";
+//     addMessage("Msgs cleared");
+// };
 // Clear messages box
 // clearMsgsButton.onclick = function () {
 //     clearMessages();
@@ -452,7 +449,6 @@ function signal(data) {
     if (conn.open) {
         conn.send(data);
         console.log(data + " signal sent");
-        // addMessage(systemString + sigName);
     }
 }
 
@@ -500,6 +496,7 @@ function attackType(move) {
             console.log("The move type is invalid");
             break;
     }
+    battleLog(opponentMonster["name"], monsterMove.name);
     opponentFaintOpponent();
     refreshStats();
 }
@@ -628,6 +625,7 @@ function attackTypePlayer(move) {
             console.log("The move type is invalid");
             break;
     }
+    battleLog(playerMonster["name"], monsterMove.name);
     opponentFaintPlayer();
     refreshStats();
 }
@@ -738,6 +736,11 @@ function monsterHurt(sprite) {
     setTimeout(() => {
         sprite.classList.remove("battle-monster-hurt");
     }, 1000);
+}
+
+// Log battle messages
+function battleLog(monster, move, effect) {
+    addMessage(`${monster} used ${move}!`);
 }
 
 
