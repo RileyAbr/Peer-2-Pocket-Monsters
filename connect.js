@@ -132,13 +132,13 @@ function refreshStats() {
         opponentStatsValueLabels[i].innerHTML = opponentMonster.stats[i];
     }
 
-    if(opponentMonster.stats[0] == 0){
+    if (opponentMonster.stats[0] == 0) {
         addMessage("<span class=\"selfMsg\">System: </span>" + "You win, opponent dies!");
         // endBattle();
         disableButtons(moveButtons);
     }
 
-    if(playerMonster.stats[0] == 0){
+    if (playerMonster.stats[0] == 0) {
         addMessage("<span class=\"selfMsg\">System: </span>" + "Game Over, you die!");
         // endBattle();
         disableButtons(moveButtons);
@@ -229,8 +229,8 @@ function startBattle() {
 
 function endBattle() {
     let button;
-    for (button of moveButtons){
-        if(button.disabled = false){
+    for (button of moveButtons) {
+        if (button.disabled = false) {
             button.disabled = true;
         }
     }
@@ -512,6 +512,7 @@ function attackOpponent(damage) {
     var chanceToHit = opponentMonster.stats[3] - (opponentMonster.stats[3] * (playerMonster.stats[4] / 100));
     if (Math.floor(Math.random() * 10) < (chanceToHit / 10))
         playerMonster.stats[0] -= damageValue;
+    monsterHurt(playerMonsterSprite);
 }
 
 //status type move
@@ -553,10 +554,11 @@ function attack_statusOpponent(damage, accuracy, status, chance) {
         playerMonster.stats[0] -= Math.ceil(opponentMonster.stats[1] / playerMonster.stats[2] * damage);
         let randChance = Math.floor(Math.random() * 10);
         if (randChance < (chance / 10)) {
-            //if status = burn, dealls 10% of the target's health as damage each turn
+            //if status = burn, deals 10% of the target's health as damage each turn
             //if status = freeze, prevents the target from acting for 1 turn
         }
     }
+    monsterHurt(playerMonsterSprite);
 }
 
 //attack + stat type move
@@ -569,6 +571,7 @@ function at_StatOpponent(damage, accuracy, stat, value) {
         playerMonster.stats[0] -= Math.ceil(opponentMonster.stats[1] / playerMonster.stats[2] * damage);
         statusOpponent(stat, value);
     }
+    monsterHurt(playerMonsterSprite);
 }
 
 //item type move
@@ -585,7 +588,6 @@ function opponentFaintOpponent() {
         playerMonster.stats[0] = 0;
     }
 }
-
 function opponentFaintPlayer() {
     if (opponentMonster.stats[0] <= 0) {
         opponentMonster.stats[0] = 0
@@ -638,6 +640,7 @@ function attackPlayer(damage) {
     var chanceToHit = playerMonster.stats[3] - (playerMonster.stats[3] * (opponentMonster.stats[4] / 100));
     if (Math.floor(Math.random() * 10) < (chanceToHit / 10))
         opponentMonster.stats[0] -= damageValue;
+    monsterHurt(opponentMonsterSprite);
 }
 
 //status type move
@@ -666,6 +669,7 @@ function statusPlayer(stat, value) {
     var chanceToHit = playerMonster.stats[3] - (playerMonster.stats[3] * (opponentMonster.stats[4] / 100));
     if (Math.floor(Math.random() * 10) < (chanceToHit / 10))
         opponentMonster.stats[statIndex] += parseInt(value);
+    monsterHurt(opponentMonsterSprite);
 }
 
 //attack + status type move
@@ -683,6 +687,7 @@ function attack_statusPlayer(damage, accuracy, status, chance) {
             //if status = freeze, prevents the target from acting for 1 turn
         }
     }
+    monsterHurt(opponentMonsterSprite);
 }
 
 function at_StatPlayer(damage, accuracy, stat, value) {
@@ -694,6 +699,7 @@ function at_StatPlayer(damage, accuracy, stat, value) {
         opponentMonster.stats[0] -= Math.ceil(playerMonster.stats[1] / opponentMonster.stats[2] * damage);
         statusPlayer(stat, value);
     }
+    monsterHurt(opponentMonsterSprite);
 }
 
 //item type move
@@ -725,6 +731,14 @@ move3Button.onclick = function () {
     attackTypePlayer(3);
     disableButtons(moveButtons);
 };
+
+// Plays monster's hurt animation
+function monsterHurt(sprite) {
+    sprite.classList.add("battle-monster-hurt");
+    setTimeout(() => {
+        sprite.classList.remove("battle-monster-hurt");
+    }, 1000);
+}
 
 
 /*
