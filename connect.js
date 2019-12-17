@@ -538,6 +538,7 @@ function statusOpponent(stat, value) {
     var chanceToHit = opponentMonster.stats[3] - (opponentMonster.stats[3] * (playerMonster.stats[4] / 100));
     if (Math.floor(Math.random() * 10) < (chanceToHit / 10))
         playerMonster.stats[statIndex] += parseInt(value);
+    monsterDebuff(playerMonsterSprite)
 }
 
 //attack + status type move
@@ -578,6 +579,7 @@ function itemsOpponent(heal) {
     }
     if (opponentMonster.stats[0] > 100)
         opponentMonster.stats[0] = 100;
+    monsterHeal(opponentMonsterSprite);
 }
 
 function opponentFaintOpponent() {
@@ -667,7 +669,7 @@ function statusPlayer(stat, value) {
     var chanceToHit = playerMonster.stats[3] - (playerMonster.stats[3] * (opponentMonster.stats[4] / 100));
     if (Math.floor(Math.random() * 10) < (chanceToHit / 10))
         opponentMonster.stats[statIndex] += parseInt(value);
-    monsterHurt(opponentMonsterSprite);
+    monsterDebuff(opponentMonsterSprite);
 }
 
 //attack + status type move
@@ -706,6 +708,7 @@ function itemsPlayer(heal) {
         playerMonster.stats[0] += heal;
     if (playerMonster.stats[0] > 100)
         playerMonster.stats[0] = 100;
+    monsterHeal(playerMonsterSprite);
 }
 
 // Battle buttons
@@ -737,6 +740,21 @@ function monsterHurt(sprite) {
         sprite.classList.remove("battle-monster-hurt");
     }, 1000);
 }
+// Plays monster's debuff animation
+function monsterDebuff(sprite) {
+    sprite.classList.add("battle-monster-debuff");
+    setTimeout(() => {
+        sprite.classList.remove("battle-monster-debuff");
+    }, 2000);
+}
+// Plays monster's heal animation
+function monsterHeal(sprite) {
+    sprite.classList.add("battle-monster-heal");
+    setTimeout(() => {
+        sprite.classList.remove("battle-monster-heal");
+    }, 2000);
+}
+
 
 // Log battle messages
 function battleLog(monster, move, effect) {

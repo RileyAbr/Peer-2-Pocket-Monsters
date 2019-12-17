@@ -178,13 +178,13 @@ $fade-speed: 3.3s;
     animation: flickerAnimation $fade-speed infinite;
 }
 
+// Monster sprites visceral feedback animations
 // Monster hurt animation
 // Credit to Sarah Drasner at https://codepen.io/sdras/pen/aOgMON
 @mixin monster-shake {
     animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
     transform: translate3d(0, 0, 0);
 }
-
 @keyframes shake {
     10%,
     90% {
@@ -202,5 +202,47 @@ $fade-speed: 3.3s;
     40%,
     60% {
         transform: translate3d(4px, 0, 0);
+    }
+}
+
+// Monster debuff animation
+@mixin monster-debuff {
+    animation: debuff-flash 1.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    -webkit-filter: contrast(100%) brightness(100%) saturate(100%) hue-rotate(0deg);
+    filter: contrast(100%) brightness(100%) saturate(100%) hue-rotate(0deg);
+}
+@keyframes debuff-flash {
+    0% {
+        -webkit-filter: contrast(100%) brightness(100%) saturate(100%) hue-rotate(0deg);
+        filter: contrast(100%) brightness(100%) saturate(100%) hue-rotate(0deg);
+    }
+    50% {
+        -webkit-filter: contrast(50%) brightness(60%) saturate(450%) hue-rotate(30deg);
+        filter: contrast(50%) brightness(60%) saturate(450%) hue-rotate(30deg);
+    }
+    100% {
+        -webkit-filter: contrast(100%) brightness(100%) saturate(100%) hue-rotate(0deg);
+        filter: contrast(100%) brightness(100%) saturate(100%) hue-rotate(0deg);
+    }
+}
+
+// Monster heal animation
+@mixin monster-heal {
+    animation: color-flash 1.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    -webkit-filter: saturate(100%);
+    filter: saturate(100%);
+}
+@keyframes color-flash {
+    0% {
+        -webkit-filter: saturate(100%); /* Safari */
+        filter: saturate(100%);
+    }
+    50% {
+        -webkit-filter: saturate(350%); /* Safari */
+        filter: saturate(350%);
+    }
+    100% {
+        -webkit-filter: saturate(100%); /* Safari */
+        filter: saturate(100%);
     }
 }
