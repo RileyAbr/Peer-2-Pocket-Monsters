@@ -776,6 +776,12 @@ body {
   height: 50px;
   margin: auto;
   opacity: 0.9;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  transition: -webkit-transform 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  transition: transform 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  transition: transform 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97), -webkit-transform 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 }
 
 @media screen and (min-width: 700px) {

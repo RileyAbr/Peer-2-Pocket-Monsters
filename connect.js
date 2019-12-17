@@ -57,7 +57,8 @@ let playerMonsterSprite = document.getElementById("battle-monster-sprite-player"
 let opponentMonsterSprite = document.getElementById("battle-monster-sprite-opponent");
 let playerMonsterName = document.getElementById("battle-monster-name-player");
 let opponentMonsterName = document.getElementById("battle-monster-name-opponent");
-let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+
+
 var moveButtons = document.getElementsByClassName("battle-controller-button");
 let moveButtonsNames = document.getElementsByClassName("battle-move-name");
 var move0Button = document.getElementById("battle-move-0");
@@ -66,8 +67,9 @@ var move2Button = document.getElementById("battle-move-2");
 var move3Button = document.getElementById("battle-move-3");
 
 // System variables
-var systemString = "<span class=\"cueMsg\">System: </span>";
 let noBreakingSpace = "\u00A0"
+let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+
 
 /*
  
@@ -203,6 +205,31 @@ function refreshButtons() {
                 break;
         }
     }
+}
+
+// Rotate turn indictator
+// Kudos to Chris Coyier at CSS-Tricks for easy ways to get rotational values
+// https://css-tricks.com/get-value-of-css-rotation-through-javascript/
+function rotateTurn() {
+    let turnIndicator = document.getElementById("pokeball-turn-indicator");
+    let originalRotation = window.getComputedStyle(turnIndicator).transform;
+    var values = originalRotation.split('(')[1].split(')')[0].split(',');
+    var a = values[0];
+    var b = values[1];
+    var c = values[2];
+    var d = values[3];
+    var scale = Math.sqrt(a * a + b * b);
+
+    // arc sin, convert from radians to degrees, round
+    var sin = b / scale;
+    // next line works for 30deg but not 130deg (returns 50);
+    // var angle = Math.round(Math.asin(sin) * (180/Math.PI));
+    var angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+
+    // Rotate 180degrees
+    angle += 180;
+
+    turnIndicator.style.transform = "rotate(" + angle + "deg)";
 }
 
 // Disables buttons when it is not the players turn
@@ -342,6 +369,7 @@ function join() {
                 addMessage("<span class=\"selfMsg\">Peer: </span>" + data[1]);
                 break;
             case 2: // Attack
+                rotateTurn();
                 attackType(data[1]);
                 enableButtons(moveButtons);
                 break;
@@ -424,10 +452,12 @@ function ready() {
                 break;
             case 2: // Attack
                 attackType(data[1]);
+                rotateTurn();
                 enableButtons(moveButtons);
                 break;
             case 8:
                 startBattle(data[1]);
+                rotateTurn();
                 disableButtons(moveButtons);
                 break;
             case 9: //End Game
@@ -715,21 +745,25 @@ function itemsPlayer(heal) {
 move0Button.onclick = function () {
     signal([2, 0]);
     attackTypePlayer(0);
+    rotateTurn();
     disableButtons(moveButtons);
 };
 move1Button.onclick = function () {
     signal([2, 1]);
     attackTypePlayer(1);
+    rotateTurn();
     disableButtons(moveButtons);
 };
 move2Button.onclick = function () {
     signal([2, 2]);
     attackTypePlayer(2);
+    rotateTurn();
     disableButtons(moveButtons);
 };
 move3Button.onclick = function () {
     signal([2, 3]);
     attackTypePlayer(3);
+    rotateTurn();
     disableButtons(moveButtons);
 };
 
@@ -754,7 +788,6 @@ function monsterHeal(sprite) {
         sprite.classList.remove("battle-monster-heal");
     }, 2000);
 }
-
 
 // Log battle messages
 function battleLog(monster, move, effect) {
