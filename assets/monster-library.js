@@ -209,7 +209,7 @@ let monsterLibraryDB =
                     "limit": null
                 },
                 {
-                    "name": "Sub-Potions",
+                    "name": "Mini-Potion",
                     "type": 4,
                     "base-power": 0,
                     "base-accuracy": 0,
