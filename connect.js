@@ -281,11 +281,18 @@ function startBattle() {
 
 function endBattle() {
     disableButtons(moveButtons);
-    if (confirm("Do you want to start another game?")) {
-        window.location.reload();
-    }
-    else
-        return;
+
+    setTimeout(() => {
+        animateEnd();
+    }, 1000);
+
+    setTimeout(() => {
+        if (confirm("Do you want to start another game?")) {
+            window.location.reload();
+        }
+        else
+            return;
+    }, 2500);
 }
 
 /*
