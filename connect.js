@@ -133,21 +133,21 @@ function refreshStats() {
         playerStatsValueLabels[i].innerHTML = playerMonster.stats[i];
         opponentStatsValueLabels[i].innerHTML = opponentMonster.stats[i];
     }
+    
+    refreshHealthBar();
+    refreshButtons();
 
     if (opponentMonster.stats[0] == 0) {
-        addMessage("<span class=\"selfMsg\">System: </span>" + "Congratulations, you win!");
-        // endBattle();
-        disableButtons(moveButtons);
+        addMessage("Congratulations, you win!");
+        endBattle();
+        // disableButtons(moveButtons);
     }
 
     if (playerMonster.stats[0] == 0) {
-        addMessage("<span class=\"selfMsg\">System: </span>" + "Game Over, you lost!");
-        // endBattle();
-        disableButtons(moveButtons);
+        addMessage("Game Over, you lost!");
+        endBattle();
+        // disableButtons(moveButtons);
     }
-
-    refreshHealthBar();
-    refreshButtons();
 }
 
 function refreshHealthBar() {
@@ -253,12 +253,7 @@ function startBattle() {
 }
 
 function endBattle() {
-    let button;
-    for (button of moveButtons) {
-        if (button.disabled = false) {
-            button.disabled = true;
-        }
-    }
+    disableButtons(moveButtons);
 }
 
 /*
@@ -370,8 +365,8 @@ function join() {
                 break;
             case 2: // Attack
                 rotateTurn();
-                attackType(data[1]);
                 enableButtons(moveButtons);
+                attackType(data[1]);               
                 break;
             case 8:
                 startBattle(data[1]);
@@ -451,9 +446,9 @@ function ready() {
                 addMessage("<span class=\"selfMsg\">Peer: </span>" + data[1]);
                 break;
             case 2: // Attack
-                attackType(data[1]);
-                rotateTurn();
                 enableButtons(moveButtons);
+                attackType(data[1]);
+                rotateTurn();                
                 break;
             case 8:
                 startBattle(data[1]);
