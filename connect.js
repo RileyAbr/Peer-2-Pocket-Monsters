@@ -34,11 +34,16 @@ var connectButton = document.getElementById("login-menu-submit");
 var roomId = document.getElementById("room-id-key-ingame");
 var stat = document.getElementById("login-status");
 
+// Login variables
+let loginModal = document.getElementById("login-menu");
+let redLoginPanel = document.getElementById("red-login-panel");
+let whiteLoginPanel = document.getElementById("white-login-panel");
+let loginBall = document.getElementById("login-ball");
+
 // Message variables
 var message = document.getElementById("chat-messages");
 var sendMessageBox = document.getElementById("chat-send-message-input");
 var sendButton = document.getElementById("chat-send-message-button");
-let loginModal = document.getElementById("login-menu");
 // var clearMsgsButton = document.getElementById("clearMsgsButton"); Does not currently exist
 
 // Battle system variables
@@ -82,9 +87,29 @@ let monsterSpriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master
  ##     ## ######## ######## ##        ######## ##     ##  ######  
  
 */
-// Fades out the modal for loggining in
+// Fades out the modal for logging in
 function fadeModal(modal) {
     loginModal.style.display = "none";
+}
+
+// Animates the red and white panels after logging in
+function animateLogin() {
+    redLoginPanel.style.top = "0"
+    whiteLoginPanel.style.bottom = "0"
+    setTimeout(() => {
+        loginBall.classList.add("light-flash");
+    }, 1000);
+    setTimeout(() => {
+        loginModal.style.display = "none";
+        redLoginPanel.style.top = "-65vh"
+        whiteLoginPanel.style.bottom = "-50vh"
+    }, 1500);
+}
+
+// Animates panels coming in and staying
+function animateEnd() {
+    redLoginPanel.style.top = "0"
+    whiteLoginPanel.style.bottom = "0"
 }
 
 // Loads all monsters for play
@@ -113,11 +138,12 @@ function setUpBattle() {
     // Load stats for the first time
     refreshStats();
 
-    // Fade out login modal
-    loginModal.style.opacity = 0;
-    let fadeTimer = 1650; // Controls when the login modal fades out
-    //Wait two seconds before removing modal for animation to finish
-    setTimeout(fadeModal, fadeTimer);
+    animateLogin();
+    // // Fade out login modal
+    // loginModal.style.opacity = 0;
+    // let fadeTimer = 1650; // Controls when the login modal fades out
+    // //Wait two seconds before removing modal for animation to finish
+    // setTimeout(fadeModal, fadeTimer);
 }
 
 // Loads the monster 
@@ -133,13 +159,14 @@ function refreshStats() {
         playerStatsValueLabels[i].innerHTML = playerMonster.stats[i];
         opponentStatsValueLabels[i].innerHTML = opponentMonster.stats[i];
     }
-    
+
     refreshHealthBar();
     refreshButtons();
 
     if (opponentMonster.stats[0] == 0) {
         addMessage("Congratulations, you win!");
         endBattle();
+
         // disableButtons(moveButtons);
     }
 
@@ -254,6 +281,7 @@ function startBattle() {
 
 function endBattle() {
     disableButtons(moveButtons);
+    animateEnd();
 }
 
 /*
@@ -366,7 +394,7 @@ function join() {
             case 2: // Attack
                 rotateTurn();
                 enableButtons(moveButtons);
-                attackType(data[1]);               
+                attackType(data[1]);
                 break;
             case 8:
                 startBattle(data[1]);
@@ -448,7 +476,7 @@ function ready() {
             case 2: // Attack
                 enableButtons(moveButtons);
                 attackType(data[1]);
-                rotateTurn();                
+                rotateTurn();
                 break;
             case 8:
                 startBattle(data[1]);

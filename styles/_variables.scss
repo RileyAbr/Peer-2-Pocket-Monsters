@@ -183,6 +183,28 @@ $fade-speed: 3.3s;
     transition: transform 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 }
 
+// Lightbulb Effect
+@mixin light-up {
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 09px, #fff 0 2px 12px;
+    animation: lightbulb 1.2s both;
+}
+@keyframes lightbulb {
+    0% {
+        background-color: #fff;
+    }
+    50% {
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.3) 2 -5px 15px 5px, inset #909090 5px -13px 25px, #fff 1px 1px 1px;
+        // box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #909090 0 -1px 9px, #fff 0 0px 0;
+    }
+    100% {
+        background-color: #fff;
+    }
+}
+.light-flash {
+    @include light-up;
+}
+
 // Monster sprites visceral feedback animations
 // Monster hurt animation
 // Credit to Sarah Drasner at https://codepen.io/sdras/pen/aOgMON

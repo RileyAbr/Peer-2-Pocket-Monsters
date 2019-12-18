@@ -97,6 +97,41 @@
   }
 }
 
+@-webkit-keyframes lightbulb {
+  0% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: #fff;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 2 -5px 15px 5px, inset #909090 5px -13px 25px, #fff 1px 1px 1px;
+            box-shadow: rgba(0, 0, 0, 0.3) 2 -5px 15px 5px, inset #909090 5px -13px 25px, #fff 1px 1px 1px;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+
+@keyframes lightbulb {
+  0% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: #fff;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 2 -5px 15px 5px, inset #909090 5px -13px 25px, #fff 1px 1px 1px;
+            box-shadow: rgba(0, 0, 0, 0.3) 2 -5px 15px 5px, inset #909090 5px -13px 25px, #fff 1px 1px 1px;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+
+.light-flash {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #fff 0 2px 12px;
+          box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #fff 0 2px 12px;
+  -webkit-animation: lightbulb 1.2s both;
+          animation: lightbulb 1.2s both;
+}
+
 @-webkit-keyframes shake {
   10%,
   90% {
@@ -791,6 +826,13 @@ body {
   }
 }
 
+#login-ball-center {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #fff 0 2px 12px;
+          box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #fff 0 2px 12px;
+  -webkit-animation: lightbulb 1.2s both;
+          animation: lightbulb 1.2s both;
+}
+
 #battle-controller-button-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -960,5 +1002,62 @@ body {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   width: 95px;
+}
+
+#red-login-panel,
+#white-login-panel {
+  position: fixed;
+  height: 50vh;
+  width: 100vw;
+  z-index: 100;
+  -webkit-transition: all 0.65s ease-in;
+  transition: all 0.65s ease-in;
+}
+
+#red-login-panel {
+  background: red;
+  top: -65vh;
+  border-bottom: black 55px solid;
+  z-index: 101;
+}
+
+#white-login-panel {
+  background: white;
+  bottom: -50vh;
+}
+
+#login-ball-wrap {
+  z-index: 101;
+  position: relative;
+  right: 0px;
+  bottom: 0px;
+  left: 50%;
+  top: 47.5vh;
+}
+
+#login-ball {
+  height: 200px;
+  width: 200px;
+  border-radius: 500px;
+  background: white;
+  right: 0px;
+  bottom: 0px;
+  left: 50%;
+  top: 50%;
+  margin-top: -100px;
+  margin-left: -100px;
+}
+
+#login-ball:after {
+  content: "";
+  z-index: -1;
+  border-radius: 500px;
+  position: relative;
+  background: black;
+  height: 270px;
+  width: 270px;
+  top: -35px;
+  left: -35px;
+  display: block;
 }
 /*# sourceMappingURL=styles.css.map */

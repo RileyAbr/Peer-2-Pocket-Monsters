@@ -439,6 +439,10 @@ body {
     @include ball-turn;
 }
 
+#login-ball-center {
+    @include light-up;
+}
+
 // Buttons
 #battle-controller-button-wrapper {
     display: flex;
@@ -563,4 +567,57 @@ body {
     display: flex;
     justify-content: space-evenly;
     width: 95px;
+}
+
+#red-login-panel,
+#white-login-panel {
+    position: fixed;
+    height: 50vh;
+    width: 100vw;
+    z-index: 100;
+    transition: all 0.65s ease-in;
+}
+
+#red-login-panel {
+    background: red;
+    top: -65vh;
+    border-bottom: black 55px solid;
+    z-index: 101;
+}
+#white-login-panel {
+    background: white;
+    bottom: -50vh;
+}
+
+#login-ball-wrap {
+    z-index: 101;
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    left: 50%;
+    top: 47.5vh;
+}
+#login-ball {
+    height: 200px;
+    width: 200px;
+    border-radius: 500px;
+    background: white;
+    right: 0px;
+    bottom: 0px;
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+    &:after {
+        content: "";
+        z-index: -1;
+        border-radius: 500px;
+        position: relative;
+        background: black;
+        height: 270px;
+        width: 270px;
+        top: -35px;
+        left: -35px;
+        display: block;
+    }
 }
