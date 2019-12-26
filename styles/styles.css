@@ -1016,7 +1016,7 @@ body {
 
 #red-login-panel {
   background: red;
-  top: -65vh;
+  top: -100vh;
   border-bottom: black 55px solid;
   z-index: 101;
 }
