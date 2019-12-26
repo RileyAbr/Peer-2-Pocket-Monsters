@@ -101,7 +101,7 @@ function animateLogin() {
     }, 1000);
     setTimeout(() => {
         loginModal.style.display = "none";
-        redLoginPanel.style.top = "-65vh"
+        redLoginPanel.style.top = "-100vh"
         whiteLoginPanel.style.bottom = "-50vh"
     }, 1500);
 }
